@@ -375,6 +375,12 @@ input.sw:checked::after{right:20px;background:#fff}
 #busy i{display:block;height:100%;width:30%;background:#B2845D;animation:bz 1s infinite linear}
 @keyframes bz{from{transform:translateX(100%)}to{transform:translateX(-340%)}}
 .boot{min-height:100vh;display:grid;place-items:center;background:#14141F;color:#D0D0D2;font-size:14px}
+.evf{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:0 10px}
+@media (max-width:760px){.evf{grid-template-columns:1fr 1fr}}
+.evsum{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:12px}
+.evt td{font-size:13px}
+.evt .tn{width:46px;height:36px;object-fit:cover;border:1px solid var(--line);display:block;background:var(--surface2)}
+.evt .fi{width:46px;height:36px;display:flex;align-items:center;justify-content:center;background:var(--gold-soft);color:var(--gold);font-size:10px;font-weight:700}
 .toast{position:fixed;bottom:calc(84px + env(safe-area-inset-bottom,0px));left:50%;transform:translateX(-50%);background:var(--ink);color:var(--bg);padding:10px 18px;border-radius:0;z-index:70;font-size:14px;box-shadow:var(--shadow);max-width:90vw}
 
 .kv{display:grid;grid-template-columns:auto 1fr;gap:6px 14px;font-size:14px;margin-bottom:12px}
@@ -482,7 +488,7 @@ const uid=()=>crypto.randomUUID?crypto.randomUUID():'x'+Math.random().toString(3
 function busy(on){let b=$('#busy');if(on){if(!b){b=document.createElement('div');b.id='busy';b.innerHTML='<i></i>';document.body.appendChild(b)}}else b?.remove()}
 const isAdmin=()=>me()?.role==='admin';
 const isDept=()=>me()?.role==='dept';
-const PERMS=[['plans','الخطط','اعتماد خطط المجمعات أو إعادتها'],['accounts','الحسابات','إدارة حسابات المجمعات والأقسام'],['wisam','وسام','تحديث الإحصائيات أو رفع ملفها'],['events','المواعيد والزيارات','إضافتها وتعديلها لأي جهة'],['meetings','الاجتماعات والمحاضر','إضافة المحاضر ومتابعة كل القرارات'],['reports','التقارير','تقارير كل المجمعات'],['settings','الإعدادات','التقويم الدراسي والهوية']];
+const PERMS=[['plans','الخطط','اعتماد خطط المجمعات أو إعادتها'],['accounts','الحسابات','إدارة حسابات المجمعات والأقسام'],['wisam','وسام','تحديث الإحصائيات أو رفع ملفها'],['events','المواعيد والزيارات','إضافتها وتعديلها لأي جهة'],['meetings','الاجتماعات والمحاضر','إضافة المحاضر ومتابعة كل القرارات'],['reports','التقارير','تقارير كل المجمعات'],['competition','مسابقة الملك سلمان','إدارة اللجان والمتسابقين والمحكّمين والنتائج'],['settings','الإعدادات','التقويم الدراسي والهوية']];
 const can=p=>isAdmin()||!!me()?.perms?.[p];
 const isCx=()=>me()?.role==='complex';
 const canVisit=()=>can('events')||(isDept()&&!!S.departments.find(d=>d.id===me().deptId)?.visits);
@@ -546,6 +552,8 @@ const I={
  ai:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 3l1.8 4.7L18.5 9.5l-4.7 1.8L12 16l-1.8-4.7L5.5 9.5l4.7-1.8z"/><path d="M19 15l.8 2.2L22 18l-2.2.8L19 21l-.8-2.2L16 18l2.2-.8z"/></svg>',
  star:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 2l2.9 6.3 6.9.7-5.2 4.6 1.5 6.8L12 17l-6.1 3.4 1.5-6.8L2.2 9l6.9-.7z"/></svg>',
  visit:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 21s-7-6.2-7-11.5A7 7 0 0 1 19 9.5C19 14.8 12 21 12 21z"/><circle cx="12" cy="9.5" r="2.5"/></svg>',
+ files:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 7a2 2 0 0 1 2-2h4l2 2h8a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><path d="M12 11v5M9.5 13.5 12 16l2.5-2.5"/></svg>',
+ trophy:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M8 4h8v5a4 4 0 0 1-8 0z"/><path d="M8 6H5a2 2 0 0 0 2 4h1M16 6h3a2 2 0 0 1-2 4h-1M12 13v4M8 21h8M9 17h6"/></svg>',
  plus:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12h14"/></svg>',
  print:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M6 9V3h12v6M6 18H4v-7h16v7h-2M7 14h10v7H7z"/></svg>',
  down:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 3v12M7 10l5 5 5-5M4 21h16"/></svg>'
@@ -555,9 +563,9 @@ const I={
 let R={v:null,arg:{}};
 function go(v,arg){R={v,arg:arg||{}};render();window.scrollTo(0,0)}
 function navItems(){return isAdmin()
-  ?[['today','اليوم',I.today],['plans','الخطط',I.plans],['wisam','وسام',I.star],['events','المواعيد',I.cal],['visits','الزيارات',I.visit],['complexes','الحسابات',I.cx],['meetings','الاجتماعات',I.meet],['reports','التقارير',I.rep],['settings','الإعدادات',I.set]]
-  :isDept()?[['today','اليوم',I.today]].concat(can('plans')?[['plans','الخطط',I.plans]]:[],can('wisam')?[['wisam','وسام',I.star]]:[],[['events',can('events')?'المواعيد':'مواعيد القسم',I.cal]],canVisit()?[['visits','الزيارات',I.visit]]:[],can('accounts')?[['complexes','الحسابات',I.cx]]:[],can('meetings')?[['meetings','الاجتماعات',I.meet]]:[],can('reports')?[['reports','التقارير',I.rep]]:[],can('settings')?[['settings','الإعدادات',I.set]]:[])
-  :[['home','الرئيسية',I.today],['myplan','خطتي',I.plans],['wisam','وسام',I.star],['visits','الزيارات',I.visit],['meetings','الاجتماعات',I.meet],['reports','التقرير',I.rep]]}
+  ?[['today','اليوم',I.today],['plans','الخطط',I.plans],['wisam','وسام',I.star],['kc','مسابقة الملك سلمان',I.trophy],['events','المواعيد',I.cal],['visits','الزيارات',I.visit],['complexes','الحسابات',I.cx],['meetings','الاجتماعات',I.meet],['evidence','الشواهد',I.files],['reports','التقارير',I.rep],['settings','الإعدادات',I.set]]
+  :isDept()?[['today','اليوم',I.today]].concat(can('plans')?[['plans','الخطط',I.plans]]:[],can('wisam')?[['wisam','وسام',I.star]]:[],can('competition')?[['kc','مسابقة الملك سلمان',I.trophy]]:[],[['events',can('events')?'المواعيد':'مواعيد القسم',I.cal]],canVisit()?[['visits','الزيارات',I.visit]]:[],can('accounts')?[['complexes','الحسابات',I.cx]]:[],can('meetings')?[['meetings','الاجتماعات',I.meet]]:[],(can('reports')||can('plans'))?[['evidence','الشواهد',I.files]]:[],can('reports')?[['reports','التقارير',I.rep]]:[],can('settings')?[['settings','الإعدادات',I.set]]:[])
+  :[['home','الرئيسية',I.today],['myplan','خطتي',I.plans],['evidence','الشواهد',I.files],['wisam','وسام',I.star],['kc','مسابقة الملك سلمان',I.trophy],['visits','الزيارات',I.visit],['meetings','الاجتماعات',I.meet],['reports','التقرير',I.rep]]}
 
 function demoBar(){return ''}
 function demoAs(){}
@@ -578,7 +586,7 @@ function render(){
   <div class="layout"><nav class="nav">${navBtns}</nav><main id="main"></main></div>
   <footer class="app-foot">© ${new Date().getFullYear()} · الجمعية الخيرية لتحفيظ القرآن الكريم بعنيزة</footer>
   <nav class="bottom-nav">${navBtns}</nav>`;
-  const V={today:vToday,plans:vPlans,plan:vPlan,complexes:vComplexes,meetings:vMeetings,meeting:vMeeting,reports:vReports,settings:vSettings,events:vEvents,wisam:vWisam,visits:vVisits,home:vHome,myplan:()=>vPlan({cid:u.complexId,tid:R.arg.tid||activeTerm()?.id})};
+  const V={today:vToday,plans:vPlans,plan:vPlan,complexes:vComplexes,meetings:vMeetings,meeting:vMeeting,reports:vReports,settings:vSettings,events:vEvents,wisam:vWisam,visits:vVisits,evidence:vEvidence,kc:vKc,home:vHome,myplan:()=>vPlan({cid:u.complexId,tid:R.arg.tid||activeTerm()?.id})};
   $('#main').innerHTML=(V[R.v]||vToday)(R.arg);
   hydrateEv($('#main'));
 }
@@ -601,6 +609,7 @@ function bindLogin(){
     $('#lbtn').disabled=true;$('#lbtn').textContent='جارٍ الدخول…';$('#lerr').textContent='';
     try{const d=await q(sb.auth.signInWithPassword({email:un+DOMAIN,password:pw}));session={uid:d.user.id};await loadAll();
       if(!me()){await sb.auth.signOut();session=null;throw new Error('الحساب غير مرتبط بالمنصة')}
+      if(me().role==='judge'){location.replace('kc.html');return}
       R={v:null,arg:{}};render()}
     catch(e){$('#lerr').textContent=errMsg(e);$('#lbtn').disabled=false;$('#lbtn').textContent='دخول'}};
   $('#lbtn').onclick=f;$('#lp').onkeydown=e=>{if(e.key==='Enter')f()};$('#lu').onkeydown=e=>{if(e.key==='Enter')$('#lp').focus()};
@@ -1300,6 +1309,92 @@ ${text?'نص مستخرج من الملف (قد يكون ترتيب الكلما
   }catch(err){setImp(/[\u0600-\u06FF]/.test(err?.message||'')?err.message:'تعذّرت قراءة الملف. أعد المحاولة أو استخدم التعديل اليدوي.');console.error(err)}
 }
 
+/* ---------- King Salman competition ---------- */
+const KBR={1:{name:'الأول',desc:'القرآن كاملاً بالقراءات العشر رواية ودراية',juz:30},2:{name:'الثاني',desc:'القرآن كاملاً مع تفسير مفرداته',juz:30},3:{name:'الثالث',desc:'القرآن كاملاً',juz:30},4:{name:'الرابع',desc:'عشرون جزءاً متتالية',juz:20},5:{name:'الخامس',desc:'عشرة أجزاء متتالية',juz:10},6:{name:'السادس',desc:'خمسة أجزاء متتالية',juz:5}};
+let KC=null,KCload=false;
+async function kcLoad(){if(KCload)return;KCload=true;try{const [cs,sc]=await Promise.all([q(sb.from('kc_contestants').select('*')),q(sb.from('kc_scores').select('*'))]);KC={cs,sc}}catch(e){KC={cs:[],sc:[],err:errMsg(e)}}KCload=false;render()}
+function vKc(){
+  if(can('competition')){setTimeout(()=>location.href='kc.html',50);return '<div class="empty"><b>جارٍ فتح منصة التحكيم…</b><a href="kc.html">اضغط هنا إن لم تُفتح تلقائياً</a></div>'}
+  if(!KC){kcLoad();return '<div class="empty">جارٍ تحميل بيانات المسابقة…</div>'}
+  const st={waiting:['في الانتظار',''],active:['يُختبر الآن','pri'],done:['انتهى الاختبار','ok']};
+  const rows=KC.cs.slice().sort((a,b)=>(a.branch-b.branch)||String(a.name).localeCompare(b.name,'ar')).map(c=>{
+    const subs=KC.sc.filter(s=>s.contestant_id===c.id&&s.submitted);const avg=subs.length?subs.reduce((t,s)=>t+(+s.total||0),0)/subs.length:null;
+    const B=KBR[c.branch]||{name:c.branch,juz:30};const range=B.juz===30?'القرآن كاملاً':`من الجزء ${c.start_juz} إلى ${c.start_juz+B.juz-1}`;
+    const s=st[c.status]||st.waiting;
+    return `<tr><td><b>${esc(c.name)}</b><br><span class="small muted">${esc(c.gender)}</span></td><td>الفرع ${esc(B.name)}<br><span class="small muted">${esc(range)}</span></td><td><span class="chip ${s[1]}">${s[0]}</span></td><td class="n" style="font-weight:700;font-size:16px">${c.status==='done'&&avg!=null?avg.toFixed(2)+'<span class="small muted"> / 100</span>':'—'}</td><td>${c.status==='done'&&avg!=null?(avg>=90?'<span class="chip ok">90% فأعلى</span>':'<span class="chip">دون 90%</span>'):''}</td></tr>`}).join('');
+  const done=KC.cs.filter(c=>c.status==='done').length;
+  return `<div class="page-h"><div><h2>مسابقة الملك سلمان</h2><p>نتائج متسابقي ${esc(cxName(me().complexId))} في تصفيات محافظة عنيزة</p></div><button class="btn" onclick="KC=null;render()">تحديث</button></div>
+  ${KC.err?`<div class="banner bad"><div class="txt">${esc(KC.err)}</div></div>`:''}
+  <div class="evsum"><span class="chip gold">${KC.cs.length} متسابقاً</span><span class="chip ok">انتهى ${done}</span><span class="chip">في الانتظار ${KC.cs.length-done}</span></div>
+  <section class="panel">${KC.cs.length?`<div class="tbl-wrap"><table><thead><tr><th>المتسابق</th><th>الفرع</th><th>الحالة</th><th>الدرجة النهائية</th><th></th></tr></thead><tbody>${rows}</tbody></table></div>
+   <p class="small muted" style="margin-bottom:0">الدرجة النهائية هي متوسط درجات المحكّمين المعتمدة، وتظهر بعد انتهاء اختبار المتسابق. الترشيح النهائي تعلنه إدارة المسابقة.</p>`
+   :'<div class="empty"><b>لا متسابقين مسجلين لمجمعكم بعد</b>تسجّلهم إدارة المسابقة</div>'}</section>`;
+}
+
+/* ---------- evidence export ---------- */
+function evRows(a){
+  const cf=isCx()?me().complexId:(a.cx||'');const from=a.from||'',to=a.to||'',ty=a.ty||'';
+  return S.evidence.map(e=>{const p=S.programs.find(x=>x.id===e.programId);const term=p&&S.terms.find(t=>t.id===p.termId);
+      return {e,p,cx:cxName(e.complexId),week:p&&term?wkLabel(term,p.start):'',pdate:p?p.start:''}})
+    .filter(r=>(!cf||r.e.complexId===cf)&&(!ty||r.e.type===ty)&&(!from||r.pdate>=from)&&(!to||r.pdate<=to))
+    .sort((x,y)=>x.cx.localeCompare(y.cx,'ar')||String(x.pdate).localeCompare(String(y.pdate)));
+}
+function vEvidence(a){
+  const rows=evRows(a);const cf=isCx()?me().complexId:(a.cx||'');
+  const arg=x=>esc(JSON.stringify(Object.assign({},a,x)));
+  const byCx={};rows.forEach(r=>byCx[r.cx]=(byCx[r.cx]||0)+1);
+  const imgs=rows.filter(r=>r.e.type==='image').length;
+  const ext=n=>(String(n).split('.').pop()||'').toUpperCase().slice(0,4);
+  const shown=rows.slice(0,300);
+  return `<div class="page-h"><div><h2>الشواهد المرفوعة</h2><p>${isCx()?'كل شواهد مجمعكم في مكان واحد':'قاعدة بيانات شواهد المجمعات، مع التصدير والتنزيل'}</p></div>
+   <div class="row"><button class="btn" onclick="exportEvExcel()" ${rows.length?'':'disabled'}>${I.down}تنزيل Excel</button><button class="btn pri" onclick="downloadEvZip()" ${rows.length?'':'disabled'}>${I.down}تنزيل الشواهد مضغوطة</button></div></div>
+  <section class="panel"><div class="evf">
+   ${isCx()?'':`<div class="field"><label>المجمع</label><select onchange="go('evidence',Object.assign(${arg({})},{cx:this.value}))"><option value="">كل المجمعات</option>${S.complexes.map(c=>`<option value="${c.id}" ${c.id===cf?'selected':''}>${esc(c.name)}</option>`).join('')}</select></div>`}
+   <div class="field"><label>من تاريخ البرنامج</label><input type="date" value="${a.from||''}" onchange="go('evidence',Object.assign(${arg({})},{from:this.value}))"></div>
+   <div class="field"><label>إلى تاريخ</label><input type="date" value="${a.to||''}" onchange="go('evidence',Object.assign(${arg({})},{to:this.value}))"></div>
+   <div class="field"><label>النوع</label><select onchange="go('evidence',Object.assign(${arg({})},{ty:this.value}))"><option value="">الكل</option><option value="image" ${a.ty==='image'?'selected':''}>صور</option><option value="file" ${a.ty==='file'?'selected':''}>ملفات</option></select></div></div>
+   <div class="evsum"><span class="chip gold">${rows.length} شاهداً</span><span class="chip">${imgs} صورة</span><span class="chip">${rows.length-imgs} ملف</span>${isCx()||cf?'':Object.entries(byCx).map(([k,n])=>`<span class="chip">${esc(k.replace('مجمع ',''))}: ${n}</span>`).join('')}</div>
+   ${rows.length?`<div class="tbl-wrap"><table class="evt"><thead><tr><th></th>${isCx()?'':'<th>المجمع</th>'}<th>البرنامج</th><th>تاريخ البرنامج</th><th>الأسبوع</th><th>الوصف</th><th>اسم الملف</th><th>تاريخ الرفع</th><th></th></tr></thead><tbody>
+    ${shown.map(r=>`<tr><td>${r.e.type==='image'?`<img class="tn" data-ev="${esc(r.e.path)}" alt="">`:`<span class="fi">${esc(ext(r.e.name))}</span>`}</td>${isCx()?'':`<td>${esc(r.cx)}</td>`}
+     <td><a href="#" onclick="openProgram('${r.e.programId}');return false">${esc(r.p?r.p.title:'—')}</a></td><td style="white-space:nowrap">${r.pdate?hijriS(r.pdate):''}</td><td style="white-space:nowrap">${esc(r.week)}</td>
+     <td>${esc(r.e.caption||'')}</td><td class="small muted" style="max-width:180px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">${esc(r.e.name)}</td><td style="white-space:nowrap">${hijriS(r.e.at)}</td>
+     <td><a class="btn sm" data-evf="${esc(r.e.path)}" href="#" target="_blank" rel="noopener">فتح</a></td></tr>`).join('')}</tbody></table></div>${rows.length>300?`<p class="small muted">يُعرض أول 300 شاهد، وملف Excel والتنزيل المضغوط يشملان الكل (${rows.length}).</p>`:''}`
+   :'<div class="empty"><b>لا شواهد مطابقة</b>غيّر التصفية أو انتظر رفع المجمعات لشواهدها</div>'}</section>`;
+}
+async function signPaths(paths){const out={};for(let i=0;i<paths.length;i+=100){const d=await q(sb.storage.from('evidence').createSignedUrls(paths.slice(i,i+100),3600));d.forEach(x=>{if(x.signedUrl)out[x.path]=x.signedUrl})}return out}
+async function exportEvExcel(){
+  busy(true);try{
+    if(!window.XLSX)await loadScript('https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js');
+    const rows=evRows(R.arg);const urls=await signPaths(rows.map(r=>r.e.path));
+    const data=rows.map((r,i)=>({'م':i+1,'المجمع':r.cx,'البرنامج':r.p?r.p.title:'','نوع البرنامج':r.p?r.p.category:'','المرحلة':r.p?r.p.stage:'','تاريخ البرنامج (هجري)':r.pdate?hijri(r.pdate):'','تاريخ البرنامج (ميلادي)':r.pdate,'الأسبوع':r.week,'حالة البرنامج':r.p?progState(r.p).l:'','وصف الشاهد':r.e.caption||'','اسم الملف':r.e.name,'نوع الشاهد':r.e.type==='image'?'صورة':'ملف','تاريخ الرفع':r.e.at,'رابط الملف (صالح ساعة)':urls[r.e.path]||''}));
+    const ws=XLSX.utils.json_to_sheet(data);ws['!cols']=[6,22,30,12,14,20,14,10,14,30,26,10,12,40].map(w=>({wch:w}));
+    const wb=XLSX.utils.book_new();wb.Workbook={Views:[{RTL:true}]};XLSX.utils.book_append_sheet(wb,ws,'الشواهد');
+    XLSX.writeFile(wb,'شواهد-المجمعات-'+todayISO()+'.xlsx');toast('نُزّل ملف Excel');
+  }catch(e){toast(errMsg(e))}busy(false);
+}
+async function downloadEvZip(){
+  const rows=evRows(R.arg);if(!rows.length)return;
+  if(rows.length>400&&!confirm(`سيُنزّل ${rows.length} ملفاً، وقد يستغرق ذلك وقتاً. هل تريد المتابعة؟`))return;
+  modal('تنزيل الشواهد',`<p style="margin-top:0">يُجهَّز ملف مضغوط مرتّب في مجلدات بأسماء المجمعات والبرامج. أبقِ هذه النافذة مفتوحة حتى ينتهي.</p><div id="ipst" class="small muted"></div>`,[]);
+  try{
+    setImp('جارٍ التحضير…',3);
+    if(!window.JSZip)await loadScript('https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js');
+    const urls=await signPaths(rows.map(r=>r.e.path));const zip=new JSZip();
+    const clean=x=>String(x||'').replace(/[\\/:*?"<>|]+/g,'-').trim().slice(0,80)||'بدون اسم';
+    const used={};let ok=0,fail=0;
+    for(let i=0;i<rows.length;i++){const r=rows[i];setImp(`جارٍ تنزيل الشاهد ${i+1} من ${rows.length}…`,5+Math.round(i/rows.length*85));
+      try{const res=await fetch(urls[r.e.path]);if(!res.ok)throw 0;const blob=await res.blob();
+        const folder=clean(r.cx)+'/'+clean((r.pdate||'')+' '+(r.p?r.p.title:'برنامج'));
+        const ext=r.e.type==='image'?'jpg':(String(r.e.name).split('.').pop()||'bin');
+        let base=clean(r.e.caption||String(r.e.name).replace(/\.[^.]+$/,''));let fn=folder+'/'+base+'.'+ext;let k=2;while(used[fn]){fn=folder+'/'+base+' ('+(k++)+').'+ext}used[fn]=1;
+        zip.file(fn,blob);ok++}catch(e){fail++}}
+    setImp('جارٍ ضغط الملف…',95);
+    const out=await zip.generateAsync({type:'blob'});
+    const a=document.createElement('a');a.href=URL.createObjectURL(out);a.download='شواهد-المجمعات-'+todayISO()+'.zip';document.body.appendChild(a);a.click();a.remove();
+    setImp(`اكتمل التنزيل: ${ok} شاهداً${fail?`، وتعذّر ${fail}`:''}.`,100);
+  }catch(e){setImp(errMsg(e))}
+}
+
 /* ---------- AI (Supabase Edge Function «ai») ---------- */
 function blobB64(b){return new Promise((res,rej)=>{const r=new FileReader();r.onload=()=>res(String(r.result).split(',')[1]);r.onerror=rej;r.readAsDataURL(b)})}
 function aiClient(){return{
@@ -1440,7 +1535,7 @@ document.addEventListener('keydown',e=>{if(e.key==='Escape'){document.querySelec
 let tT;function toast(m){$('.toast')?.remove();const d=document.createElement('div');d.className='toast';d.setAttribute('role','status');d.textContent=m;document.body.appendChild(d);clearTimeout(tT);tT=setTimeout(()=>d.remove(),3200)}
 
 (async()=>{$('#app').innerHTML='<div class="boot">جارٍ التحميل…</div>';
-  try{const {data}=await sb.auth.getSession();if(data.session){session={uid:data.session.user.id};await loadAll();if(!me())session=null}}catch(e){session=null}
+  try{const {data}=await sb.auth.getSession();if(data.session){session={uid:data.session.user.id};await loadAll();if(!me())session=null;else if(me().role==='judge'){location.replace('kc.html');return}}}catch(e){session=null}
   render()})();
 sb.auth.onAuthStateChange((ev)=>{if(ev==='SIGNED_OUT'&&session){session=null;S=emptyState();render()}});
 </script>
