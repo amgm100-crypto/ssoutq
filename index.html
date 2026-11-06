@@ -381,7 +381,7 @@ input.sw:checked::after{right:20px;background:#fff}
 .evt td{font-size:13px}
 .evt .tn{width:46px;height:36px;object-fit:cover;border:1px solid var(--line);display:block;background:var(--surface2)}
 .evt .fi{width:46px;height:36px;display:flex;align-items:center;justify-content:center;background:var(--gold-soft);color:var(--gold);font-size:10px;font-weight:700}
-.toast{position:fixed;bottom:calc(84px + env(safe-area-inset-bottom,0px));left:50%;transform:translateX(-50%);background:var(--ink);color:var(--bg);padding:10px 18px;border-radius:0;z-index:70;font-size:14px;box-shadow:var(--shadow);max-width:90vw}
+.toast{position:fixed;bottom:calc(24px + env(safe-area-inset-bottom,0px));left:50%;transform:translateX(-50%);background:var(--ink);color:var(--bg);padding:10px 18px;border-radius:0;z-index:70;font-size:14px;box-shadow:var(--shadow);max-width:90vw}
 
 .kv{display:grid;grid-template-columns:auto 1fr;gap:6px 14px;font-size:14px;margin-bottom:12px}
 .kv dt{color:var(--muted)}
@@ -413,10 +413,252 @@ input.sw:checked::after{right:20px;background:#fff}
 
 @media print{
   body{background:#fff}
-  .top,.nav,.bottom-nav,.no-print,.page-h,body::before{display:none!important}
+  .top,.nav,.nav-ov,.bottom-nav,.no-print,.page-h,.demo-bar,body::before{display:none!important}
   .layout{display:block;padding:0}
   .report{border:0;padding:0}
 }
+/* ---------- الطلبات الإلكترونية ---------- */
+.nbadge{font-style:normal;background:var(--gold);color:#14141F;font-size:11px;font-weight:700;padding:0 6px;margin-inline-start:4px}
+.rq-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:10px}
+.rq-tile{display:flex;flex-direction:column;gap:4px;text-align:right;border:1px solid var(--line);border-inline-start:4px solid var(--gold);background:var(--surface);padding:12px 14px;cursor:pointer;font:inherit;color:inherit}
+.rq-tile:hover{background:var(--surface2)}
+.rq-tile b{font-size:15px}.rq-tile span{font-size:13px;color:var(--muted)}.rq-tile small{font-size:11px;color:var(--gold);font-weight:600}
+.rq-form{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:0 14px}
+.rq-wide{grid-column:1/-1}
+.rq-h{grid-column:1/-1;margin:10px 0 8px;font-size:15px;border-bottom:2px solid var(--gold);padding-bottom:4px}
+.rq-opts{display:flex;flex-wrap:wrap;gap:6px 14px}
+.rq-opt{display:flex;align-items:center;gap:6px;font-weight:400!important;color:var(--ink)!important;font-size:14px!important}
+.rq-nums{display:grid;grid-template-columns:repeat(auto-fill,minmax(110px,1fr));gap:8px}
+.rq-nums label{display:flex;flex-direction:column;gap:4px;font-size:13px;color:var(--muted)}
+.rq-nums input{border:1px solid var(--line);background:var(--surface2);padding:6px 8px}
+.rq-tbl{width:100%;border-collapse:collapse}.rq-tbl th,.rq-tbl td{border:1px solid var(--line);padding:6px 8px;font-size:13px}
+.rq-tbl input{width:100%;border:0;background:transparent;padding:4px;min-width:90px}
+.rq-view{width:100%;border-collapse:collapse}.rq-view th{width:34%;background:var(--surface2);vertical-align:top}.rq-view td,.rq-view th{border:1px solid var(--line);padding:8px 10px}
+.rq-sec{background:#14141F!important;color:#F7F5F0!important;text-align:right}
+.sigpad canvas{width:100%;max-width:520px;height:150px;border:1px dashed var(--gold);background:#fff;touch-action:none;display:block;cursor:crosshair}
+.sigimg{max-height:60px;max-width:220px;background:#fff;border:1px solid var(--line);display:block;margin-top:4px}
+.rq-step{border-inline-start:3px solid var(--line);padding:2px 0 10px 0;padding-inline-start:12px;margin-inline-start:6px}
+.rq-step.done{border-color:var(--ok)}.rq-step.cur{border-color:var(--gold)}.rq-step.skip{opacity:.5}
+.rq-step-h{display:flex;align-items:center;gap:8px}.rq-step-h b{flex:1;font-size:14px}
+.rq-dot{width:12px;height:12px;border-radius:50%;background:var(--line);margin-inline-start:-19px;flex:none}
+.rq-step.done .rq-dot{background:var(--ok)}.rq-step.cur .rq-dot{background:var(--gold)}
+.rq-sig{border:1px solid var(--line);padding:8px 10px;margin-top:6px;background:var(--surface2)}.rq-sig.ok{background:var(--surface)}
+.rq-sig p{margin:4px 0;font-size:13px;white-space:pre-line}.rq-sig .chip{margin-inline-end:4px}
+.rq-print .rq-step{break-inside:avoid}
+.iv-tbl{margin-bottom:10px}.iv-tbl input{width:80px!important;border:1px solid var(--line)!important;background:var(--surface2)!important;text-align:center}
+.iv-total{font-size:16px;margin:6px 0 12px;padding:8px 12px;background:#14141F;color:#F7F5F0;display:inline-block}.iv-total b{color:#B2845D;font-size:20px}
+.iv-mem{border:1px solid var(--line);padding:10px;margin-bottom:8px;background:var(--surface2)}
+.iv-view details{margin:6px 0}.iv-view summary{cursor:pointer;color:var(--gold)}
+.iv-mems{display:flex;gap:10px;flex-wrap:wrap}
+.lh{background:#fff;color:#14141F;padding:18px 22px 0;font-size:13px}
+.lh-top{display:flex;align-items:center;gap:14px;border-bottom:2px solid #14141F;padding-bottom:10px}
+.lh-top img{height:64px}.lh-t{flex:1}.lh-t b{display:block;font-size:16px}.lh-t span{color:#B2845D;font-weight:600}
+.lh-l{font-size:11px;color:#43434C;text-align:left}
+.lh-h{text-align:center;font-size:18px;margin:12px 0 6px}
+.lh-meta{display:flex;justify-content:center;gap:16px;flex-wrap:wrap;font-size:12px;color:#43434C;margin-bottom:10px}
+.lh-s{font-size:14px;margin:14px 0 6px;color:#B2845D}
+.lh .rq-view th,.lh .rq-view td,.lh .rq-tbl th,.lh .rq-tbl td{border-color:#D0D0D2;color:#14141F}
+.lh .rq-view th{background:#F7F5F0}.lh .rq-sec{background:#14141F!important;color:#F7F5F0!important}
+.lh-sig td{vertical-align:middle}.lh-sig .sigimg{max-height:46px}
+.lh-foot{text-align:center;font-size:11px;color:#43434C;margin-top:16px;border-top:1px solid #D0D0D2;padding-top:8px}
+.lh .rep-band{margin:10px -22px 0}
+@media (max-width:640px){.rq-form{grid-template-columns:1fr}}
+
+/* ---------- القائمة الجانبية على الجوال ---------- */
+.menu-btn{display:none;align-items:center;gap:6px;background:transparent;color:#F7F5F0;border:1px solid #43434C;padding:7px 10px;font:inherit;font-size:13px;cursor:pointer;flex:none}
+.menu-btn svg{width:20px;height:20px}
+.nav-h{display:none}
+.nav-ov{display:none}
+@media (max-width:820px){
+  .menu-btn{display:inline-flex}
+  .layout{padding:14px max(12px,env(safe-area-inset-left,0px)) 28px max(12px,env(safe-area-inset-right,0px))}
+  .nav{display:flex;position:fixed;top:0;bottom:0;inset-inline-start:0;width:min(290px,84vw);z-index:60;background:var(--surface);border-inline-end:3px solid var(--gold);padding:calc(12px + env(safe-area-inset-top,0px)) 10px calc(16px + env(safe-area-inset-bottom,0px));overflow-y:auto;transform:translateX(105%);transition:transform .22s ease;visibility:hidden}
+  body.nav-open .nav{transform:none;visibility:visible}
+  body.nav-open{overflow:hidden}
+  .nav button{padding:12px 12px;font-size:15px}
+  .nav-h{display:flex;align-items:center;justify-content:space-between;gap:8px;padding:4px 6px 12px;margin-bottom:6px;border-bottom:1px solid var(--line)}
+  .nav-h b{font-size:16px}
+  body.nav-open .nav-ov{display:block;position:fixed;inset:0;background:rgba(20,20,31,.5);z-index:55}
+  .app-foot{padding-bottom:24px}
+  .toast{bottom:calc(20px + env(safe-area-inset-bottom,0px))}
+}
+@media (prefers-reduced-motion:reduce){.nav{transition:none}}
+@media (max-width:420px){.top-in{gap:8px;padding:8px 10px}.top-in .logo{height:32px}.top .btn{padding:6px 8px}.menu-btn span{display:none}}
+/* ---------- جداول تتحول إلى بطاقات على الجوال ---------- */
+@media (max-width:640px){
+  table.stack thead{display:none}
+  table.stack,table.stack tbody,table.stack tr,table.stack td{display:block;width:100%}
+  table.stack tr{border:1px solid var(--line);background:var(--surface);margin-bottom:10px;padding:8px 10px}
+  table.stack td{border:0!important;padding:4px 0!important;text-align:right}
+  table.stack td[data-l]::before{content:attr(data-l);display:block;font-size:11px;color:var(--muted);margin-bottom:2px}
+}
+.acc-list{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px 16px}
+.acc-list>div{display:flex;flex-direction:column;font-size:13px;line-height:1.45;min-width:0}
+.acc-list .muted{font-size:11px}
+.acc-list .u{font-size:12px;color:var(--muted)}.acc-list .u.no{color:var(--bad)}
+@media (max-width:420px){.acc-list{grid-template-columns:1fr 1fr;gap:6px 10px}}
+.grid3{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:0 12px}
+@media (max-width:640px){.grid3{grid-template-columns:1fr}}
+.acc-sec{border:1px solid var(--line);padding:10px 12px 2px;margin-bottom:10px;background:var(--surface2)}
+.acc-sec h4{margin:0 0 8px;font-size:14px;display:flex;gap:8px;align-items:center}
+/* ---------- تقرير الخطة ---------- */
+.rep-cover .rep-big{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;margin:6px 0 18px}
+.rep-big>div{border:1px solid #D0D0D2;background:#fff;padding:16px 14px 12px;display:flex;flex-direction:column;gap:2px}
+.rep-big b{font-size:40px;line-height:1;color:#14141F;font-variant-numeric:tabular-nums}
+.rep-big span{font-size:13px;color:#43434C}
+.rep-big>.hl{background:#14141F;border-color:#14141F}.rep-big .hl b{color:#B2845D}.rep-big .hl span{color:#D0D0D2}
+.rep-meter{height:12px;background:#E9E3DB;margin:2px 0 6px}.rep-meter i{display:block;height:100%;background:#B2845D}
+.rep-two{display:grid;grid-template-columns:1fr 1fr;gap:24px}
+.rep-page{break-before:page;page-break-before:always;margin-top:34px;padding-top:26px;border-top:2px dashed #D0D0D2}
+.rep-prog-h{display:flex;align-items:center;gap:12px;background:#14141F;color:#F7F5F0;padding:12px 16px;margin-bottom:14px}
+.rep-prog-h .no{background:#B2845D;color:#14141F;font-weight:700;padding:4px 10px;font-variant-numeric:tabular-nums;flex:none}
+.rep-prog-h h2{color:#F7F5F0!important;margin:0!important;font-size:19px!important;flex:1;min-width:0}
+.rep-prog-h .st{font-size:12px;border:1px solid #B2845D;padding:3px 8px;color:#F0E6DF;flex:none}
+.rep-dl{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));border:1px solid #D0D0D2;margin-bottom:14px}
+.rep-dl div{padding:10px 12px;border-inline-start:1px solid #D0D0D2;border-bottom:1px solid #D0D0D2;min-width:0}
+.rep-dl div:nth-child(4n+1){border-inline-start:0}
+.rep-dl dt{font-size:11px;color:#727279;margin-bottom:3px}.rep-dl dd{margin:0;font-weight:600;font-size:14px}
+.rep-txt{border:1px solid #D0D0D2;background:#fff;padding:12px 14px;margin-bottom:12px}
+.rep-txt h3{margin:0 0 6px;font-size:13px;color:#B2845D}.rep-txt p{margin:0;white-space:pre-line;font-size:14px;line-height:1.8}
+.rep-evnote{font-size:13px;color:#43434C;border-inline-start:3px solid #B2845D;padding:6px 10px;background:#F0E6DF}
+.rep-ev-h{display:flex;align-items:baseline;justify-content:space-between;gap:10px;border-bottom:2px solid #14141F;padding-bottom:8px;margin-bottom:14px}
+.rep-ev-h h2{margin:0!important}.rep-ev-h span{font-size:12px;color:#727279}
+.rep-evgal{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+.rep-evgal figure{margin:0;border:1px solid #D0D0D2;background:#fff;break-inside:avoid}
+.rep-evgal img{width:100%;height:270px;object-fit:contain;background:#F7F5F0;display:block}
+.rep-evgal figure.one{grid-column:1/-1}.rep-evgal figure.one img{height:420px}
+.rep-evgal figcaption{font-size:12px;padding:6px 10px;color:#43434C;display:flex;justify-content:space-between;gap:8px}
+.rep-files{display:grid;gap:8px;margin-top:12px}
+.rep-file{display:flex;align-items:center;gap:12px;border:1px solid #D0D0D2;background:#fff;padding:10px 12px;color:#14141F;text-decoration:none;break-inside:avoid}
+.rep-file .ext{background:#14141F;color:#B2845D;font-weight:700;font-size:12px;min-width:46px;text-align:center;padding:10px 4px}
+.rep-file b{display:block;font-size:14px}.rep-file small{color:#727279}
+.rep-note{border:1px solid #D0D0D2;background:#fff;padding:12px 14px;white-space:pre-line;line-height:1.8;margin-top:12px}
+.rep-idx td,.rep-idx th{font-size:12px}
+@media (max-width:640px){.rep-cover .rep-big{grid-template-columns:1fr 1fr}.rep-big b{font-size:30px}.rep-two{grid-template-columns:1fr}.rep-dl{grid-template-columns:1fr 1fr}.rep-dl div:nth-child(4n+1){border-inline-start:1px solid #D0D0D2}.rep-dl div:nth-child(2n+1){border-inline-start:0}.rep-evgal{grid-template-columns:1fr}.rep-evgal img,.rep-evgal figure.one img{height:220px}}
+@media print{.rep-page{border:0;margin-top:0;padding-top:0}.rep-big b{font-size:36px}.report{max-width:none}}
+/* =========================================================
+   الواجهة بأسلوب نظيف (مساحات واسعة، زوايا مدوّرة، ظلال خفيفة) بألوان هوية مدكر
+   ========================================================= */
+:root{
+  --bg:#F5F4F1;--surface:#FFFFFF;--surface2:#F0EEEA;--line:#E3E1DC;--muted:#6E6E73;
+  --seg:#E9E7E2;--hover:rgba(20,20,31,.05);--sel:rgba(178,132,93,.16);
+  --sh1:0 1px 2px rgba(20,20,31,.04),0 6px 20px rgba(20,20,31,.05);
+  --sh2:0 2px 6px rgba(20,20,31,.06),0 18px 50px rgba(20,20,31,.14);
+  --ring:0 0 0 4px rgba(178,132,93,.25);
+  --r-s:10px;--r-m:14px;--r-l:20px;--r-pill:980px;
+  --f-ui:-apple-system,BlinkMacSystemFont,"SF Arabic","SF Pro Text","Readex Pro","Segoe UI",Tahoma,Arial,sans-serif;
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+  --bg:#0B0B12;--surface:#1A1A24;--surface2:#24242F;--line:#2F2F3B;--muted:#A1A1A8;
+  --seg:#24242F;--hover:rgba(247,245,240,.06);--sel:rgba(178,132,93,.24);
+  --sh1:0 1px 2px rgba(0,0,0,.3),0 6px 20px rgba(0,0,0,.25);--sh2:0 18px 50px rgba(0,0,0,.5)}}
+:root[data-theme="dark"]{
+  --bg:#0B0B12;--surface:#1A1A24;--surface2:#24242F;--line:#2F2F3B;--muted:#A1A1A8;
+  --seg:#24242F;--hover:rgba(247,245,240,.06);--sel:rgba(178,132,93,.24);
+  --sh1:0 1px 2px rgba(0,0,0,.3),0 6px 20px rgba(0,0,0,.25);--sh2:0 18px 50px rgba(0,0,0,.5)}
+body{font-size:15px;letter-spacing:0}
+/* الشريط العلوي الشفاف */
+.top{background:rgba(20,20,31,.82);-webkit-backdrop-filter:saturate(180%) blur(20px);backdrop-filter:saturate(180%) blur(20px);border-bottom:1px solid rgba(178,132,93,.55)}
+.top .btn,.menu-btn{border-radius:var(--r-pill);border-color:rgba(247,245,240,.22)}
+.top .btn:hover,.menu-btn:hover{background:rgba(247,245,240,.1)}
+.layout{gap:28px;padding-top:26px}
+/* القائمة الجانبية */
+.nav{gap:3px}
+.nav button{border-radius:var(--r-s);padding:10px 14px;color:var(--ink);font-weight:500;transition:background .15s}
+.nav button svg{color:var(--muted)}
+.nav button:hover{background:var(--hover)}
+.nav button.on{background:var(--sel);color:var(--ink);font-weight:600}
+.nav button.on svg{color:var(--gold)}
+@media (max-width:820px){
+  .nav{border-inline-end:0;box-shadow:var(--sh2);border-start-end-radius:var(--r-l);border-end-end-radius:var(--r-l);padding-inline:12px}
+  body.nav-open .nav-ov{background:rgba(10,10,18,.35);-webkit-backdrop-filter:blur(4px);backdrop-filter:blur(4px)}
+}
+/* العناوين */
+.page-h{margin:2px 0 20px}
+.page-h h2{font-size:30px;font-weight:700;line-height:1.2}
+.page-h p{color:var(--muted)}
+.panel h3{font-size:18px;font-weight:700}
+/* البطاقات */
+.panel{border:0;border-radius:var(--r-l);box-shadow:var(--sh1);padding:22px}
+.kpi{border:0;border-radius:var(--r-m);box-shadow:var(--sh1);border-top:0}
+.prog{border-radius:var(--r-m);border-color:var(--line);transition:background .15s,box-shadow .15s}
+.prog:hover{box-shadow:var(--sh1)}
+.banner{border-radius:var(--r-m)}
+.day{border:0;border-radius:24px;box-shadow:var(--sh1)}
+.day-nav button,.day-nav input{border-radius:var(--r-pill)}
+.empty{border-radius:var(--r-m)}
+/* الأزرار */
+.btn{border-radius:var(--r-pill);padding:8px 18px;font-weight:500;transition:background .15s,border-color .15s,transform .1s}
+.btn.sm{border-radius:var(--r-pill);padding:5px 13px}
+.btn:hover{border-color:var(--muted)}
+.btn.pri:hover{filter:brightness(1.15)}
+.btn:active{transform:scale(.98)}
+.btn:focus-visible,.nav button:focus-visible,.tabs button:focus-visible{outline:none;box-shadow:var(--ring)}
+.chip{border:0;border-radius:var(--r-pill);padding:3px 10px}
+/* التبويبات بشكل أزرار مقسّمة */
+.tabs{display:inline-flex;background:var(--seg);padding:3px;border-radius:12px;gap:2px;max-width:100%}
+.tabs button{border:0;background:transparent;border-radius:9px;padding:6px 16px;color:var(--ink);font-weight:500}
+.tabs button.on{background:var(--surface);color:var(--ink);box-shadow:0 1px 3px rgba(20,20,31,.12);font-weight:600}
+/* الحقول */
+.field input,.field select,.field textarea,.dec-row input,.dec-row select,.imp-item input,.imp-item select,.imp-item textarea{border-radius:12px;background:var(--surface);border:1px solid var(--line)}
+.field input:focus,.field select:focus,.field textarea:focus{border-color:var(--gold);box-shadow:var(--ring)}
+.checks,.perm-list{border-radius:var(--r-m)}
+.cal-bar select,.row select,select[aria-label]{border-radius:12px!important}
+/* النوافذ */
+.modal-bg{background:rgba(10,10,18,.38);-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px)}
+.modal{border-radius:22px;box-shadow:var(--sh2);overflow:hidden}
+.modal-h{border-bottom:1px solid var(--line);padding:18px 22px}
+.modal-b{padding:20px 22px}
+.modal-f{border-top:1px solid var(--line);padding:14px 22px}
+.xbtn{border-radius:50%}
+/* الجداول */
+th{border-bottom-color:var(--line);color:var(--muted);font-weight:600}
+td{border-bottom-color:var(--line)}
+.tbl-wrap{border-radius:var(--r-s)}
+.rq-tbl th,.rq-tbl td,.rq-view th,.rq-view td{border-color:var(--line)}
+.rq-view,.rq-tbl{border-radius:var(--r-s);overflow:hidden}
+@media (max-width:640px){table.stack tr{border-radius:var(--r-m);border-color:var(--line)}}
+/* التقويم */
+.cal{border-radius:var(--r-m);overflow:hidden;border-color:var(--line)}
+.cal-t{border-radius:6px}
+.cal-n{border-radius:var(--r-pill)}
+/* الشواهد والملفات */
+.gal figure,.thumb{border-radius:var(--r-m)}
+.gal figure{border-color:var(--line)}
+.ev-add,.drop{border-radius:var(--r-m)}
+.ev-pend span{border-radius:var(--r-pill)}
+.cxl{border-radius:10px;overflow:hidden}
+/* الطلبات */
+.rq-tile{border-radius:var(--r-m);border:1px solid var(--line);border-inline-start:1px solid var(--line);box-shadow:none;transition:box-shadow .15s,transform .15s}
+.rq-tile:hover{box-shadow:var(--sh1);transform:translateY(-1px);background:var(--surface)}
+.rq-sig,.iv-mem,.acc-sec{border-radius:var(--r-m);border-color:var(--line)}
+.sigpad canvas{border-radius:var(--r-m)}
+.sigimg{border-radius:8px}
+.iv-total{border-radius:var(--r-s)}
+/* صفحة الدخول */
+.login-box{border-radius:22px;border-top:0;box-shadow:0 24px 60px rgba(0,0,0,.35)}
+.login-box .field input{border-radius:12px}
+.login-box .btn.pri{border-radius:var(--r-pill)}
+/* التقارير على الشاشة */
+.report{border:0;border-radius:var(--r-l);box-shadow:var(--sh1);overflow:hidden}
+.rep-big>div,.rep-txt,.rep-file,.rep-note,.rep-evgal figure{border-radius:var(--r-m);overflow:hidden}
+.rep-prog-h{border-radius:var(--r-m)}
+.rep-dl{border-radius:var(--r-m);overflow:hidden}
+.rep-meter,.rep-meter i,.rep-bars i{border-radius:var(--r-pill)}
+.rep-file .ext{border-radius:8px}
+.lh{border-radius:var(--r-m)}
+.day-week,.day-nums div{border-radius:var(--r-m)}
+.day-nums div{background:rgba(247,245,240,.04)}
+.nbadge{border-radius:var(--r-pill)}
+:root[data-theme="dark"] .day,:root:not([data-theme="light"]) .day{border:1px solid transparent}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]) .day{border-color:#2F2F3B}}
+:root[data-theme="dark"] .day{border-color:#2F2F3B}
+@media (prefers-reduced-motion:reduce){.btn,.prog,.rq-tile,.nav button{transition:none}.btn:active{transform:none}}
+@media print{.panel,.report,.kpi,.prog,.modal{box-shadow:none!important}.top{backdrop-filter:none}}
+.pw-steps{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}
+.pw-steps>div{display:flex;flex-direction:column;gap:8px;align-items:flex-start;background:var(--surface2);border-radius:var(--r-m,0);padding:12px 14px;font-size:14px}
+.pw-steps b{width:26px;height:26px;border-radius:50%;background:var(--gold);color:#14141F;display:grid;place-items:center;font-size:14px}
+@media (max-width:760px){.pw-steps{grid-template-columns:1fr}}
 </style>
 </head>
 <body>
@@ -454,18 +696,18 @@ function logoHTML(cls,size,variant){return `<img class="${cls||''}" src="${varia
 /* ---------- data (Supabase) ---------- */
 const SB_URL='https://dqmkorbbpxdkebdpltuf.supabase.co',SB_KEY='sb_publishable_3NC36rM9VQIVEHNzD4R1_A__PptiwSh',DOMAIN='@madkar.local';
 const sb=window.supabase.createClient(SB_URL,SB_KEY);
-const emptyState=()=>({settings:{org:'الجمعية الخيرية لتحفيظ القرآن الكريم بعنيزة (مدكر)',dept:'قسم الخدمات التربوية',target:18},departments:[],users:[],complexes:[],terms:[],plans:[],programs:[],evidence:[],events:[],visits:[],meetings:[],wisam:{asOf:'',source:'',kpi:{},rows:[]}});
+const emptyState=()=>({settings:{org:'الجمعية الخيرية لتحفيظ القرآن الكريم بعنيزة (مدكر)',dept:'قسم الخدمات التربوية',target:18},departments:[],users:[],complexes:[],terms:[],plans:[],programs:[],evidence:[],events:[],visits:[],meetings:[],requests:[],wisam:{asOf:'',source:'',kpi:{},rows:[]}});
 let S=emptyState(),session=null;
 const me=()=>session&&S.users.find(u=>u.id===session.uid);
 async function q(p){const {data,error}=await p;if(error)throw error;return data}
 async function all(table,order){let out=[],from=0;for(;;){let x=sb.from(table).select('*').range(from,from+999);if(order)x=x.order(order);const d=await q(x);out=out.concat(d);if(d.length<1000)break;from+=1000}return out}
 async function loadAll(){
-  const [st,deps,cxs,profs,terms,plans,progs,evs,events,visits,meets,decs,wis]=await Promise.all([
-    q(sb.from('settings').select('*').maybeSingle()),all('departments','sort'),all('complexes','sort'),all('profiles'),all('terms','start_date'),all('plans'),all('programs','start_date'),all('evidence','created_at'),all('events','start_date'),all('visits','date'),all('meetings','date'),all('decisions','sort'),q(sb.from('wisam').select('data').maybeSingle())]);
+  const [st,deps,cxs,profs,terms,plans,progs,evs,events,visits,meets,decs,wis,reqs,mysig]=await Promise.all([
+    q(sb.from('settings').select('*').maybeSingle()),all('departments','sort'),all('complexes','sort'),all('profiles'),all('terms','start_date'),all('plans'),all('programs','start_date'),all('evidence','created_at'),all('events','start_date'),all('visits','date'),all('meetings','date'),all('decisions','sort'),q(sb.from('wisam').select('data').maybeSingle()),all('requests','created_at').catch(()=>[]),session?q(sb.from('user_sigs').select('sig').eq('user_id',session.uid).maybeSingle()).catch(()=>null):null]);
   S.settings=st||S.settings;
-  S.departments=deps.map(d=>({id:d.id,name:d.name,visits:d.visits,system:d.is_system,sort:d.sort}));
+  S.departments=deps.map(d=>({id:d.id,name:d.name,visits:d.visits,system:d.is_system,sort:d.sort,rk:d.rk||''}));
   S.complexes=cxs.map(c=>({id:c.id,name:c.name,leader:c.leader,manager:c.manager,phone:c.phone,logo:c.logo}));
-  S.users=profs.map(u=>({id:u.id,username:u.username,role:u.role,sub:u.sub,complexId:u.complex_id,deptId:u.dept_id,name:u.name,perms:u.perms||{}}));
+  S.users=profs.map(u=>({id:u.id,mustChange:!!u.must_change,username:u.username,role:u.role,sub:u.sub,complexId:u.complex_id,deptId:u.dept_id,name:u.name,perms:u.perms||{}}));
   S.terms=terms.map(t=>({id:t.id,name:t.name,start:t.start_date,end:t.end_date,active:t.active,breaks:t.breaks||[]}));
   S.plans=plans.map(p=>({id:p.id,complexId:p.complex_id,termId:p.term_id,status:p.status,note:p.note}));
   S.programs=progs.map(p=>({id:p.id,complexId:p.complex_id,termId:p.term_id,title:p.title,category:p.category,stage:p.stage,kind:p.kind,desc:p.descr,goal:p.goal,benef:p.benef??'',start:p.start_date,end:p.end_date,status:p.status,reason:p.reason,note:p.note}));
@@ -474,6 +716,8 @@ async function loadAll(){
   S.visits=visits.map(v=>({id:v.id,complexId:v.complex_id,deptId:v.dept_id,date:v.date,type:v.type,visitor:v.visitor,purpose:v.purpose,notes:v.notes,reply:v.reply}));
   S.meetings=meets.map(m=>({id:m.id,title:m.title,date:m.date,type:m.type,complexIds:m.complex_ids||[],attendees:m.attendees,agenda:m.agenda,minutes:m.minutes,decisions:decs.filter(d=>d.meeting_id===m.id).map(d=>({id:d.id,text:d.text,complexId:d.complex_id,owner:d.owner,due:d.due||'',status:d.status,note:d.note}))}));
   S.wisam=Object.assign({asOf:'',source:'',kpi:{},rows:[]},wis?.data||{});
+  S.requests=(reqs||[]).map(reqFromRow);
+  const mu=me();if(mu)mu.sig=mysig?.sig||'';
 }
 async function refresh(){try{await loadAll()}catch(e){toast(errMsg(e))}render()}
 function errMsg(e){const m=String(e?.message||e||'');
@@ -484,6 +728,8 @@ function errMsg(e){const m=String(e?.message||e||'');
   if(/duplicate key/i.test(m))return 'هذه البيانات موجودة مسبقاً';
   if(/JWT|session/i.test(m))return 'انتهت الجلسة، سجّل الدخول من جديد';
   return 'حدث خطأ: '+m.slice(0,140)}
+/* صور آمنة فقط (data:image أو روابط https) لمنع حقن الشيفرة عبر الحقول */
+const safeImg=s=>{s=String(s||'');return /^data:image\/(png|jpe?g|webp|gif);base64,[A-Za-z0-9+\/=]+$/.test(s)||/^https:\/\/[^"'<>\s]+$/.test(s)?s:''};
 const uid=()=>crypto.randomUUID?crypto.randomUUID():'x'+Math.random().toString(36).slice(2);
 function busy(on){let b=$('#busy');if(on){if(!b){b=document.createElement('div');b.id='busy';b.innerHTML='<i></i>';document.body.appendChild(b)}}else b?.remove()}
 const isAdmin=()=>me()?.role==='admin';
@@ -492,8 +738,9 @@ const PERMS=[['plans','الخطط','اعتماد خطط المجمعات أو إ
 const can=p=>isAdmin()||!!me()?.perms?.[p];
 const isCx=()=>me()?.role==='complex';
 const canVisit=()=>can('events')||(isDept()&&!!S.departments.find(d=>d.id===me().deptId)?.visits);
-const subLabel=u=>u.sub==='manager'?'مدير المجمع':'رائد الخدمات';
-const userName=u=>u.role==='complex'?(u.sub==='manager'?S.complexes.find(c=>c.id===u.complexId)?.manager:S.complexes.find(c=>c.id===u.complexId)?.leader)||'':u.name||'';
+const SUBS=[['manager','مدير المجمع','m'],['assistant','مساعد مدير المجمع','a'],['secretary','سكرتير المجمع','s'],['leader','رائد الخدمات','r']];
+const subLabel=u=>(SUBS.find(x=>x[0]===u.sub)||SUBS[3])[1];
+const userName=u=>u.role==='complex'?(u.name||(u.sub==='manager'?S.complexes.find(c=>c.id===u.complexId)?.manager:u.sub==='leader'?S.complexes.find(c=>c.id===u.complexId)?.leader:''))||'':u.name||'';
 const wideView=()=>isAdmin()||isDept();
 const myDept=()=>me()?.deptId||S.departments.find(d=>d.system&&d.sort===0)?.id;
 const deptName=id=>S.departments.find(d=>d.id===id)?.name||'—';
@@ -503,7 +750,7 @@ function visitItems(){return (S.visits||[]).map(v=>({id:v.id,isVisit:true,deptId
 function eventsOn(d,cf){return S.events.concat(visitItems()).filter(e=>e.start<=d&&e.end>=d&&evVisible(e)&&(!cf||!e.complexIds.length||e.complexIds.includes(cf)))}
 const evTargets=e=>!e.complexIds.length?'جميع المجمعات':e.complexIds.length<=2?e.complexIds.map(cxName).join('، '):e.complexIds.length+' مجمعات';
 function cxLogo(cid,size){const c=S.complexes.find(x=>x.id===cid);const h=size||36;
-  if(c&&c.logo)return `<span class="cxl" style="width:${Math.round(h*1.4)}px;height:${h}px"><img src="${c.logo}" alt="شعار ${esc(c.name)}"></span>`;
+  if(c&&c.logo)return `<span class="cxl" style="width:${Math.round(h*1.4)}px;height:${h}px"><img src="${safeImg(c.logo)}" alt="شعار ${esc(c.name)}"></span>`;
   const n=(c?c.name:'').replace(/^مجمع\s+/,'').replace(/^الحلقات\s+/,'').replace(/^ال/,'');
   return `<span class="cxl mono" style="width:${Math.round(h*1.4)}px;height:${h}px;font-size:${Math.round(h*.5)}px" title="${esc(c?c.name:'')}">${esc(n.slice(0,1))}</span>`}
 const cxName=id=>S.complexes.find(c=>c.id===id)?.name||'—';
@@ -554,6 +801,7 @@ const I={
  visit:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 21s-7-6.2-7-11.5A7 7 0 0 1 19 9.5C19 14.8 12 21 12 21z"/><circle cx="12" cy="9.5" r="2.5"/></svg>',
  files:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 7a2 2 0 0 1 2-2h4l2 2h8a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><path d="M12 11v5M9.5 13.5 12 16l2.5-2.5"/></svg>',
  trophy:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M8 4h8v5a4 4 0 0 1-8 0z"/><path d="M8 6H5a2 2 0 0 0 2 4h1M16 6h3a2 2 0 0 1-2 4h-1M12 13v4M8 21h8M9 17h6"/></svg>',
+ form:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M6 3h9l4 4v14H6z"/><path d="M14 3v5h5M9 13h6M9 17h3"/></svg>',
  plus:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12h14"/></svg>',
  print:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M6 9V3h12v6M6 18H4v-7h16v7h-2M7 14h10v7H7z"/></svg>',
  down:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 3v12M7 10l5 5 5-5M4 21h16"/></svg>'
@@ -561,35 +809,53 @@ const I={
 
 /* ---------- routing ---------- */
 let R={v:null,arg:{}};
-function go(v,arg){R={v,arg:arg||{}};render();window.scrollTo(0,0)}
+function go(v,arg){document.body.classList.remove('nav-open');R={v,arg:arg||{}};render();window.scrollTo(0,0)}
+function toggleNav(on){document.body.classList.toggle('nav-open',on)}
 function navItems(){return isAdmin()
-  ?[['today','اليوم',I.today],['plans','الخطط',I.plans],['wisam','وسام',I.star],['kc','مسابقة الملك سلمان',I.trophy],['events','المواعيد',I.cal],['visits','الزيارات',I.visit],['complexes','الحسابات',I.cx],['meetings','الاجتماعات',I.meet],['evidence','الشواهد',I.files],['reports','التقارير',I.rep],['settings','الإعدادات',I.set]]
-  :isDept()?[['today','اليوم',I.today]].concat(can('plans')?[['plans','الخطط',I.plans]]:[],can('wisam')?[['wisam','وسام',I.star]]:[],can('competition')?[['kc','مسابقة الملك سلمان',I.trophy]]:[],[['events',can('events')?'المواعيد':'مواعيد القسم',I.cal]],canVisit()?[['visits','الزيارات',I.visit]]:[],can('accounts')?[['complexes','الحسابات',I.cx]]:[],can('meetings')?[['meetings','الاجتماعات',I.meet]]:[],(can('reports')||can('plans'))?[['evidence','الشواهد',I.files]]:[],can('reports')?[['reports','التقارير',I.rep]]:[],can('settings')?[['settings','الإعدادات',I.set]]:[])
-  :[['home','الرئيسية',I.today],['myplan','خطتي',I.plans],['evidence','الشواهد',I.files],['wisam','وسام',I.star],['kc','مسابقة الملك سلمان',I.trophy],['visits','الزيارات',I.visit],['meetings','الاجتماعات',I.meet],['reports','التقرير',I.rep]]}
+  ?[['today','اليوم',I.today],['requests','الطلبات',I.form],['plans','الخطط',I.plans],['wisam','وسام',I.star],['kc','مسابقة الملك سلمان',I.trophy],['events','المواعيد',I.cal],['visits','الزيارات',I.visit],['complexes','الحسابات',I.cx],['meetings','الاجتماعات',I.meet],['evidence','الشواهد',I.files],['reports','التقارير',I.rep],['settings','الإعدادات',I.set]]
+  :isDept()?[['today','اليوم',I.today],['requests','الطلبات',I.form]].concat(can('plans')?[['plans','الخطط',I.plans]]:[],can('wisam')?[['wisam','وسام',I.star]]:[],can('competition')?[['kc','مسابقة الملك سلمان',I.trophy]]:[],[['events',can('events')?'المواعيد':'مواعيد القسم',I.cal]],canVisit()?[['visits','الزيارات',I.visit]]:[],can('accounts')?[['complexes','الحسابات',I.cx]]:[],can('meetings')?[['meetings','الاجتماعات',I.meet]]:[],(can('reports')||can('plans'))?[['evidence','الشواهد',I.files]]:[],can('reports')?[['reports','التقارير',I.rep]]:[],can('settings')?[['settings','الإعدادات',I.set]]:[])
+  :[['home','الرئيسية',I.today],['requests','الطلبات',I.form],['myplan','خطتي',I.plans],['evidence','الشواهد',I.files],['wisam','وسام',I.star],['kc','مسابقة الملك سلمان',I.trophy],['visits','الزيارات',I.visit],['meetings','الاجتماعات',I.meet],['reports','التقرير',I.rep]]}
 
 function demoBar(){return ''}
 function demoAs(){}
 function render(){
   const u=me();
   if(!u){$('#app').innerHTML=demoBar()+loginView();bindLogin();return}
+  if(u.mustChange){$('#app').innerHTML=demoBar()+pwChangeView(u);return}
   if(!R.v)R.v=wideView()?'today':'home';
   const items=navItems();
-  const navBtns=items.map(([k,l,ic])=>`<button class="${R.v===k||(R.v==='plan'&&k===(can('plans')?'plans':'myplan'))||(R.v==='meeting'&&k==='meetings')?'on':''}" onclick="go('${k}')">${ic}<span>${l}</span></button>`).join('');
+  const navBtns=items.map(([k,l,ic])=>`<button class="${R.v===k||(R.v==='plan'&&k===(can('plans')?'plans':'myplan'))||(R.v==='meeting'&&k==='meetings')||((R.v==='req'||R.v==='reqnew')&&k==='requests')?'on':''}" onclick="go('${k}')">${ic}<span>${l}${k==='requests'&&reqInbox().length?` <em class="nbadge">${reqInbox().length}</em>`:''}</span></button>`).join('');
   $('#app').innerHTML=demoBar()+`
-  <header class="top"><div class="top-in">${logoHTML('logo',40,'rev')}
+  <header class="top"><div class="top-in"><button class="menu-btn" onclick="toggleNav()" aria-label="القائمة"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 7h16M4 12h16M4 17h16"/></svg><span>القائمة</span></button>${logoHTML('logo',40,'rev')}
     <div class="brand"><b>${esc(S.settings.org)}</b><span>منصة إدارة المجمعات والحلق</span></div>
     <div class="spacer"></div>
-    ${isCx()?cxLogo(u.complexId,38):''}<div class="who"><b>${esc(isAdmin()?u.name:isDept()?deptName(u.deptId):cxName(u.complexId))}</b>${isAdmin()?'مدير النظام':isDept()&&PERMS.some(x=>u.perms?.[x[0]])?'حساب القسم · صلاحيات إضافية':isDept()?'حساب القسم':esc(subLabel(u)+(userName(u)?' · '+userName(u):''))}</div>
+    ${isCx()?cxLogo(u.complexId,38):''}<div class="who"><b>${esc(isAdmin()?'مدير النظام':isDept()?deptName(u.deptId):cxName(u.complexId))}</b>${isAdmin()?'حساب إدارة المنصة':isDept()&&PERMS.some(x=>u.perms?.[x[0]])?'حساب القسم · صلاحيات إضافية':isDept()?'حساب القسم':esc(subLabel(u)+(userName(u)?' · '+userName(u):''))}</div>
     ${isAdmin()?'':`<button class="btn sm" onclick="myAccount()" title="بيانات الحساب">حسابي</button>`}
     <button class="btn sm" onclick="logout()" title="تسجيل الخروج">${I.out}<span>خروج</span></button>
   </div></header>
-  <div class="layout"><nav class="nav">${navBtns}</nav><main id="main"></main></div>
+  <div class="layout"><nav class="nav" aria-label="صفحات المنصة"><div class="nav-h"><b>القائمة</b><button class="btn sm" onclick="toggleNav(false)" aria-label="إغلاق القائمة">×</button></div>${navBtns}</nav><div class="nav-ov" onclick="toggleNav(false)"></div><main id="main"></main></div>
   <footer class="app-foot">© ${new Date().getFullYear()} · الجمعية الخيرية لتحفيظ القرآن الكريم بعنيزة</footer>
-  <nav class="bottom-nav">${navBtns}</nav>`;
-  const V={today:vToday,plans:vPlans,plan:vPlan,complexes:vComplexes,meetings:vMeetings,meeting:vMeeting,reports:vReports,settings:vSettings,events:vEvents,wisam:vWisam,visits:vVisits,evidence:vEvidence,kc:vKc,home:vHome,myplan:()=>vPlan({cid:u.complexId,tid:R.arg.tid||activeTerm()?.id})};
+`;
+  const V={today:vToday,plans:vPlans,plan:vPlan,complexes:vComplexes,meetings:vMeetings,meeting:vMeeting,reports:vReports,settings:vSettings,events:vEvents,wisam:vWisam,visits:vVisits,evidence:vEvidence,kc:vKc,requests:vRequests,reqnew:vReqNew,req:vReq,home:vHome,myplan:()=>vPlan({cid:u.complexId,tid:R.arg.tid||activeTerm()?.id})};
   $('#main').innerHTML=(V[R.v]||vToday)(R.arg);
   hydrateEv($('#main'));
 }
+
+/* ---------- كلمة المرور ---------- */
+const WEAK_PW=['123456','1234567','12345678','123456789','1234567890','000000','111111','password','qwerty','abc123','11223344','112233','654321','987654321'];
+function pwProblem(pw,un){if(pw.length<8)return 'كلمة المرور 8 أحرف أو أرقام على الأقل';if(WEAK_PW.includes(pw.toLowerCase())||/^(\d)\1+$/.test(pw))return 'كلمة المرور سهلة التخمين، اختر غيرها';if(un&&pw.toLowerCase().includes(String(un).toLowerCase()))return 'لا تجعل اسم المستخدم جزءاً من كلمة المرور';return ''}
+function pwChangeView(u){return `<div class="login-page"><div class="login" style="grid-template-columns:1fr"><div class="login-box" style="justify-self:center">
+  <h1>غيّر كلمة المرور</h1><p class="sub">لحماية حسابك وبيانات المجمعات، اختر كلمة مرور جديدة قبل المتابعة. لا تشاركها مع أحد.</p>
+  <div class="field"><label for="np1">كلمة المرور الجديدة</label><input id="np1" type="password" dir="ltr" autocomplete="new-password"></div>
+  <div class="field"><label for="np2">أعد كتابتها</label><input id="np2" type="password" dir="ltr" autocomplete="new-password"></div>
+  <p class="small" style="color:#43434C;margin:0 0 6px">8 أحرف أو أرقام على الأقل، ولا تكون سهلة مثل 12345678.</p>
+  <p id="nperr" class="small" style="color:#A3322A;min-height:1.4em;margin:0 0 8px"></p>
+  <button class="btn pri block" id="npbtn" onclick="pwChangeSave()">حفظ كلمة المرور والمتابعة</button>
+  <button class="btn block" style="margin-top:8px" onclick="logout()">خروج</button></div></div></div>`}
+async function pwChangeSave(){const u=me();const a=$('#np1').value,b2=$('#np2').value;const bad=pwProblem(a,u.username)||(a!==b2?'كلمتا المرور غير متطابقتين':'');
+  if(bad){$('#nperr').textContent=bad;return}$('#npbtn').disabled=true;
+  try{await q(sb.auth.updateUser({password:a}));await q(sb.rpc('clear_must_change'));u.mustChange=false;toast('حُفظت كلمة المرور الجديدة');await refresh()}
+  catch(e){$('#nperr').textContent=/same/i.test(String(e?.message))?'اختر كلمة مرور مختلفة عن الحالية':errMsg(e);$('#npbtn').disabled=false}}
 
 /* ---------- login ---------- */
 function loginView(){return `<div class="login-page"><div class="login">
@@ -614,7 +880,7 @@ function bindLogin(){
     catch(e){$('#lerr').textContent=errMsg(e);$('#lbtn').disabled=false;$('#lbtn').textContent='دخول'}};
   $('#lbtn').onclick=f;$('#lp').onkeydown=e=>{if(e.key==='Enter')f()};$('#lu').onkeydown=e=>{if(e.key==='Enter')$('#lp').focus()};
 }
-async function logout(){try{await sb.auth.signOut()}catch(e){}session=null;S=emptyState();R={v:null,arg:{}};render()}
+async function logout(){closeModal();try{await sb.auth.signOut()}catch(e){}session=null;S=emptyState();R={v:null,arg:{}};render()}
 /* ---------- day hero ---------- */
 function dayHero(d,admin){
   const term=termOf(d);const w=term?weekNo(term,d):null;
@@ -679,7 +945,7 @@ function openEvent(id){
   modal(esc(e.title),`<div class="row" style="margin-bottom:12px"><span class="chip gold">${esc(deptName(e.deptId))}</span><span class="chip">${esc(e.type)}</span></div>
    <dl class="kv"><dt>التاريخ</dt><dd>${dayName(e.start)} ${hijri(e.start)}${e.end!==e.start?' إلى '+hijri(e.end):''}<br><span class="small muted">${greg(e.start)}م</span></dd>
    <dt>المجمعات</dt><dd>${!e.complexIds.length?'جميع المجمعات':e.complexIds.map(cxName).map(esc).join('، ')}</dd>
-   ${e.stage?`<dt>المرحلة</dt><dd>${esc(e.stage)}</dd>`:''}${e.kind?`<dt>فردي أو جماعي</dt><dd>${esc(e.kind)}</dd>`:''}${e.benef?`<dt>المستفيدون</dt><dd>${e.benef}</dd>`:''}
+   ${e.stage?`<dt>المرحلة</dt><dd>${esc(e.stage)}</dd>`:''}${e.kind?`<dt>فردي أو جماعي</dt><dd>${esc(e.kind)}</dd>`:''}${e.benef?`<dt>المستفيدون</dt><dd>${esc(e.benef)}</dd>`:''}
    ${e.desc?`<dt>الوصف</dt><dd style="white-space:pre-line">${esc(e.desc)}</dd>`:''}${e.goal?`<dt>الأهداف</dt><dd style="white-space:pre-line">${esc(e.goal)}</dd>`:''}</dl>`,btns);
 }
 function editEvent(id){
@@ -723,7 +989,7 @@ function progCard(p,showCx){
   const s=progState(p);const ev=evOf(p.id).length;
   return `<div class="prog" onclick="openProgram('${p.id}')" role="button" tabindex="0"><span class="dot ${s.c}"></span><div class="prog-b">
     <div class="prog-t">${esc(p.title)}</div>
-    <div class="prog-m">${showCx?`<span>${esc(cxName(p.complexId))}</span>`:''}<span>${range(p.start,p.end)}</span><span>${esc(p.category||'')}</span><span>${esc(p.stage||'')}</span><span>${esc(p.kind||'')}</span>${p.benef?`<span>${p.benef} مستفيداً</span>`:''}</div></div>
+    <div class="prog-m">${showCx?`<span>${esc(cxName(p.complexId))}</span>`:''}<span>${range(p.start,p.end)}</span><span>${esc(p.category||'')}</span><span>${esc(p.stage||'')}</span><span>${esc(p.kind||'')}</span>${p.benef?`<span>${esc(p.benef)} مستفيداً</span>`:''}</div></div>
     <div class="row" style="flex-direction:column;align-items:flex-end;gap:4px"><span class="chip ${s.c}">${s.l}</span>${progMissing(p).length?'<span class="chip bad">بيانات ناقصة</span>':''}${ev?`<span class="small muted">${ev} شاهد</span>`:''}</div></div>`;
 }
 
@@ -763,7 +1029,7 @@ function termTabs(cur,view,extra){return `<div class="tabs">${S.terms.map(t=>`<b
 function vPlans(a){
   const tid=a.tid||activeTerm()?.id;
   const rows=S.complexes.map(c=>{const p=planOf(c.id,tid);const st=p?p.status:'none';const s=planStats(c.id,tid);
-    return `<tr class="click" onclick="go('plan',{cid:'${c.id}',tid:'${tid}'})"><td><div class="cxname">${cxLogo(c.id,32)}<b>${esc(c.name)}</b></div></td><td><span class="chip ${PLAN_ST[st][1]}">${PLAN_ST[st][0]}</span></td><td>${s.total}</td><td>${s.benef}</td><td>${s.done}</td><td>${s.late?`<span class="chip warn">${s.late}</span>`:'0'}</td><td>${s.ev}</td><td><div class="row" style="flex-wrap:nowrap"><div class="bar" style="flex:1"><i style="width:${s.pct}%"></i></div><span class="small">${s.pct}%</span></div></td></tr>`}).join('');
+    return `<tr class="click" onclick="go('plan',{cid:'${c.id}',tid:'${tid}'})"><td><div class="cxname">${cxLogo(c.id,32)}<b>${esc(c.name)}</b></div></td><td><span class="chip ${PLAN_ST[st][1]}">${PLAN_ST[st][0]}</span></td><td>${s.total}</td><td>${esc(s.benef)}</td><td>${s.done}</td><td>${s.late?`<span class="chip warn">${s.late}</span>`:'0'}</td><td>${s.ev}</td><td><div class="row" style="flex-wrap:nowrap"><div class="bar" style="flex:1"><i style="width:${s.pct}%"></i></div><span class="small">${s.pct}%</span></div></td></tr>`}).join('');
   return `<div class="page-h"><div><h2>خطط المجمعات</h2><p>نسبة التنفيذ محسوبة من البرامج التي حلّ موعدها</p></div></div>
   ${termTabs(tid,'plans')}
   <section class="panel"><div class="tbl-wrap"><table><thead><tr><th>المجمع</th><th>حالة الخطة</th><th>البرامج</th><th>المستفيدون</th><th>منفّذ</th><th>بلا شاهد</th><th>الشواهد</th><th>التنفيذ</th></tr></thead><tbody>${rows||'<tr><td colspan="8" class="empty">أضف المجمعات أولاً</td></tr>'}</tbody></table></div></section>`;
@@ -796,7 +1062,7 @@ function vPlan(a){
   ${S.terms.length>1?termTabs(tid,admin?'plan':'myplan',admin?{cid}:{}):''}
   ${banner}
   <section class="panel"><div class="panel-h"><h3>برامج الفصل (${s.total})</h3>${editable?`<div class="row"><button class="btn sm pri" onclick="editProgram(null,'${cid}','${tid}')">${I.plus}إضافة برنامج</button></div>`:''}</div>
-   <div class="row small muted" style="margin-bottom:12px"><span class="chip ok">منفّذ ${s.done}</span><span class="chip warn">بانتظار الشاهد ${s.late}</span><span class="chip bad">لم يُنفّذ ${s.missed}</span><span class="chip">المستفيدون ${s.benef}</span><span class="chip">الشواهد ${s.ev}</span><span class="chip pri">التنفيذ ${s.pct}%</span>${progs.filter(x=>progMissing(x).length).length?`<span class="chip bad">ناقصة البيانات ${progs.filter(x=>progMissing(x).length).length}</span>`:''}</div>
+   <div class="row small muted" style="margin-bottom:12px"><span class="chip ok">منفّذ ${s.done}</span><span class="chip warn">بانتظار الشاهد ${s.late}</span><span class="chip bad">لم يُنفّذ ${s.missed}</span><span class="chip">المستفيدون ${esc(s.benef)}</span><span class="chip">الشواهد ${s.ev}</span><span class="chip pri">التنفيذ ${s.pct}%</span>${progs.filter(x=>progMissing(x).length).length?`<span class="chip bad">ناقصة البيانات ${progs.filter(x=>progMissing(x).length).length}</span>`:''}</div>
    ${wkHTML||`<div class="empty"><b>لا برامج بعد</b>${editable?'ابدأ بإضافة أول برنامج في الخطة':'لم يضف المجمع برامجه'}</div>`}</section>`;
 }
 async function planAct(pid,st,note){const p=S.plans.find(x=>x.id===pid);await q(sb.from('plans').update({status:st,note:note!==undefined?note:p.note,updated_at:new Date().toISOString()}).eq('id',pid));toast(st==='approved'?'اعتُمدت الخطة':'أُعيدت الخطة للمجمع');await refresh()}
@@ -854,7 +1120,7 @@ function openProgram(id){
   modal(esc(p.title),`
    <div class="row" style="margin-bottom:12px"><span class="chip ${s.c}">${s.l}</span><span class="chip">${esc(p.category)}</span>${term?`<span class="chip gold">${wkLabel(term,p.start)}</span>`:''}</div>
    <dl class="kv"><dt>المجمع</dt><dd>${esc(cxName(p.complexId))}</dd><dt>التاريخ</dt><dd>${dayName(p.start)} ${hijri(p.start)}${p.end!==p.start?' إلى '+hijri(p.end):''}<br><span class="small muted">${greg(p.start)}م</span></dd>
-   <dt>المرحلة</dt><dd>${esc(p.stage||'—')}</dd><dt>فردي أو جماعي</dt><dd>${esc(p.kind||'—')}</dd><dt>المستفيدون</dt><dd>${p.benef||'—'}</dd>${p.desc?`<dt>الوصف</dt><dd style="white-space:pre-line">${esc(p.desc)}</dd>`:''}${p.goal?`<dt>الأهداف</dt><dd style="white-space:pre-line">${esc(p.goal)}</dd>`:''}${p.reason?`<dt>سبب عدم التنفيذ</dt><dd>${esc(p.reason)}</dd>`:''}${p.note?`<dt>ملاحظة</dt><dd>${esc(p.note)}</dd>`:''}</dl>
+   <dt>المرحلة</dt><dd>${esc(p.stage||'—')}</dd><dt>فردي أو جماعي</dt><dd>${esc(p.kind||'—')}</dd><dt>المستفيدون</dt><dd>${esc(p.benef||'—')}</dd>${p.desc?`<dt>الوصف</dt><dd style="white-space:pre-line">${esc(p.desc)}</dd>`:''}${p.goal?`<dt>الأهداف</dt><dd style="white-space:pre-line">${esc(p.goal)}</dd>`:''}${p.reason?`<dt>سبب عدم التنفيذ</dt><dd>${esc(p.reason)}</dd>`:''}${p.note?`<dt>ملاحظة</dt><dd>${esc(p.note)}</dd>`:''}</dl>
    ${progMissing(p).length?`<div class="banner bad" style="margin:0 0 10px"><div class="txt"><b>بيانات ناقصة</b>${progMissing(p).join('، ')}</div></div>`:''}
    <h3 style="font-size:15px;margin:16px 0 8px">الشواهد (${evs.length})</h3>
    ${gal?`<div class="gal">${gal}</div>`:`<p class="small muted">لم يُرفع شاهد بعد.</p>`}
@@ -907,24 +1173,110 @@ function lightbox(src){const d=document.createElement('div');d.className='lightb
 /* ---------- ADMIN: complexes ---------- */
 function vComplexes(){
   const acc=(cid,sub)=>S.users.find(x=>x.complexId===cid&&x.sub===sub);
-  const rows=S.complexes.map(c=>`<tr><td><div class="cxname">${cxLogo(c.id,34)}<span><b>${esc(c.name)}</b>${c.phone?`<br><span class="small muted" dir="ltr">${esc(c.phone)}</span>`:''}${c.logo?'':'<br><span class="small muted">بلا شعار</span>'}</span></div></td>
-    <td>${esc(c.manager||'—')}<br><span class="small muted" dir="ltr">${esc(acc(c.id,'manager')?.username||'—')}</span></td>
-    <td>${esc(c.leader||'—')}<br><span class="small muted" dir="ltr">${esc(acc(c.id,'leader')?.username||'—')}</span></td>
+  const missing=S.complexes.filter(c=>!acc(c.id,'manager')).length;
+  const rows=S.complexes.map(c=>`<tr><td data-l="المجمع"><div class="cxname">${cxLogo(c.id,34)}<span><b>${esc(c.name)}</b>${c.phone?`<br><span class="small muted" dir="ltr">${esc(c.phone)}</span>`:''}</span></div></td>
+    <td data-l="الحسابات">${(()=>{const mg=S.users.filter(x=>x.complexId===c.id&&x.sub==='manager'),ot=S.users.filter(x=>x.complexId===c.id&&x.sub!=='manager');
+      return `<div class="acc-list"><div><span class="muted">مدير المجمع</span>${mg.length?mg.map(u=>`<b>${esc(userName(u)||'—')}</b><span class="u" dir="ltr">${esc(u.username)}</span>`).join(''):'<b>—</b><span class="u no">بلا حساب</span>'}</div>${ot.length?`<div><span class="muted">حسابات أخرى</span>${ot.map(u=>`<b>${esc(userName(u)||subLabel(u))}</b><span class="u"><span dir="ltr">${esc(u.username)}</span> · ${esc(subLabel(u))}</span>`).join('')}</div>`:''}</div>`})()}</td>
     <td><button class="btn sm" onclick="editComplex('${c.id}')">تعديل</button></td></tr>`).join('');
-  const depts=S.departments.filter(d=>!d.system);
+  const depts=S.departments.slice().sort((a,b)=>(b.system?1:0)-(a.system?1:0)||(a.sort??0)-(b.sort??0));
   return `<div class="page-h"><div><h2>الحسابات</h2><p>حسابات المجمعات والأقسام ينشئها مدير النظام</p></div><div class="row"><button class="btn" onclick="editDept()">${I.plus}إضافة قسم</button><button class="btn pri" onclick="editComplex()">${I.plus}إضافة مجمع</button></div></div>
-  <section class="panel"><div class="panel-h"><h3>${S.complexes.length} من ${S.settings.target} مجمعاً</h3><span class="small muted">لكل مجمع حسابان بنفس الصلاحيات: المدير ورائد الخدمات</span></div>
-  <div class="tbl-wrap"><table><thead><tr><th>المجمع</th><th>مدير المجمع</th><th>رائد الخدمات</th><th></th></tr></thead><tbody>${rows}</tbody></table></div></section>
+  <section class="panel"><div class="panel-h"><h3>كلمات المرور</h3><span class="small muted">تُعبّأ في ملف على جهازك وتُرفع هنا، فلا تمر بأي مكان آخر</span></div>
+   <div class="pw-steps"><div><b>١</b><span>نزّل ملف الحسابات</span><button class="btn sm" onclick="exportAccounts()">${I.down}تنزيل ملف الحسابات</button></div>
+   <div><b>٢</b><span>اكتب كلمة المرور الجديدة بجانب كل حساب في Excel، واترك الخانة فارغة لما لا تريد تغييره</span></div>
+   <div><b>٣</b><span>ارفع الملف وراجع النتيجة قبل الحفظ</span><button class="btn sm pri" onclick="importPasswords()">تعيين كلمات المرور من ملف</button></div></div></section>
+  ${missing?`<div class="banner warn"><div class="txt"><b>${missing} مجمعاً بلا حساب مدير</b>لكل مجمع حساب واحد لمديره، ويستطيع مدير النظام إضافة حسابات أخرى من «تعديل»</div><button class="btn sm pri" onclick="createMissingAccounts()">إنشاء حسابات المديرين الناقصة</button></div>`:''}
+  <section class="panel"><div class="panel-h"><h3>${S.complexes.length} من ${S.settings.target} مجمعاً</h3><span class="small muted">لكل مجمع حساب مديره، ولأي حساب إضافي الصلاحيات نفسها</span></div>
+  <div class="tbl-wrap"><table class="stack"><thead><tr><th>المجمع</th><th>الحسابات</th><th></th></tr></thead><tbody>${rows}</tbody></table></div></section>
   <section class="panel"><div class="panel-h"><h3>حسابات الأقسام</h3><button class="btn sm" onclick="editDept()">${I.plus}إضافة قسم</button></div>
-  <div class="tbl-wrap"><table><thead><tr><th>القسم</th><th>اسم المستخدم</th><th>الصلاحيات</th><th></th></tr></thead><tbody>${depts.map(d=>{const u=S.users.find(x=>x.role==='dept'&&x.deptId===d.id);return `<tr><td><b>${esc(d.name)}</b></td><td dir="ltr" style="text-align:right">${esc(u?.username||'—')}</td><td><div class="row" style="gap:4px">${d.visits?'<span class="chip ok">الزيارات</span>':''}${PERMS.filter(x=>u?.perms?.[x[0]]).map(x=>`<span class="chip gold">${x[1]}</span>`).join('')||(d.visits?'':'<span class="chip">مواعيده فقط</span>')}</div></td><td><button class="btn sm" onclick="editDept('${d.id}')">تعديل</button></td></tr>`}).join('')}</tbody></table></div></section>`;
+  <div class="tbl-wrap"><table class="stack"><thead><tr><th>القسم</th><th>اسم المستخدم</th><th>الصلاحيات</th><th></th></tr></thead><tbody>${depts.map(d=>{const u=S.users.find(x=>x.role==='dept'&&x.deptId===d.id);return `<tr><td data-l="القسم"><b>${esc(d.name)}</b>${d.system?'<br><span class="small muted">القسم الرئيسي للمنصة</span>':''}</td><td data-l="اسم المستخدم" dir="ltr" style="text-align:right">${u?S.users.filter(x=>x.role==='dept'&&x.deptId===d.id).map(x=>`<div>${esc(x.username)}${x.name&&x.name!==d.name?` <span class="small muted" dir="rtl">${esc(x.name)}</span>`:''}</div>`).join(''):'<span class="chip bad" dir="rtl">بلا حساب</span>'}</td><td data-l="الصلاحيات"><div class="row" style="gap:4px">${d.rk?`<span class="chip pri">${esc(RKS[d.rk]||d.rk)}</span>`:''}${d.visits?'<span class="chip ok">الزيارات</span>':''}${PERMS.filter(x=>u?.perms?.[x[0]]).map(x=>`<span class="chip gold">${x[1]}</span>`).join('')||(d.visits?'':'<span class="chip">مواعيده فقط</span>')}</div></td><td><button class="btn sm" onclick="editDept('${d.id}')">${u?'تعديل':'إنشاء الحساب'}</button></td></tr>`}).join('')}</tbody></table></div></section>`;
 }
+/* ---------- تعيين كلمات المرور من ملف ---------- */
+function accSlots(){const sl=[];
+  S.complexes.forEach(c=>SUBS.forEach(([k,l])=>sl.push({group:c.name,label:l,kind:'complex',complexId:c.id,sub:k,users:S.users.filter(x=>x.complexId===c.id&&x.sub===k)})));
+  S.departments.forEach(d=>{const us=S.users.filter(x=>x.role==='dept'&&x.deptId===d.id);sl.push({group:'الأقسام',label:d.name,kind:'dept',deptId:d.id,perms:us[0]?.perms||{},users:us})});
+  return sl}
+function accRows(){const rows=[];accSlots().forEach(s=>s.users.forEach(u=>rows.push({u,slot:s,group:s.group,label:s.label,name:userName(u)||''})));return rows}
+const XLSX_SRC='https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js';
+async function exportAccounts(){busy(true);try{if(!window.XLSX)await loadScript(XLSX_SRC);
+  const data=accRows().map(r=>({'اسم المستخدم':r.u.username,'الجهة':r.group,'الحساب':r.label,'اسم صاحب الحساب':r.name,'اسم المستخدم الجديد':'','كلمة المرور الجديدة':''}));
+  const ws=XLSX.utils.json_to_sheet(data);ws['!cols']=[16,30,30,26,20,24].map(w=>({wch:w}));
+  const wb=XLSX.utils.book_new();wb.Workbook={Views:[{RTL:true}]};XLSX.utils.book_append_sheet(wb,ws,'الحسابات');
+  XLSX.writeFile(wb,'حسابات-المنصة.xlsx');toast('نُزّل ملف الحسابات. لا ترسله لأحد بعد تعبئته')}catch(e){toast(errMsg(e))}busy(false)}
+function importPasswords(){
+  modal('تعيين كلمات المرور من ملف',`<p style="margin-top:0">ارفع ملف الحسابات بعد تعبئة عمود «كلمة المرور الجديدة»، و«اسم المستخدم الجديد» إن أردت تغييره. تتعرف المنصة على الحساب من اسم المستخدم الحالي، أو من «الجهة» و«الحساب» إن تُرك فارغاً، وتراجع كل سطر قبل الحفظ.</p>
+   <label class="drop" for="pwf">اختر ملف Excel أو CSV</label><input id="pwf" type="file" accept=".xlsx,.xls,.csv" class="hidden">
+   <label class="row small" style="margin-top:10px"><input type="checkbox" id="pwforce"> إلزام أصحاب الحسابات بتغيير كلمة المرور عند أول دخول</label>
+   <div id="pwrev" style="margin-top:12px"></div>`,[],true);
+  $('#pwf').onchange=e=>{const f=e.target.files[0];if(f)readPasswords(f)}}
+let PWROWS=[];
+async function readPasswords(file){const box=$('#pwrev');box.innerHTML='<p class="small muted">جارٍ قراءة الملف…</p>';
+  try{if(!window.XLSX)await loadScript(XLSX_SRC);
+    const wb=XLSX.read(new Uint8Array(await file.arrayBuffer()),{type:'array'});const ws=wb.Sheets[wb.SheetNames[0]];
+    const rows=XLSX.utils.sheet_to_json(ws,{header:1,raw:false,defval:''});
+    const hi=rows.findIndex(r=>r.some(c=>/اسم المستخدم/.test(String(c))));if(hi<0)throw new Error('لم أجد عمود «اسم المستخدم» في الملف');
+    const hd=rows[hi].map(c=>String(c).trim());const col=re=>hd.findIndex(c=>re.test(c));
+    const cu=col(/^اسم المستخدم$|^اسم المستخدم الحالي$/),cnu=col(/اسم المستخدم الجديد/),cp=col(/كلمة المرور/),cn=col(/اسم صاحب/),cg=col(/^الجهة/),cl=col(/^الحساب/);
+    if(cp<0)throw new Error('لم أجد عمود «كلمة المرور الجديدة» في الملف');
+    const slots=accSlots();const all=accRows();const used=new Set();const seen={},seenU={};
+    const clean=s=>String(s??'').replace(/[‎‏‪-‮]/g,'').trim();
+    const digits=s=>clean(s).replace(/\s/g,'').replace(/[٠-٩]/g,d=>'٠١٢٣٤٥٦٧٨٩'.indexOf(d));
+    const lbl=s=>normAr(s).replace(/مدير|المجمع|مجمع/g,'');
+    const findSlot=(g,l)=>{if(!g||!l)return null;const isDept=/الأقسام|قسم/.test(g)&&!/^مجمع/.test(g.trim());
+      if(isDept){const n=normAr(l);const ds=slots.filter(s=>s.kind==='dept');return ds.find(s=>normAr(s.label)===n)||ds.find(s=>normAr(s.label).includes(n)||n.includes(normAr(s.label)))}
+      const ng=normAr(g);const cs=slots.filter(s=>s.kind==='complex'&&(normAr(s.group)===ng||normAr(s.group).includes(ng)||ng.includes(normAr(s.group))));
+      return cs.find(s=>s.label===String(l).trim())||cs.find(s=>lbl(s.label)===lbl(l))};
+    PWROWS=rows.slice(hi+1).map(r=>{const un=cu>=0?clean(r[cu]).toLowerCase():'',nuRaw=cnu>=0?digits(r[cnu]).toLowerCase():'',pw=clean(r[cp]),nm=cn>=0?clean(r[cn]):'',g=cg>=0?clean(r[cg]):'',l=cl>=0?clean(r[cl]):'';
+      if(!un&&!g&&!nuRaw&&!pw)return null;
+      let a=un?all.find(x=>x.u.username===un):null,slot=a?a.slot:findSlot(g,l),create=false;
+      if(!a&&slot){const free=slot.users.find(u=>!used.has(u.id));if(free)a=all.find(x=>x.u.id===free.id);else create=true}
+      if(a)used.add(a.u.id);
+      const nu=nuRaw&&(!a||nuRaw!==a.u.username)?nuRaw:'';
+      const o={un:a?a.u.username:un,nu,pw,nm,a,slot,create,err:'',warn:'',skip:false,desc:slot?slot.group+' – '+slot.label:(g&&l?g+' – '+l:'')};
+      if(!a&&!create)o.err=S.users.some(x=>x.username===un&&x.role==='admin')?'حساب مدير النظام لا يُغيَّر من الملف':'الجهة أو الحساب غير موجود في المنصة';
+      else if(create&&(!nu||!pw))o.err='الحساب الجديد يحتاج اسم مستخدم وكلمة مرور';
+      else if(!create&&!pw&&!nu&&(!nm||nm===a.name))o.skip=true;
+      if(!o.err&&!o.skip){
+        if(nu){if(!/^[a-z0-9._-]+$/.test(nu))o.err='اسم المستخدم الجديد بالأرقام والأحرف الإنجليزية فقط';else if(S.users.some(x=>x.username===nu&&x.id!==a?.u.id))o.err='اسم المستخدم الجديد مستخدم لحساب آخر';else(seenU[nu]=seenU[nu]||[]).push(o)}
+        if(pw&&!o.err){o.err=pwProblem(pw,nu||o.un);if(!o.err)(seen[pw]=seen[pw]||[]).push(o)}
+        if(!pw&&nu&&!o.err)o.err='اكتب كلمة مرور عند تغيير اسم المستخدم'}
+      return o}).filter(Boolean);
+    Object.values(seen).forEach(l=>{if(l.length>1)l.forEach(o=>{o.warn='كلمة المرور نفسها مستخدمة لحساب آخر في الملف'})});
+    Object.values(seenU).forEach(l=>{if(l.length>1)l.forEach(o=>{if(!o.err)o.err='اسم المستخدم الجديد مكرر لأكثر من حساب'})});
+    const ok=PWROWS.filter(o=>!o.err&&!o.skip),bad=PWROWS.filter(o=>o.err),sk=PWROWS.filter(o=>o.skip),nw=ok.filter(o=>o.create);
+    box.innerHTML=`<div class="evsum"><span class="chip ok">${ok.length} جاهز للحفظ</span>${nw.length?`<span class="chip gold">منها ${nw.length} حساب جديد</span>`:''}${bad.length?`<span class="chip bad">${bad.length} فيه مشكلة</span>`:''}<span class="chip">${sk.length} بلا تغيير</span></div>
+     ${bad.length?`<div class="banner bad"><div class="txt small">صحّح هذه الأسطر في الملف وارفعه مرة أخرى، أو احفظ الأسطر السليمة الآن وتبقى هذه كما هي.</div></div>`:''}
+     <div class="tbl-wrap" style="max-height:340px;overflow:auto"><table class="stack"><thead><tr><th>الحساب</th><th>اسم المستخدم</th><th>الحالة</th></tr></thead><tbody>
+     ${PWROWS.filter(o=>!o.skip).map(o=>`<tr><td data-l="الحساب">${esc(o.desc||'—')}${o.nm?`<br><span class="small muted">${esc(o.nm)}</span>`:''}</td><td data-l="اسم المستخدم" dir="ltr" style="text-align:right">${o.create?esc(o.nu||'—'):esc(o.un||'—')+(o.nu?` ← ${esc(o.nu)}`:'')}</td><td data-l="الحالة">${o.err?`<span class="chip bad">${esc(o.err)}</span>`:`<span class="chip ${o.create?'gold':'ok'}">${o.create?'حساب جديد':[o.nu?'اسم مستخدم جديد':'',o.pw?'كلمة مرور جديدة':'',o.nm&&o.nm!==o.a.name?'اسم جديد':''].filter(Boolean).join(' + ')}</span>${o.warn?`<br><span class="small muted">${esc(o.warn)}</span>`:''}`}</td></tr>`).join('')}</tbody></table></div>
+     ${ok.length?`<div class="row" style="margin-top:12px"><button class="btn pri" id="pwsave" onclick="savePasswords()">حفظ ${ok.length} حساباً</button><span class="small muted" id="pwprog"></span></div>`:''}`;
+  }catch(e){box.innerHTML=`<div class="banner bad"><div class="txt">${esc(errMsg(e))}</div></div>`}}
+async function savePasswords(){const ok=PWROWS.filter(o=>!o.err&&!o.skip);const force=$('#pwforce').checked;const btn=$('#pwsave');btn.disabled=true;busy(true);
+  let done=0;const fails=[],created=[];
+  for(const o of ok){$('#pwprog').textContent=`جارٍ الحفظ ${done+1} من ${ok.length}…`;
+    try{if(o.create){const s=o.slot;
+        await q(sb.rpc('admin_create_user',{p_username:o.nu,p_password:o.pw,p_role:s.kind,p_sub:s.kind==='complex'?s.sub:null,p_complex:s.kind==='complex'?s.complexId:null,p_dept:s.kind==='dept'?s.deptId:null,p_name:o.nm||'',p_perms:s.kind==='dept'?(s.perms||{}):{}}));created.push(o.nu)}
+      else{const u=o.a.u;
+        if(o.pw||o.nu){await q(sb.rpc('admin_set_login',{p_user:u.id,p_username:o.nu||u.username,p_password:o.pw||''}));await q(sb.rpc('admin_set_must_change',{p_user:u.id,p_val:force}))}
+        if(o.nm&&o.nm!==o.a.name){if(u.role==='complex'&&(u.sub==='manager'||u.sub==='leader')&&!u.name)await q(sb.from('complexes').update({[u.sub]:o.nm}).eq('id',u.complexId));else await q(sb.rpc('admin_set_name',{p_user:u.id,p_name:o.nm}))}}
+      done++}catch(e){fails.push((o.desc||o.un)+(o.nm?' ('+o.nm+')':'')+': '+errMsg(e))}}
+  if(created.length){await refresh();for(const un of created){const u=S.users.find(x=>x.username===un);if(u)try{await q(sb.rpc('admin_set_must_change',{p_user:u.id,p_val:force}))}catch(e){}}}
+  busy(false);PWROWS=[];await refresh();
+  modal('نتيجة تعيين كلمات المرور',`<p style="margin-top:0">حُفظ <b>${done}</b> من ${ok.length} حساباً${created.length?`، منها <b>${created.length}</b> حساب جديد`:''}.${force?' سيُطلب من أصحابها تغيير كلمة المرور عند أول دخول.':''}</p>
+   ${fails.length?`<div class="banner bad"><div class="txt small">${fails.map(esc).join('<br>')}</div></div>`:''}
+   <div class="banner warn"><div class="txt small">احذف ملف كلمات المرور من جهازك بعد توزيعها على أصحابها، ولا ترسله في مجموعة أو بريد مشترك.</div></div>`,[['تم','pri',()=>true]])}
+function createMissingAccounts(){ask('إنشاء حسابات المديرين الناقصة','يُنشأ حساب مدير لكل مجمع ليس له حساب، باسم مستخدم مثل m01 وكلمة المرور 123456، ويُلزم صاحبه بتغييرها عند أول دخول.','إنشاء',async()=>{
+  let n=0;const used=new Set(S.users.map(u=>u.username));
+  for(const [i,c] of S.complexes.entries()){if(S.users.find(x=>x.complexId===c.id&&x.sub==='manager'))continue;
+    const base='m'+String(i+1).padStart(2,'0');let un=base,j=2;while(used.has(un))un=base+'_'+(j++);used.add(un);
+    await q(sb.rpc('admin_create_user',{p_username:un,p_password:'123456',p_role:'complex',p_sub:'manager',p_complex:c.id,p_dept:null,p_name:'',p_perms:{}}));n++}
+  toast('أُنشئ '+n+' حساباً');await refresh()})}
 function editDept(did){
   const d=did?S.departments.find(x=>x.id===did):{name:'',visits:false};
   const u=did?(S.users.find(x=>x.role==='dept'&&x.deptId===did)||{username:'',password:'',perms:{}}):{username:'',password:'123456',perms:{}};
   modal(did?'تعديل حساب القسم':'إضافة قسم جديد',`<div class="field"><label for="dn">اسم القسم</label><input id="dn" value="${esc(d.name)}" placeholder="مثال: قسم العلاقات العامة"></div>
    <div class="grid2"><div class="field"><label for="du">اسم المستخدم</label><input id="du" dir="ltr" value="${esc(u.username)}"></div><div class="field"><label for="dw">${did?'كلمة مرور جديدة':'كلمة المرور'}</label><input id="dw" dir="ltr" value="${did?'':'123456'}" placeholder="${did?'اتركها فارغة للإبقاء':''}"></div></div>
    <label class="row small" style="margin-bottom:6px"><input type="checkbox" id="dv" ${d.visits?'checked':''}> يستطيع إضافة زيارات المجمعات</label>
-   <div class="field" style="margin-top:8px"><label>صلاحيات إضافية <span class="hint">(كل صلاحية مستقلة عن الأخرى)</span></label>
+   <div class="field"><label for="drk">دوره في توقيع الطلبات الإلكترونية</label><select id="drk"><option value="">لا يوقّع على الطلبات</option>${Object.entries(RK).map(([k,v])=>`<option value="${k}" ${d.rk===k?'selected':''}>${v}</option>`).join('')}</select></div>
+   <div class="field" style="margin-top:8px"><label>صلاحيات إضافية <span class="hint">(كل صلاحية مستقلة عن الأخرى)</span> <button type="button" class="btn sm" style="margin-inline-start:6px" onclick="document.querySelectorAll('[data-perm]').forEach(i=>i.checked=true)">تحديد الكل</button></label>
     <div class="perm-list">${PERMS.map(([k,l,dsc])=>`<label class="perm"><span><b>${l}</b><small>${dsc}</small></span><input type="checkbox" class="sw" data-perm="${k}" ${u.perms?.[k]?'checked':''}></label>`).join('')}</div></div>
    <p class="small muted" style="margin:0">كل قسم يستطيع إضافة مواعيده في تقويم المجمعات.</p>`,
   [[did?'حفظ':'إضافة القسم','pri',async()=>{const name=$('#dn').value.trim(),un=$('#du').value.trim().toLowerCase(),pw=$('#dw').value;
@@ -933,57 +1285,73 @@ function editDept(did){
     if(S.users.some(x=>x.username===un&&x!==u)){toast('اسم المستخدم مستخدم لحساب آخر');return false}
     const perms={};document.querySelectorAll('[data-perm]').forEach(i=>perms[i.dataset.perm]=i.checked);
     if(did&&u===me()&&!perms.accounts){toast('لا يمكنك إلغاء صلاحية «الحسابات» من حسابك الحالي');return false}
-    if(did){await q(sb.from('departments').update({name,visits:$('#dv').checked}).eq('id',did));
+    if(did){await q(sb.from('departments').update({name,visits:$('#dv').checked,rk:$('#drk').value||null}).eq('id',did));
       if(u.id){await q(sb.rpc('admin_set_login',{p_user:u.id,p_username:un,p_password:pw||''}));await q(sb.rpc('admin_set_perms',{p_user:u.id,p_perms:perms}))}
       else await q(sb.rpc('admin_create_user',{p_username:un,p_password:pw||'123456',p_role:'dept',p_sub:null,p_complex:null,p_dept:did,p_name:name,p_perms:perms}))}
-    else{const nd=await q(sb.from('departments').insert({name,visits:$('#dv').checked}).select().single());
+    else{const nd=await q(sb.from('departments').insert({name,visits:$('#dv').checked,rk:$('#drk').value||null}).select().single());
       await q(sb.rpc('admin_create_user',{p_username:un,p_password:pw,p_role:'dept',p_sub:null,p_complex:null,p_dept:nd.id,p_name:name,p_perms:perms}))}
-    toast(did?'حُفظ الحساب':'أُضيف القسم وحسابه');await refresh();return true}]].concat(did?[['حذف القسم','danger',()=>{ask('حذف القسم','سيُحذف حساب القسم ومواعيده. الزيارات التي سجّلها تبقى.','حذف',async()=>{await q(sb.rpc('admin_delete_dept',{p_dept:did}));toast('حُذف القسم');await refresh()});return false}]]:[]),true);
+    toast(did?'حُفظ الحساب':'أُضيف القسم وحسابه');await refresh();return true}]].concat(did&&!d.system?[['حذف القسم','danger',()=>{ask('حذف القسم','سيُحذف حساب القسم ومواعيده. الزيارات التي سجّلها تبقى.','حذف',async()=>{await q(sb.rpc('admin_delete_dept',{p_dept:did}));toast('حُذف القسم');await refresh()});return false}]]:[]),true);
 }
 function editComplex(id){
   const c=id?S.complexes.find(x=>x.id===id):{name:'مجمع ',leader:'',manager:'',phone:''};
-  const um=id?S.users.find(x=>x.complexId===id&&x.sub==='manager'):null,ul=id?S.users.find(x=>x.complexId===id&&x.sub==='leader'):null;
-  const n=String(S.complexes.length+1).padStart(2,'0');
+  const um=id?S.users.find(x=>x.complexId===id&&x.sub==='manager'):null;
+  const others=id?S.users.filter(x=>x.complexId===id&&x.id!==um?.id):[];
+  const n=String((id?S.complexes.indexOf(c):S.complexes.length)+1).padStart(2,'0');
   let newLogo=c.logo||'';
   modal(id?'تعديل المجمع':'إضافة مجمع',`
    <div class="logo-edit"><span id="clogo">${id?cxLogo(id,56):''}</span><label class="btn sm" for="clf">${c.logo?'تغيير الشعار':'رفع شعار المجمع'}</label><input id="clf" type="file" accept="image/*" class="hidden"><button type="button" class="btn sm danger ${c.logo?'':'hidden'}" id="clr">إزالة الشعار</button><span class="small muted">إن لم يكن للمجمع شعار يظهر الحرف الأول من اسمه</span></div>
    <div class="grid2"><div class="field"><label for="cn">اسم المجمع</label><input id="cn" value="${esc(c.name)}"></div>
    <div class="field"><label for="cp">جوال المجمع</label><input id="cp" dir="ltr" value="${esc(c.phone)}"></div></div>
-   <h3 style="font-size:15px;margin:6px 0 8px">حساب مدير المجمع</h3>
-   <div class="grid2"><div class="field"><label for="cmn">اسم المدير</label><input id="cmn" value="${esc(c.manager)}"></div><div></div>
-   <div class="field"><label for="cmu">اسم المستخدم</label><input id="cmu" dir="ltr" value="${esc(um?.username||'m'+n)}"></div>
-   <div class="field"><label for="cmw">${id?'كلمة مرور جديدة':'كلمة المرور'}</label><input id="cmw" dir="ltr" value="${id?'':'123456'}" placeholder="${id?'اتركها فارغة للإبقاء':''}"></div></div>
-   <h3 style="font-size:15px;margin:6px 0 8px">حساب رائد الخدمات</h3>
-   <div class="grid2"><div class="field"><label for="cln">اسم رائد الخدمات</label><input id="cln" value="${esc(c.leader)}"></div><div></div>
-   <div class="field"><label for="clu">اسم المستخدم</label><input id="clu" dir="ltr" value="${esc(ul?.username||'r'+n)}"></div>
-   <div class="field"><label for="clw">${id?'كلمة مرور جديدة':'كلمة المرور'}</label><input id="clw" dir="ltr" value="${id?'':'123456'}" placeholder="${id?'اتركها فارغة للإبقاء':''}"></div></div>
-   <p class="small muted" style="margin:0">للحسابين الصلاحيات نفسها، ويستطيع كل منهما تعديل اسمه وكلمة مروره من «حسابي».</p>`,
-  [[id?'حفظ':'إضافة المجمع وحسابيه','pri',async()=>{
-    const name=$('#cn').value.trim(),mu=$('#cmu').value.trim().toLowerCase(),mw=$('#cmw').value,lu=$('#clu').value.trim().toLowerCase(),lw=$('#clw').value;
-    if(!name||!mu||!lu||(!id&&(mw.length<6||lw.length<6))||(mw&&mw.length<6)||(lw&&lw.length<6)){toast('أكمل اسم المجمع وأسماء المستخدمين وكلمات مرور من 6 أحرف');return false}
-    if(!/^[a-z0-9._-]+$/.test(mu)||!/^[a-z0-9._-]+$/.test(lu)){toast('أسماء المستخدمين بالأحرف الإنجليزية والأرقام فقط');return false}
-    if(mu===lu||S.users.some(x=>(x.username===mu&&x.id!==um?.id)||(x.username===lu&&x.id!==ul?.id))){toast('اسم مستخدم مكرر أو مستخدم لحساب آخر');return false}
-    const info={name,phone:$('#cp').value.trim(),manager:$('#cmn').value.trim(),leader:$('#cln').value.trim(),logo:newLogo};
+   <div class="acc-sec"><h4>حساب مدير المجمع${id&&!um?' <span class="chip bad">لم يُنشأ بعد</span>':''}</h4><div class="grid3">
+    <div class="field"><label for="an">الاسم</label><input id="an" value="${esc((um&&um.name)||c.manager||'')}"></div>
+    <div class="field"><label for="au">اسم المستخدم</label><input id="au" dir="ltr" value="${esc(um?.username||'m'+n)}"></div>
+    <div class="field"><label for="aw">${um?'كلمة مرور جديدة':'كلمة المرور'}</label><input id="aw" dir="ltr" value="${um?'':'123456'}" placeholder="${um?'اتركها فارغة للإبقاء':''}"></div></div></div>
+   ${id?`<div class="acc-sec"><h4>حسابات أخرى للمجمع</h4>${others.length?others.map(u=>`<div class="row" style="justify-content:space-between;border-bottom:1px solid var(--line);padding:6px 0"><span><b>${esc(userName(u)||'—')}</b> <span class="small muted">· ${esc(subLabel(u))} · <span dir="ltr">${esc(u.username)}</span></span></span><button type="button" class="btn sm danger" onclick="delUser('${u.id}','${id}')">حذف الحساب</button></div>`).join(''):'<p class="small muted" style="margin:0 0 8px">لا حسابات أخرى</p>'}
+    <button type="button" class="btn sm" style="margin:8px 0" onclick="addCxAccount('${id}')">${I.plus}إضافة حساب للمجمع</button></div>`:''}`,
+  [[id?'حفظ':'إضافة المجمع وحساب مديره','pri',async()=>{
+    const name=$('#cn').value.trim(),mn=$('#an').value.trim(),un=$('#au').value.trim().toLowerCase(),pw=$('#aw').value;
+    if(!name||!un){toast('أكمل اسم المجمع واسم المستخدم');return false}
+    if((!um&&pw.length<6)||(pw&&pw.length<6)){toast('كلمة المرور 6 أحرف على الأقل');return false}
+    if(!/^[a-z0-9._-]+$/.test(un)){toast('اسم المستخدم بالأرقام والأحرف الإنجليزية فقط');return false}
+    if(S.users.some(x=>x.username===un&&x.id!==um?.id)){toast('اسم المستخدم مستخدم لحساب آخر');return false}
+    const info={name,phone:$('#cp').value.trim(),manager:mn,logo:newLogo};
     let cid=id;
     if(id)await q(sb.from('complexes').update(info).eq('id',id));
-    else cid=(await q(sb.from('complexes').insert(Object.assign({sort:S.complexes.length+1},info)).select().single())).id;
-    const acct=async(u,un,pw,sub)=>{if(u)await q(sb.rpc('admin_set_login',{p_user:u.id,p_username:un,p_password:pw||''}));else await q(sb.rpc('admin_create_user',{p_username:un,p_password:pw||'123456',p_role:'complex',p_sub:sub,p_complex:cid,p_dept:null,p_name:'',p_perms:{}}))};
-    await acct(um,mu,mw,'manager');await acct(ul,lu,lw,'leader');
-    toast(id?'حُفظ':'أُضيف المجمع وحساباه');await refresh();return true}]].concat(id?[['حذف المجمع','danger',()=>{ask('حذف المجمع','سيُحذف المجمع وحساباه وكل خططه وشواهده وزياراته.','حذف',async()=>{await q(sb.rpc('admin_delete_complex',{p_complex:id}));toast('حُذف المجمع');await refresh()});return false}]]:[]),true);
+    else cid=(await q(sb.from('complexes').insert(Object.assign({sort:S.complexes.length+1,leader:''},info)).select().single())).id;
+    if(um){await q(sb.rpc('admin_set_login',{p_user:um.id,p_username:un,p_password:pw||''}));if(mn!==(um.name||''))await q(sb.rpc('admin_set_name',{p_user:um.id,p_name:mn}))}
+    else await q(sb.rpc('admin_create_user',{p_username:un,p_password:pw||'123456',p_role:'complex',p_sub:'manager',p_complex:cid,p_dept:null,p_name:mn,p_perms:{}}));
+    toast(id?'حُفظ':'أُضيف المجمع وحساب مديره');await refresh();return true}]].concat(id?[['حذف المجمع','danger',()=>{ask('حذف المجمع','سيُحذف المجمع وحساباته وكل خططه وشواهده وزياراته.','حذف',async()=>{await q(sb.rpc('admin_delete_complex',{p_complex:id}));toast('حُذف المجمع');await refresh()});return false}]]:[]),true);
   const show=()=>{$('#clogo').innerHTML=newLogo?`<span class="cxl" style="width:78px;height:56px"><img src="${newLogo}" alt=""></span>`:'';$('#clr').classList.toggle('hidden',!newLogo)};
   $('#clf').onchange=async e=>{const f=e.target.files[0];if(!f)return;try{newLogo=await logoData(f);show()}catch(err){toast('تعذّرت قراءة الصورة')}};
   $('#clr').onclick=()=>{newLogo='';show()};
 }
+function addCxAccount(cid){const c=S.complexes.find(x=>x.id===cid);
+  modal('إضافة حساب – '+esc(c.name),`<div class="field"><label for="xt">نوع الحساب</label><select id="xt">${SUBS.map(([k,l])=>`<option value="${k}" ${k==='assistant'?'selected':''}>${l}</option>`).join('')}</select></div>
+   <div class="field"><label for="xn">اسم صاحب الحساب</label><input id="xn"></div>
+   <div class="grid2"><div class="field"><label for="xu">اسم المستخدم</label><input id="xu" dir="ltr" placeholder="مثل رقم الهوية"></div><div class="field"><label for="xw">كلمة المرور</label><input id="xw" dir="ltr" placeholder="مثل رقم الجوال"></div></div>
+   <label class="row small"><input type="checkbox" id="xf" checked> إلزام صاحبه بتغيير كلمة المرور عند أول دخول</label>`,
+  [['إضافة الحساب','pri',async()=>{const un=$('#xu').value.trim().toLowerCase(),pw=$('#xw').value.trim(),nm=$('#xn').value.trim();
+    if(!nm||!un||!pw){toast('أكمل الاسم واسم المستخدم وكلمة المرور');return false}
+    if(!/^[a-z0-9._-]+$/.test(un)){toast('اسم المستخدم بالأرقام والأحرف الإنجليزية فقط');return false}
+    if(S.users.some(x=>x.username===un)){toast('اسم المستخدم مستخدم لحساب آخر');return false}
+    const bad=pwProblem(pw,un);if(bad){toast(bad);return false}
+    await q(sb.rpc('admin_create_user',{p_username:un,p_password:pw,p_role:'complex',p_sub:$('#xt').value,p_complex:cid,p_dept:null,p_name:nm,p_perms:{}}));
+    await refresh();const u=S.users.find(x=>x.username===un);if(u)try{await q(sb.rpc('admin_set_must_change',{p_user:u.id,p_val:$('#xf').checked}))}catch(e){}
+    toast('أُضيف الحساب');await refresh();editComplex(cid);return false}]],true)}
+function delUser(uid,cid){const u=S.users.find(x=>x.id===uid);if(!u)return;
+  ask('حذف الحساب',`سيُحذف حساب «${userName(u)||u.username}» ولن يستطيع صاحبه الدخول. بيانات المجمع وخططه لا تتأثر.`,'حذف',async()=>{await q(sb.rpc('admin_delete_user',{p_user:uid}));toast('حُذف الحساب');await refresh();if(cid)editComplex(cid)})}
 function logoData(file){return new Promise((res,rej)=>{const r=new FileReader();r.onload=()=>{const img=new Image();img.onload=()=>{const k=Math.min(1,320/Math.max(img.width,img.height));const c=document.createElement('canvas');c.width=Math.round(img.width*k);c.height=Math.round(img.height*k);c.getContext('2d').drawImage(img,0,0,c.width,c.height);res(c.toDataURL('image/webp',.85))};img.onerror=rej;img.src=r.result};r.onerror=rej;r.readAsDataURL(file)})}
 function myAccount(){
   const u=me();const c=u.role==='complex'?S.complexes.find(x=>x.id===u.complexId):null;
   modal('حسابي',`<p class="small muted" style="margin-top:0">${esc(u.role==='complex'?subLabel(u)+' – '+c.name:deptName(u.deptId))} · اسم المستخدم: <span dir="ltr">${esc(u.username)}</span></p>
-   <div class="field"><label for="myn">${u.role==='complex'?(u.sub==='manager'?'اسم مدير المجمع':'اسم رائد الخدمات'):'اسم المسؤول'}</label><input id="myn" value="${esc(userName(u))}"></div>
+   <div class="field"><label for="myn">${u.role==='complex'?'اسم '+subLabel(u):'اسم المسؤول'}</label><input id="myn" value="${esc(userName(u))}"></div>
    ${c&&u.sub==='manager'?`<div class="field"><label for="myp">جوال المجمع</label><input id="myp" dir="ltr" value="${esc(c.phone)}"></div>`:''}
-   <div class="field"><label for="myw">كلمة مرور جديدة</label><input id="myw" type="password" dir="ltr" placeholder="اتركها فارغة للإبقاء على الحالية"></div>`,
-  [['حفظ','pri',async()=>{const nm=$('#myn').value.trim(),pw=$('#myw').value;if(pw&&pw.length<6){toast('كلمة المرور 6 أحرف على الأقل');return false}
-    await q(sb.rpc('update_my_profile',{p_name:nm,p_phone:$('#myp')?$('#myp').value.trim():null}));
-    if(pw)await q(sb.auth.updateUser({password:pw}));toast('حُفظت بيانات الحساب');await refresh();return true}]]);
+   <div class="field"><label for="myw">كلمة مرور جديدة</label><input id="myw" type="password" dir="ltr" placeholder="اتركها فارغة للإبقاء على الحالية"></div>
+   <div class="field"><label>توقيعي المحفوظ (يُستخدم في الطلبات الإلكترونية)</label>${sigPad('mysig',u.sig||'')}</div>`,
+  [['حفظ','pri',async()=>{const nm=$('#myn').value.trim(),pw=$('#myw').value;if(pw&&pwProblem(pw,u.username)){toast(pwProblem(pw,u.username));return false}
+    if(u.role==='complex'&&(u.sub==='secretary'||u.sub==='assistant'))await q(sb.rpc('update_my_name',{p_name:nm}));
+    else await q(sb.rpc('update_my_profile',{p_name:nm,p_phone:$('#myp')?$('#myp').value.trim():null}));
+    if(pw)await q(sb.auth.updateUser({password:pw}));const ns=sigVal('mysig');if(ns)await saveMySig(ns);toast('حُفظت بيانات الحساب');await refresh();return true}]]);setTimeout(()=>sigInit('mysig'),0);
 }
 
 /* ---------- visits ---------- */
@@ -1092,7 +1460,7 @@ function vReports(a){
   const cid=admin?(a.cid||'all'):me().complexId;
   if(!term)return '<div class="empty">لا يوجد فصل دراسي</div>';
   const sel=admin?`<div class="field" style="max-width:320px"><label for="rc">التقرير</label><select id="rc" onchange="go('reports',{tid:'${tid}',cid:this.value})"><option value="all">تقرير شامل لجميع المجمعات</option>${S.complexes.map(c=>`<option value="${c.id}" ${c.id===cid?'selected':''}>${esc(c.name)}</option>`).join('')}</select></div>`:'';
-  return `<div class="page-h"><div><h2>التقارير الفصلية</h2><p>جاهزة للطباعة أو الحفظ PDF</p></div><div class="row no-print"><button class="btn" onclick="window.print()">${I.print}طباعة</button><button class="btn pri" onclick="downloadReport()">${I.down}تنزيل التقرير</button></div></div>
+  return `<div class="page-h"><div><h2>التقارير الفصلية</h2><p>جاهزة للطباعة أو الحفظ PDF</p></div><div class="row no-print"><button class="btn" onclick="printReport()">${I.print}طباعة</button><button class="btn pri" onclick="downloadReport()">${I.down}تنزيل التقرير</button></div></div>
   <div class="no-print">${termTabs(tid,'reports',admin?{cid}:{})}${sel}</div>
   <div class="report" id="report">${cid==='all'?reportAll(term):reportCx(cid,term)}</div>`;
 }
@@ -1100,33 +1468,58 @@ function repHead(title,term,cid){return `<div class="rep-head">${logoHTML('',70)
 function reportCx(cid,term){
   const s=planStats(cid,term.id);const p=planOf(cid,term.id);const st=p?p.status:'none';
   const progs=S.programs.filter(x=>x.complexId===cid&&x.termId===term.id).sort((a,b)=>a.start.localeCompare(b.start));
-  const byCat=CATS.map(c=>[c,progs.filter(x=>x.category===c).length]).filter(x=>x[1]);const mx=Math.max(1,...byCat.map(x=>x[1]));
-  const imgs=S.evidence.filter(e=>e.complexId===cid&&e.type==='image'&&progs.some(p=>p.id===e.programId)).slice(0,8);
+  const cnt=(arr,key)=>{const m={};arr.forEach(x=>{const k=x[key]||'غير محدد';m[k]=(m[k]||0)+1});return Object.entries(m).sort((a,b)=>b[1]-a[1])};
+  const bars=list=>{const mx=Math.max(1,...list.map(x=>x[1]));return `<div class="rep-bars">${list.map(([c,n])=>`<div><span>${esc(c)}</span><i style="width:${n/mx*100}%"></i><span>${n}</span></div>`).join('')}</div>`};
+  const byCat=cnt(progs,'category'),byStage=cnt(progs,'stage');
+  const evAll=S.evidence.filter(e=>progs.some(x=>x.id===e.programId));
+  const imgN=evAll.filter(e=>e.type==='image').length;
   const decs=[];S.meetings.forEach(m=>m.decisions.forEach(d=>{if(d.complexId===cid&&m.date>=term.start&&m.date<=term.end)decs.push(d)}));
-  return repHead('التقرير الفصلي – '+cxName(cid),term,cid)+`
-  <div class="rep-kpis"><div><b>${s.total}</b><span>برنامجاً في الخطة</span></div><div><b>${s.done}</b><span>منفّذ بشاهد</span></div><div><b>${s.pct}%</b><span>نسبة التنفيذ</span></div><div><b>${s.benef}</b><span>مستفيداً مستهدفاً</span></div><div><b>${s.ev}</b><span>شاهداً مرفوعاً</span></div><div><b>${s.missed}</b><span>لم يُنفّذ</span></div></div>
-  <p style="font-size:14px">حالة الخطة: <b>${PLAN_ST[st][0]}</b>${s.late?` – ${s.late} برامج حلّ موعدها ولم يُرفع شاهدها`:''}</p>
-  ${byCat.length?`<h2>توزيع البرامج حسب النوع</h2><div class="rep-bars">${byCat.map(([c,n])=>`<div><span>${c}</span><i style="width:${n/mx*100}%"></i><span>${n}</span></div>`).join('')}</div>`:''}
-  <h2>برامج الفصل</h2><div class="tbl-wrap"><table><thead><tr><th>الأسبوع</th><th>البرنامج</th><th>النوع</th><th>المرحلة</th><th>النوع</th><th>المستفيدون</th><th>التاريخ</th><th>الحالة</th><th>الشواهد</th></tr></thead><tbody>
-  ${progs.map(x=>{const ps=progState(x);return `<tr><td>${weekNo(term,x.start)}</td><td>${esc(x.title)}${x.reason?`<br><span style="font-size:12px;color:#5E6B69">${esc(x.reason)}</span>`:''}</td><td>${esc(x.category||"")}</td><td>${esc(x.stage||"")}</td><td>${esc(x.kind||"")}</td><td>${x.benef||""}</td><td>${range(x.start,x.end)}</td><td>${ps.l}</td><td>${evOf(x.id).length}</td></tr>`}).join('')||'<tr><td colspan="9">لا برامج</td></tr>'}</tbody></table></div>
-  ${imgs.length?`<h2>نماذج من الشواهد</h2><div class="rep-gal">${imgs.map(e=>`<img data-ev="${esc(e.path)}" alt="">`).join('')}</div>`:''}
-  ${decs.length?`<h2>قرارات الاجتماعات الخاصة بالمجمع</h2><table><tbody>${decs.map(d=>`<tr><td>${esc(d.text)}</td><td>${DEC_ST[d.status][0]}</td></tr>`).join('')}</tbody></table>`:''}
-  <div class="rep-sign"><div>رائد الخدمات التربوية بالمجمع</div><div>رئيس قسم الخدمات التربوية</div></div><div class="rep-band"></div>`;
+  const ext=n=>(String(n).split('.').pop()||'').toUpperCase().slice(0,4);
+  const cover=`<div class="rep-cover">${repHead('التقرير الفصلي – '+cxName(cid),term,cid)}
+   <div class="rep-big">
+    <div class="hl"><b>${s.pct}%</b><span>نسبة التنفيذ</span><div class="rep-meter"><i style="width:${s.pct}%"></i></div></div>
+    <div><b>${s.total}</b><span>برنامجاً في الخطة</span></div>
+    <div><b>${s.done}</b><span>برنامجاً منفّذاً</span></div>
+    <div><b>${esc(s.benef)}</b><span>مستفيداً مستهدفاً</span></div>
+    <div><b>${s.ev}</b><span>شاهداً (${imgN} صورة، ${s.ev-imgN} ملف)</span></div>
+    <div><b>${s.missed+s.late}</b><span>لم يُنفّذ أو بلا شاهد</span></div>
+   </div>
+   <p style="font-size:14px;margin:0 0 14px">حالة الخطة: <b>${PLAN_ST[st][0]}</b>${s.late?` · ${s.late} برامج حلّ موعدها ولم يُرفع شاهدها`:''}${s.missed?` · ${s.missed} لم تُنفّذ`:''}</p>
+   ${progs.length?`<div class="rep-two"><div><h2>البرامج حسب النوع</h2>${bars(byCat)}</div><div><h2>البرامج حسب المرحلة</h2>${bars(byStage)}</div></div>`:''}
+   <h2>فهرس البرامج</h2><div class="tbl-wrap"><table class="rep-idx"><thead><tr><th>م</th><th>البرنامج</th><th>التاريخ</th><th>الأسبوع</th><th>الحالة</th><th>الشواهد</th></tr></thead><tbody>
+   ${progs.map((x,i)=>`<tr><td>${i+1}</td><td>${esc(x.title)}</td><td>${range(x.start,x.end)}</td><td>${weekNo(term,x.start)||'—'}</td><td>${progState(x).l}</td><td>${evOf(x.id).length}</td></tr>`).join('')||'<tr><td colspan="6">لا برامج في الخطة</td></tr>'}</tbody></table></div>
+   ${decs.length?`<h2>قرارات الاجتماعات الخاصة بالمجمع</h2><table><tbody>${decs.map(d=>`<tr><td>${esc(d.text)}</td><td>${DEC_ST[d.status][0]}</td></tr>`).join('')}</tbody></table>`:''}</div>`;
+  const pages=progs.map((x,i)=>{const ps=progState(x);const evs=evOf(x.id);const im=evs.filter(e=>e.type==='image'),fl=evs.filter(e=>e.type!=='image'&&e.type!=='note'),nt=evs.filter(e=>e.type==='note');
+    const dl=[['النوع',x.category],['المرحلة',x.stage],['فردي أو جماعي',x.kind],['عدد المستفيدين',x.benef],['التاريخ (هجري)',x.end&&x.end!==x.start?hijri(x.start)+' – '+hijri(x.end):hijri(x.start)],['التاريخ (ميلادي)',greg(x.start)+'م'],['الأسبوع',wkLabel(term,x.start)],['الحالة',ps.l]];
+    const progPage=`<section class="rep-page"><div class="rep-prog-h"><span class="no">${i+1} / ${progs.length}</span><h2>${esc(x.title)}</h2><span class="st">${ps.l}</span></div>
+     <dl class="rep-dl">${dl.map(([k,v])=>`<div><dt>${k}</dt><dd>${v!==''&&v!=null?esc(v):'—'}</dd></div>`).join('')}</dl>
+     ${x.desc?`<div class="rep-txt"><h3>وصف البرنامج</h3><p>${esc(x.desc)}</p></div>`:''}
+     ${x.goal?`<div class="rep-txt"><h3>أهداف البرنامج</h3><p>${esc(x.goal)}</p></div>`:''}
+     ${x.reason?`<div class="rep-txt"><h3>سبب عدم التنفيذ</h3><p>${esc(x.reason)}</p></div>`:''}
+     ${x.note?`<div class="rep-txt"><h3>ملاحظات</h3><p>${esc(x.note)}</p></div>`:''}
+     <p class="rep-evnote">${evs.length?`الشواهد: ${evs.length} (${im.length} صورة${fl.length?`، ${fl.length} ملف`:''}${nt.length?`، ${nt.length} تقرير مختصر`:''}) – في الصفحة التالية`:'لم يُرفع شاهد لهذا البرنامج'}</p></section>`;
+    const evPage=evs.length?`<section class="rep-page"><div class="rep-ev-h"><h2>شواهد: ${esc(x.title)}</h2><span>${i+1} / ${progs.length} · ${hijri(x.start)}</span></div>
+     ${im.length?`<div class="rep-evgal">${im.map(e=>`<figure class="${im.length===1?'one':''}"><img data-ev="${esc(e.path)}" alt="${esc(e.caption||e.name)}"><figcaption><span>${esc(e.caption||'')}</span><span>${hijriS(e.at)}</span></figcaption></figure>`).join('')}</div>`:''}
+     ${fl.length?`<div class="rep-files">${fl.map(e=>`<a class="rep-file" data-evf="${esc(e.path)}" href="#" target="_blank" rel="noopener"><span class="ext">${esc(ext(e.name))}</span><span><b>${esc(e.name)}</b><small>${esc(e.caption||'')} ${hijriS(e.at)}</small></span></a>`).join('')}</div>`:''}
+     ${nt.map(e=>`<div class="rep-note"><b>تقرير مختصر</b><br>${esc(e.caption||e.name)}</div>`).join('')}</section>`:'';
+    return progPage+evPage}).join('');
+  return cover+pages+`<section class="rep-page" style="break-before:auto;page-break-before:auto"><div class="rep-sign"><div>رائد الخدمات التربوية بالمجمع</div><div>رئيس قسم الخدمات التربوية</div></div><div class="rep-band"></div></section>`;
 }
 function reportAll(term){
   const rows=S.complexes.map(c=>({c,s:planStats(c.id,term.id),st:planOf(c.id,term.id)?.status||'none'})).sort((a,b)=>b.s.pct-a.s.pct);
   const T=rows.reduce((a,r)=>({total:a.total+r.s.total,done:a.done+r.s.done,ev:a.ev+r.s.ev,late:a.late+r.s.late,benef:a.benef+r.s.benef}),{total:0,done:0,ev:0,late:0,benef:0});
   const appr=rows.filter(r=>r.st==='approved').length;
   return repHead('التقرير الفصلي الشامل للمجمعات',term)+`
-  <div class="rep-kpis"><div><b>${S.complexes.length}</b><span>مجمعاً من ${S.settings.target}</span></div><div><b>${appr}</b><span>خطة معتمدة</span></div><div><b>${T.total}</b><span>برنامجاً مخططاً</span></div><div><b>${T.done}</b><span>منفّذ بشاهد</span></div><div><b>${T.benef}</b><span>مستفيداً مستهدفاً</span></div><div><b>${T.ev}</b><span>شاهداً</span></div></div>
+  <div class="rep-kpis"><div><b>${S.complexes.length}</b><span>مجمعاً من ${S.settings.target}</span></div><div><b>${appr}</b><span>خطة معتمدة</span></div><div><b>${T.total}</b><span>برنامجاً مخططاً</span></div><div><b>${T.done}</b><span>منفّذ بشاهد</span></div><div><b>${esc(T.benef)}</b><span>مستفيداً مستهدفاً</span></div><div><b>${T.ev}</b><span>شاهداً</span></div></div>
   <h2>مقارنة المجمعات حسب نسبة التنفيذ</h2><div class="rep-bars">${rows.map(r=>`<div><span>${esc(r.c.name.replace('مجمع ',''))}</span><i style="width:${Math.max(2,r.s.pct)}%"></i><span>${r.s.pct}%</span></div>`).join('')}</div>
   <h2>تفاصيل المجمعات</h2><div class="tbl-wrap"><table><thead><tr><th>المجمع</th><th>الخطة</th><th>البرامج</th><th>المستفيدون</th><th>منفّذ</th><th>بلا شاهد</th><th>الشواهد</th><th>التنفيذ</th></tr></thead><tbody>
-  ${rows.map(r=>`<tr><td>${esc(r.c.name)}</td><td>${PLAN_ST[r.st][0]}</td><td>${r.s.total}</td><td>${r.s.benef}</td><td>${r.s.done}</td><td>${r.s.late}</td><td>${r.s.ev}</td><td>${r.s.pct}%</td></tr>`).join('')}</tbody></table></div>
+  ${rows.map(r=>`<tr><td>${esc(r.c.name)}</td><td>${PLAN_ST[r.st][0]}</td><td>${r.s.total}</td><td>${esc(r.s.benef)}</td><td>${r.s.done}</td><td>${r.s.late}</td><td>${r.s.ev}</td><td>${r.s.pct}%</td></tr>`).join('')}</tbody></table></div>
   <div class="rep-sign"><div>رئيس قسم الخدمات التربوية</div><div>المدير التنفيذي</div></div><div class="rep-band"></div>`;
 }
+async function printReport(){busy(true);const el=$('#report');try{await hydrateEv(el);await Promise.all([...el.querySelectorAll('img')].map(i=>i.complete?0:new Promise(r=>{i.onload=i.onerror=r;setTimeout(r,8000)})))}catch(e){}busy(false);window.print()}
 async function downloadReport(){
   const el=$('#report');const css=[...document.querySelectorAll('style')].map(s=>s.textContent).join('\n');
-  hydrateEv(el);const html=`<!DOCTYPE html><html lang="ar" dir="rtl"><head><meta charset="utf-8"><title>تقرير</title><link href="https://fonts.googleapis.com/css2?family=Readex+Pro:wght@300;400;600;700&display=swap" rel="stylesheet"><style>${css}body{background:#fff;padding:20px}:root{color-scheme:light}</style></head><body><div class="report">${el.innerHTML}</div><script>setTimeout(()=>print(),800)<\/script></body></html>`;
+  await hydrateEv(el);const html=`<!DOCTYPE html><html lang="ar" dir="rtl"><head><meta charset="utf-8"><title>تقرير</title><link href="https://fonts.googleapis.com/css2?family=Readex+Pro:wght@300;400;600;700&display=swap" rel="stylesheet"><style>${css}body{background:#fff;padding:20px}:root{color-scheme:light}</style></head><body><div class="report">${el.innerHTML}</div><script>setTimeout(()=>print(),800)<\/script></body></html>`;
   const a=document.createElement('a');a.href=URL.createObjectURL(new Blob([html],{type:'text/html'}));a.download='تقرير-فصلي.html';document.body.appendChild(a);a.click();a.remove();toast('افتح الملف واختر «حفظ PDF» من نافذة الطباعة')
 }
 
@@ -1331,6 +1724,338 @@ function vKc(){
    :'<div class="empty"><b>لا متسابقين مسجلين لمجمعكم بعد</b>تسجّلهم إدارة المسابقة</div>'}</section>`;
 }
 
+/* ---------- الطلبات الإلكترونية ---------- */
+const RK={supervision:'قسم الإشراف التعليمي',followup:'قسم المتابعة الإدارية',services:'قسم الخدمات التربوية',assistant:'مساعد مدير إدارة المجمعات والحلق',director:'مدير إدارة المجمعات والحلق'};
+const RKS={supervision:'الإشراف التعليمي',followup:'المتابعة الإدارية',services:'الخدمات التربوية',assistant:'مساعد المدير',director:'مدير الإدارة'};
+const DAYS7=['السبت','الأحد','الاثنين','الثلاثاء','الأربعاء','الخميس','الجمعة'];
+const PRAY=['الفجر','الضحى','الظهر','العصر','المغرب','العشاء'];
+const SHIFTS=['من الفجر حتى 8:30 صباحاً','من الفجر حتى أذان الظهر (مطولة)','من 9:00 صباحاً حتى أذان الظهر','من الظهر حتى أذان العصر','فترة العصر','من العصر حتى 11:00 مساءً (مطولة)','من 7:00 مساءً حتى 11:00 مساءً'];
+const CAND=[{k:'c_name',l:'الاسم',t:'text',req:1},{k:'c_nid',l:'رقم الهوية',t:'text'},{k:'c_nat',l:'الجنسية',t:'text'},{k:'c_age',l:'العمر',t:'num'},{k:'c_marital',l:'الحالة الاجتماعية',t:'select',o:['أعزب','متزوج']},{k:'c_addr',l:'عنوان المنزل',t:'text'},{k:'c_home',l:'هاتف المنزل',t:'text'},{k:'c_mobile',l:'الجوال',t:'text',req:1},{k:'c_qual',l:'آخر مؤهل علمي',t:'text'},{k:'c_qsrc',l:'مصدر المؤهل',t:'text'},{k:'c_job',l:'المهنة',t:'text'},{k:'c_employer',l:'جهة المهنة',t:'text'},{k:'c_parts',l:'الأجزاء المحفوظة',t:'num'},{k:'c_prevopp',l:'الفرصة التطوعية السابقة في الجمعية (إن وجد)',t:'text'},{k:'c_prevplace',l:'مكان التطوع السابق في الجمعية (إن وجد)',t:'text'}];
+const DIR_ROUTE=(opts)=>({k:'route',kind:'route',role:'director',label:'توجيه مدير إدارة المجمعات والحلق',opts,note:'لدراسة الطلب وإبداء المرئيات'});
+const DECIDE=(opts,extra)=>Object.assign({k:'decide',kind:'decide',role:'director',label:'اعتماد مدير إدارة المجمعات والحلق',opts},extra||{});
+const RFORMS=[
+ {k:'leave',no:'',g:'المتطوعون',title:'نموذج إجازة اضطرارية',desc:'طلب إجازة اضطرارية لمتطوع، بموافقة مدير المجمع وتدقيق المتابعة الإدارية',
+  fields:[{k:'vname',l:'اسم المتطوع',t:'text',req:1},{k:'start',l:'تاريخ بداية الإجازة',t:'date',req:1},{k:'end',l:'تاريخ نهاية الإجازة',t:'date',req:1},{k:'reason',l:'سبب الإجازة',t:'textarea'},{k:'sig_v',l:'توقيع المتطوع',t:'sig'}],
+  flow:[{k:'fu',kind:'reviews',roles:['followup'],label:'تدقيق المتابعة الإدارية',decision:['يعتمد','لا يعتمد'],notes:'التوصيات'},DECIDE(['اعتماد الإجازة','عدم اعتماد الإجازة'],{label:'اعتماد مدير إدارة المجمعات والحلق'})]},
+ {k:'continue',no:'1/13',g:'الحلقات',title:'نموذج طلب استمرار الدراسة',desc:'استمرار الدراسة في الإجازات أو أيام إضافية',
+  fields:[{k:'resp',l:'المسؤول خلال فترة الاستمرار',t:'text',req:1},{k:'period',l:'الفترة المطلوب الاستمرار خلالها',t:'radio',o:['يوم إضافي في الأسبوع','اختبارات الفصل الأول','إجازة منتصف العام','اختبارات الفصل الثاني','الإجازة الصيفية','رمضان'],req:1},{k:'start',l:'تاريخ البداية',t:'date',req:1},{k:'end',l:'تاريخ النهاية',t:'date',req:1},{k:'days',l:'أيام العمل',t:'checks',o:DAYS7},{k:'htype',l:'نوع الحلقة فترة الاستمرار',t:'checks',o:['تلاوة','حفظ','مراجعة']},{k:'ptype',l:'نوع البرنامج',t:'radio',o:['يوم قرآني','دورة مكثفة','أخرى']},{k:'ptype_o',l:'نوع آخر (إن وجد)',t:'text'},
+   {k:'staff',l:'عدد العاملين فترة الاستمرار',t:'nums',o:['الهيئة الإدارية','الهيئة التعليمية']},{k:'students',l:'عدد الطلاب المسجلين حسب المراحل',t:'nums',o:['تلقين','ابتدائي','متوسط','ثانوي','جامعي','غير ذلك'],total:1},
+   {k:'workers',l:'العاملون فترة الاستمرار',t:'table',cols:['اسم المتطوع','المسمى التطوعي الحالي','الفرصة التطوعية فترة الاستمرار']}],
+  flow:[{k:'rev',kind:'reviews',roles:['supervision','followup'],label:'مرئيات الأقسام'},DECIDE(['يعتمد استمرار الدراسة','لا يعتمد استمرار الدراسة'])]},
+ {k:'shift',no:'',g:'الحلقات',title:'طلب تغيير فترة (خاص بمجمع الحلقات الإلكترونية)',desc:'تغيير فترة عمل متطوع في الحلقات الإلكترونية',
+  fields:[{k:'vname',l:'اسم المتطوع',t:'text',req:1},{k:'opp',l:'الفرصة التطوعية',t:'text'},{k:'cur',l:'الفترة الحالية',t:'radio',o:SHIFTS,req:1},{k:'new',l:'الفترة الجديدة',t:'radio',o:SHIFTS,req:1},{k:'reason',l:'مبررات الطلب',t:'textarea',req:1}],
+  flow:[DIR_ROUTE(['supervision','followup','services']),{k:'rev',kind:'reviews',fromRoute:1,label:'مرئيات القسم المختص'},DECIDE(['قبول الطلب','عدم قبول الطلب','تأجيل الطلب'],{label:'توجيه مدير إدارة المجمعات والحلق'})]},
+ {k:'openCx',no:'1/5',g:'الحلقات',title:'نموذج طلب افتتاح حلقة مجمع',desc:'افتتاح حلقة جديدة داخل المجمع',
+  fields:[{k:'curStudents',l:'عدد الطلاب الحالي في المجمع',t:'num',req:1},{k:'r_wait',l:'وجود طلاب في الانتظار – عددهم',t:'num'},{k:'r_prog',l:'افتتاح حلقة/برنامج خاص بـ',t:'text'},{k:'r_other',l:'مبرر آخر',t:'text'}],
+  flow:[{k:'rev',kind:'reviews',roles:['supervision','followup'],label:'مرئيات الأقسام'},DECIDE(['يعتمد افتتاح الحلقة','لا يعتمد افتتاح الحلقة','يؤجل الطلب'])]},
+ {k:'openMosque',no:'1/1',g:'الحلقات',title:'نموذج طلب افتتاح حلقة مسجد',desc:'طلب إشراف الجمعية على حلقة مسجد وإصدار تصريح مؤقت',anyone:1,
+  fields:[{k:'mosque',l:'اسم المسجد',t:'text',req:1},{k:'district',l:'اسم الحي',t:'text',req:1},{k:'appName',l:'اسم مقدم الطلب',t:'text',req:1},{k:'appPhone',l:'جوال مقدم الطلب',t:'text'},{k:'sig_app',l:'توقيع مقدم الطلب',t:'sig'},{k:'tName',l:'اسم المعلم المرشح',t:'text',req:1},{k:'tPhone',l:'جوال المعلم',t:'text'},{k:'sig_t',l:'توقيع المعلم',t:'sig'},{k:'imam',l:'اسم إمام المسجد',t:'text',req:1},{k:'imamPhone',l:'جوال الإمام',t:'text'},{k:'sig_imam',l:'توقيع إمام المسجد (موافقة)',t:'sig'},
+   {k:'jamaa',l:'موافقة جماعة المسجد',t:'table',cols:['الاسم','ملاحظة']},{k:'students',l:'الطلاب (15 طالباً على الأقل)',t:'table',cols:['الاسم','الصف الدراسي','جوال ولي الأمر']}],
+  flow:[{k:'fu',kind:'reviews',roles:['followup'],label:'تقييم المتابعة الإدارية',crit:[{k:'need',l:'حاجة النطاق الجغرافي للحلقة',o:['نعم يحتاج','لا يحتاج']},{k:'cnt',l:'عدد الطلاب (15 طالباً)',o:['متحقق','غير متحقق']}]},
+        {k:'sv',kind:'reviews',roles:['supervision'],label:'تقييم الإشراف التعليمي',crit:[{k:'fit',l:'مناسبة المعلم',o:['مناسب','غير مناسب']}]},
+        DECIDE(['الموافقة على افتتاح الحلقة','عدم الموافقة','تأجيل الطلب'],{label:'توجيه مدير إدارة المجمعات والحلق'})]},
+ {k:'time',no:'1/12',g:'الحلقات',title:'نموذج طلب تغيير وقت حلقة',desc:'تغيير وقت أو أيام حلقة أو المجمع كاملاً',
+  fields:[{k:'scope',l:'نطاق التغيير',t:'radio',o:['المجمع بالكامل','حلقات محددة'],req:1},{k:'halaqat',l:'الحلقات المطلوب تغيير وقتها',t:'text'},{k:'curT',l:'الوقت الحالي',t:'checks',o:PRAY},{k:'newT',l:'الوقت المطلوب',t:'checks',o:PRAY,req:1},{k:'curD',l:'الأيام الحالية',t:'checks',o:DAYS7},{k:'newD',l:'الأيام المطلوبة',t:'checks',o:DAYS7},{k:'reason',l:'مبررات الطلب',t:'textarea',req:1}],
+  flow:[{k:'rev',kind:'reviews',roles:['supervision','followup'],label:'مرئيات الأقسام'},DECIDE(['يعتمد تغيير وقت الحلقة','لا يعتمد تغيير وقت الحلقة','يعتمد لحلقة محددة'])]},
+ {k:'rename',no:'1/8',g:'المتطوعون',title:'طلب تغيير مسمى فرصة تطوعية لمتطوع في مجمع',desc:'تغيير المسمى التطوعي لمتطوع',
+  fields:[{k:'vname',l:'اسم المتطوع',t:'text',req:1},{k:'cur',l:'مسمى الفرصة التطوعية الحالية',t:'text',req:1},{k:'new',l:'مسمى الفرصة التطوعية المطلوبة',t:'text',req:1},{k:'reason',l:'مبررات الطلب',t:'textarea',req:1},{k:'sig_v',l:'توقيع المتطوع',t:'sig'}],
+  flow:[DIR_ROUTE(['supervision','followup','services','assistant']),{k:'rev',kind:'reviews',fromRoute:1,label:'مرئيات القسم المختص'},DECIDE(['قبول الطلب','تأجيل الطلب','عدم قبول الطلب'])]},
+ {k:'nominate',no:'1/6',g:'المتطوعون',title:'طلب ترشيح متطوع داخل المجمعات والحلق',desc:'ترشيح متطوع لفرصة تطوعية مع بياناته الأساسية',
+  fields:[{k:'opp',l:'الفرصة المطلوبة',t:'text',req:1},{k:'stage',l:'المرحلة المتقدم لتدريسها (للمعلم)',t:'text'},{k:'reasonT',l:'مبرر الطلب',t:'radio',o:['افتتاح حلقة جديدة','افتتاح برنامج','زيادة عدد الطلاب','بديل عن متطوع','أخرى'],req:1},{k:'reasonD',l:'تفصيل المبرر',t:'text'},{h:'البيانات الأساسية للمترشح'}].concat(CAND),
+  flow:[DIR_ROUTE(['supervision','followup','services','assistant']),{k:'iv',kind:'interview',label:'استمارة المقابلة'},{k:'rev',kind:'reviews',fromRoute:1,label:'مرئيات الأقسام بعد المقابلة'},DECIDE(['قبول الترشيح','عدم قبول الترشيح','تأجيل الطلب'])]},
+ {k:'talqeen',no:'1/6',g:'المتطوعون',title:'طلب ترشيح متطوع «حلقات التلقين»',desc:'ترشيح متطوع لحلقة جديدة تابعة لمشروع البارعون للتلقين',
+  fields:[{k:'opp',l:'الفرصة المطلوبة',t:'text',req:1},{k:'stage',l:'المرحلة المتقدم لتدريسها (للمعلم)',t:'text'},{k:'reasonT',l:'مبرر الطلب',t:'radio',o:['افتتاح حلقة جديدة تابعة لمشروع البارعون للتلقين'],req:1},{h:'البيانات الأساسية للمترشح'}].concat(CAND),
+  flow:[DIR_ROUTE(['supervision','followup','services']),{k:'iv',kind:'interview',label:'استمارة المقابلة'},{k:'rev',kind:'reviews',fromRoute:1,label:'مرئيات الأقسام بعد المقابلة'},DECIDE(['قبول الترشيح','عدم قبول الترشيح','تأجيل الطلب'])]},
+ {k:'majeed',no:'',g:'المتطوعون',title:'طلب ترشيح متطوع لمشروع «مجيد»',desc:'تعيين مقرئ لبرنامج مجيد (15 طالباً فأكثر يحفظون 15 جزءاً فأكثر)',
+  fields:[{k:'opp',l:'الفرصة التطوعية',t:'text',req:1},{k:'reasonT',l:'مبرر الطلب',t:'radio',o:['وجود خمسة عشر طالباً فأكثر ممن يحفظون خمسة عشر جزءاً فأكثر'],req:1},{h:'البيانات الأساسية للمترشح'}].concat(CAND,[{k:'att',l:'إرفاق شهادة الإجازة القرآنية',t:'note'}]),
+  flow:[DIR_ROUTE(['supervision','followup','services','assistant']),{k:'iv',kind:'interview',label:'استمارة المقابلة'},{k:'rev',kind:'reviews',fromRoute:1,label:'مرئيات الأقسام بعد المقابلة'},DECIDE(['قبول الترشيح','عدم قبول الترشيح','تأجيل الطلب'])]},
+ {k:'coop',no:'',g:'الطلاب',title:'طلب ترشيح طالب متعاون',desc:'ترشيح طالب متعاون لحلقة عدد طلابها 15 فأكثر، مع استمارة المقابلة',
+  fields:[{k:'opp',l:'الفرصة التطوعية المطلوبة',t:'text',req:1},{k:'reasonT',l:'مبرر الطلب',t:'radio',o:['عدد طلاب الحلقة 15 طالباً فأكثر'],req:1},{k:'rules',l:'ضوابط رفع الطلب: أن يكون الطالب ذا شخصية متميزة، ومتمكناً من التلاوة، وعدد طلاب الحلقة 15 فأكثر.',t:'note'},{h:'البيانات الأساسية للطالب'},
+   {k:'s_name',l:'الاسم',t:'text',req:1},{k:'s_nat',l:'الجنسية',t:'text'},{k:'s_age',l:'العمر',t:'num'},{k:'s_nid',l:'رقم الهوية',t:'text'},{k:'s_mobile',l:'الجوال',t:'text'},{k:'s_curr',l:'المنهج',t:'text'},{k:'s_level',l:'المستوى',t:'text'},{k:'s_halqa',l:'اسم الحلقة',t:'text',req:1},{k:'s_teacher',l:'اسم المعلم',t:'text'},{k:'s_count',l:'عدد طلاب الحلقة',t:'num',req:1},{k:'s_iban',l:'رقم الآيبان',t:'text'},{k:'att',l:'إرفاق صورة الآيبان الرسمية وصورة الهوية',t:'note'}],
+  flow:[DIR_ROUTE(['supervision','followup']),{k:'iv',kind:'interview',label:'استمارة المقابلة'},{k:'rev',kind:'reviews',fromRoute:1,label:'مرئيات الأقسام بعد المقابلة'},DECIDE(['قبول الترشيح','عدم قبول الترشيح'])]},
+ {k:'absence',no:'1/9',g:'المتطوعون',title:'انقطاع متطوع في المجمعات والحلق',desc:'إشعار بانقطاع متطوع مؤقتاً أو نهائياً',
+  fields:[{k:'vname',l:'اسم المتطوع',t:'text',req:1},{k:'opp',l:'الفرصة التطوعية',t:'text'},{k:'type',l:'نوع الانقطاع',t:'radio',o:['مؤقت','نهائي'],req:1},{k:'start',l:'بداية الانقطاع',t:'date',req:1},{k:'end',l:'نهاية الانقطاع المؤقت',t:'date'},{k:'reason',l:'مبررات الانقطاع',t:'textarea',req:1},{k:'sig_v',l:'توقيع المتطوع',t:'sig'},{k:'mgrOpinion',l:'رأي مدير المجمع',t:'textarea'}],
+  flow:[DIR_ROUTE(['supervision','followup','services']),{k:'rev',kind:'reviews',fromRoute:1,label:'مرئيات القسم المختص'},DECIDE(['قبول عذر المتطوع واحتساب غيابه بعذر','عدم قبول العذر وحسم مكافأة أيام الغياب','إعفاء المتطوع وترشيح بديل','إجراء آخر'],{label:'توجيه مدير إدارة المجمعات والحلق'})]},
+ {k:'transfer',no:'',g:'المتطوعون',title:'طلب نقل / تكليف للمتطوعين في المجمعات والحلق',desc:'نقل أو تكليف متطوع داخل المجمع أو إلى مجمع آخر',
+  fields:[{k:'vname',l:'اسم المتطوع',t:'text',req:1},{k:'opp',l:'الفرصة التطوعية',t:'text'},{k:'stage',l:'مرحلة التدريس (للمعلمين)',t:'text'},{k:'type',l:'نوع النقل / التكليف',t:'radio',o:['نقل داخلي (بين حلق المجمع)','نقل خارجي (إلى مجمع آخر)','تكليف داخلي (بين حلق المجمع)','تكليف خارجي (إلى مجمع آخر)'],req:1},{k:'target',l:'جهة العمل المطلوبة',t:'cx'},{k:'targetHalqa',l:'الحلقة المطلوبة (للنقل الداخلي)',t:'text'},{k:'assigned',l:'الفرصة التطوعية المكلف بها (للتكليف)',t:'text'},{k:'reason',l:'مبررات الطلب',t:'textarea',req:1},{k:'sig_v',l:'توقيع المتطوع',t:'sig'},{k:'mgrOpinion',l:'رأي مدير المجمع الحالي',t:'textarea'}],
+  flow:[{k:'newmgr',kind:'newmgr',label:'رأي مدير المجمع الجديد',when:d=>/خارجي/.test(d.type||'')},DIR_ROUTE(['supervision','followup','services']),{k:'rev',kind:'reviews',fromRoute:1,label:'مرئيات القسم المختص'},DECIDE(['قبول الطلب','عدم قبول الطلب','تأجيل الطلب'])]},
+ {k:'agency',no:'',g:'المالية',title:'إقرار توكيل باستلام مكافأة متطوع',desc:'توكيل شخص باستلام مكافأة المتطوع',
+  fields:[{k:'vname',l:'اسم المتطوع رباعياً',t:'text',req:1},{k:'vnid',l:'رقم السجل المدني للمتطوع',t:'text',req:1},{h:'بيانات الوكيل'},{k:'aname',l:'اسم الوكيل',t:'text',req:1},{k:'rel',l:'صلة القرابة',t:'text'},{k:'anid',l:'رقم السجل المدني / الإقامة',t:'text',req:1},{k:'iban',l:'رقم الآيبان',t:'text',req:1},{k:'bank',l:'اسم المصرف',t:'text'},{k:'aphone',l:'رقم جوال الوكيل',t:'text'},{k:'pledge',l:'أقرّ بأنني وكلت المذكور باستلام مكافأة المتطوع بالمجمع من جمعية تحفيظ القرآن الكريم بمحافظة عنيزة، وليس له الحق بتوكيل غيره، والله على ما نقول شهيد.',t:'note'},{k:'sig_v',l:'توقيع المتطوع',t:'sig'},{k:'sig_a',l:'توقيع الوكيل',t:'sig'}],
+  flow:[{k:'fin',kind:'certify',role:'finance',label:'تصديق مدير الإدارة المالية'},{k:'exe',kind:'certify',role:'executive',label:'تصديق المدير التنفيذي'}]}
+];
+const RGROUPS=['الحلقات','المتطوعون','الطلاب','المالية'];
+/* المسار الموحد: المنشئ ← اعتماد مبدئي (مدير الإدارة) ← المتابعة الإدارية توجّه للقسم المختص ← المقابلة / مرئيات القسم ← المتابعة الإدارية (استكمال الأوراق) ← الاعتماد النهائي */
+function stdFlow(f){const dec=f.flow.find(x=>x.kind==='decide');const final=dec?dec.opts:['اعتماد الطلب','عدم اعتماد الطلب'];const iv=f.flow.some(x=>x.kind==='interview');
+  const fuCrit=[],revCrit=[];f.flow.forEach(x=>{if(x.crit)(x.roles&&x.roles[0]==='followup'?fuCrit:revCrit).push(...x.crit)});
+  const nm=f.flow.find(x=>x.kind==='newmgr');
+  return [{k:'init',kind:'decide',initial:1,role:'director',label:'الاعتماد المبدئي – مدير إدارة المجمعات والحلق',opts:['اعتماد مبدئي وإحالة للمتابعة الإدارية','عدم اعتماد الطلب']}]
+   .concat(nm?[nm]:[],[{k:'route',kind:'route',role:'followup',label:'توجيه المتابعة الإدارية للقسم المختص',opts:['supervision','services','assistant'],iv,note:iv?'اختر القسم المختص لإجراء المقابلة':'اختر القسم المختص لإبداء المرئيات (أو اتركه فارغاً إن لم يلزم)'}],
+     iv?[{k:'iv',kind:'interview',label:'المقابلة الشخصية – القسم المختص'}]:[],
+     [{k:'rev',kind:'reviews',fromRoute:1,label:'مرئيات القسم المختص',crit:revCrit.length?revCrit:undefined},
+      {k:'fu2',kind:'reviews',roles:['followup'],label:'المتابعة الإدارية – استكمال الأوراق والتدقيق',notes:'ملاحظات التدقيق واستكمال الأوراق',crit:fuCrit.length?fuCrit:undefined},
+      {k:'decide',kind:'decide',role:'director',label:'الاعتماد النهائي – مدير إدارة المجمعات والحلق',opts:final}])}
+RFORMS.forEach(f=>{f.flow=stdFlow(f)});
+const IV=[['القراءة الصحيحة الخالية من اللحون الجلية',25],['سلامة النطق ووضوح الصوت',25],['القدرة على اكتشاف الأخطاء وتصويبها',15],['الثقة بالنفس والاتزان الانفعالي',15],['مهارة استخدام الحاسب الآلي والإنترنت',10],['مهارة استخدام برامج الأوفيس',10]];
+const rform=k=>RFORMS.find(f=>f.k===k);
+const RST={draft:['مسودة',''],open:['قيد الإجراء','warn'],returned:['معاد للاستكمال','bad'],approved:['معتمد','ok'],rejected:['غير معتمد','bad'],postponed:['مؤجل','pri'],closed:['منتهي','']};
+function myRoles(){const u=me();if(!u)return[];if(isCx())return[];const d=S.departments.find(x=>x.id===u.deptId);return d&&d.rk?[d.rk]:[]}
+function rkName(rk){const d=S.departments.find(x=>x.rk===rk);return d?d.name:RK[rk]}
+function curStep(r){return r.steps.find(s=>s.status==='pending')}
+function stepRoles(s){return s.kind==='reviews'?s.roles.filter(x=>!(s.entries&&s.entries[x])):s.kind==='newmgr'?[]:[s.role]}
+function canAct(r,s){s=s||curStep(r);if(!s||r.status!=='open')return false;if(s.kind==='newmgr')return isCx()&&me().complexId===r.data.target;const mr=myRoles();return stepRoles(s).some(x=>mr.includes(x))}
+function reqBuildSteps(f,d){return f.flow.filter(st=>!st.when||st.when(d)).map(st=>Object.assign({},JSON.parse(JSON.stringify(Object.assign({},st,{when:undefined}))),{status:'wait',entries:{}}))}
+function reqInbox(){return (S.requests||[]).filter(r=>canAct(r))}
+function nextReqNo(){return 'ط-'+(hParts(todayISO()).year||'')+'-'}
+/* ----- حفظ الطلبات في قاعدة البيانات ----- */
+const reqDoc=r=>({data:r.data,byName:r.byName,byJob:r.byJob,bySig:r.bySig,submittedAt:r.submittedAt,returnNote:r.returnNote||'',steps:r.steps,log:r.log});
+function reqFromRow(x){const d=x.doc||{};return Object.assign({data:{},steps:[],log:[],byName:'',byJob:'',bySig:'',returnNote:''},d,{id:x.id,no:x.no||'',type:x.type,complexId:x.complex_id||'',createdBy:x.created_by,createdAt:x.created_at||new Date().toISOString(),status:x.status,ver:x.ver})}
+async function reqSave(r){
+  try{const d=await q(sb.from('requests').update({status:r.status,complex_id:r.complexId||null,target_cx:r.data.target||null,doc:reqDoc(r)}).eq('id',r.id).eq('ver',r.ver).select('id,ver'));
+    if(!d||!d.length){toast('حدّث شخص آخر هذا الطلب قبل حفظك. أعدنا تحميله، فراجعه وحاول مرة أخرى');await refresh();return false}
+    r.ver=d[0].ver;return true}
+  catch(e){await refresh();throw e}}
+async function saveMySig(sig){if(!sig||!session)return;await q(sb.from('user_sigs').upsert({user_id:session.uid,sig,updated_at:new Date().toISOString()}));const u=me();if(u)u.sig=sig}
+function sigImg(sig){sig=safeImg(sig);return sig?`<img class="sigimg" src="${sig}" alt="توقيع">`:'<span class="muted small">—</span>'}
+
+/* ----- interview forms (استمارات المقابلة) ----- */
+const IVP=[['القدوة الحسنة في المظهر والحديث',7],['الثقة بالنفس والاتزان الانفعالي',3],['القدرة على الحوار والنقاش',3],['سلامة النطق ووضوح الصوت',3],['وضوح الرؤية والهدف من الوظيفة',3],['ترتيب ووضوح الأفكار',3],['مهارات التواصل الفعال',3],['القدرة على حل المشكلات',3],['مهارات المتابعة والتوجيه',3],['جوانب تميز (حفظ القرآن / خبرة عملية سابقة / دورات)',3],['مهارات استخدام برامج الحاسب الآلي والإنترنت',3],['مهارة استخدام برامج الأوفيس (Word / Excel / PowerPoint)',3]];
+const IVT={
+ teacher:{title:'استمارة مقابلة الترشح لفرصة تطوعية (معلم حلقة)',head:'teacher',role:'supervision',note:'تذكير المعلم بضرورة انضمامه لبرنامج رخصة المعلم عند إطلاق الدفعة القادمة.',
+  sec:[['المقومات العلمية',[['القراءة الصحيحة الخالية من اللحون الجلية والخفية',10],['قياس المعلومات النظرية التجويدية',8],['الإلمام بمهارات تعليم القرآن الكريم',5],['إتقان الحفظ',15],['إتمام أزمنة المد والغنن',2],['مراعاة التفخيم والترقيق',2],['مراعاة الوقف والابتداء',2],['إتقان المخارج والصفات',2],['القدرة على اكتشاف الخطأ وكيفية تصويبه',5],['الإلمام بمهارات إدارة الحلقة وطرق التدريس',5],['مهارات التحفيز وتفعيل الأنشطة التعليمية',4]]],['المقومات الشخصية',IVP]]},
+ qari:{title:'استمارة مقابلة الترشح لفرصة معلم حلقة (تلقين – برنامج قارئ)',head:'teacher',role:'supervision',
+  sec:[['المقومات العلمية',[['القراءة الصحيحة بالتقطيع الصوتي',10],['قياس معلومات الطالب التعليمية',8],['الإلمام بمهارات تعليم القرآن الكريم',8],['إتقان منهج قارئ',20],['القدرة على اكتشاف الخطأ وكيفية تصويبه',5],['الإلمام بمهارات إدارة الصف وطرق التدريس',5],['مهارات التحفيز وتفعيل الأنشطة التعليمية',4]]],['المقومات الشخصية',IVP]]},
+ monitor:{title:'استمارة مقابلة الترشح لفرصة تطوعية (مراقب تلقين)',head:'basic',role:'supervision',
+  sec:[['المقومات الشخصية',[['القدوة الحسنة في المظهر والحديث',10],['الثقة بالنفس والاتزان الانفعالي',10],['القدرة على الحوار والنقاش',10],['سلامة النطق ووضوح الصوت',10],['وضوح الرؤية والهدف من العمل التطوعي',10],['ترتيب ووضوح الأفكار',10],['مهارات التواصل الفعال',10],['القدرة على حل المشكلات',10],['مهارات المتابعة والتوجيه',5],['جوانب تميز (حفظ القرآن / خبرة عملية سابقة / دورات)',5],['مهارات استخدام برامج الحاسب الآلي والإنترنت',5],['حسن التصرف والتعامل مع الصغار',5]]]]},
+ supervisor:{title:'استمارة مقابلة لفرصة تطوعية (مشرف تعليمي)',head:'teacher',role:'supervision',
+  sec:[['المقومات العلمية',[['القراءة الصحيحة الخالية من اللحون الجلية والخفية',10],['الإلمام بمهارات تعليم القرآن الكريم',10],['القدرة على اكتشاف الخطأ وكيفية تصويبه',4],['الإلمام بمهارات إدارة الحلقة وطرق التدريس',10],['مهارات التحفيز وتفعيل الأنشطة التعليمية',3],['هل سبق له العمل التعليمي في الحلق أو المجمعات؟',4],['القدرة على حل المشكلات',3],['مهارات التواصل الفعال',3],['وضوح الرؤية والهدف من الوظيفة',3],['مهارات المتابعة والتوجيه',4],['أبرز مهام المشرف التعليمي',4],['حاصل على رخصة المعلم؟',5]]],
+   ['المقومات الشخصية',[['القدوة الحسنة في المظهر والحديث',7],['الثقة بالنفس والاتزان الانفعالي',5],['القدرة على الحوار والنقاش',5],['سلامة النطق ووضوح الصوت',5],['ترتيب ووضوح الأفكار',5],['مهارات استخدام برامج الحاسب الآلي والإنترنت',5],['مهارة استخدام برامج الأوفيس',5]]]]},
+ manager:{title:'استمارة مقابلة فرصة تطوعية إدارية (مدير مجمع)',head:'admin',role:'director',
+  sec:[['الجانب الإداري',[['هل سبق له العمل الإداري؟',10],['هل حصل على دورات في الجانب الإداري؟',10],['إجادة الحاسب الآلي',10],['امتلاك مهارة التخطيط',10],['امتلاك مهارة حل المشكلات',10],['معرفته باللوائح والأنظمة',20]]],['الجانب الشخصي والتربوي',[['الهيئة الشخصية',5],['الثقة بالنفس',5],['إجادة الحوار',5],['هل سبق له العمل التربوي؟',5],['التعامل التربوي مع المشكلات',5],['الإدراك والحس التربوي',5]]]]},
+ raed:{title:'استمارة مقابلة للترشح كمتطوع رائد خدمات تربوية',head:'admin',role:'services',
+  sec:[['الجانب الإداري',[['هل سبق له العمل الإداري؟',10],['حصوله على دورات في الجانب',10],['إجادة الحاسب الآلي',10],['امتلاك مهارة التخطيط',10],['امتلاك مهارة حل المشكلات',15],['معرفته باللوائح والأنظمة',10]]],['الجانب الشخصي والتربوي',[['الهيئة الشخصية',5],['الثقة بالنفس',3],['إجادة الحوار',2],['هل سبق له العمل التربوي؟',5],['التعامل التربوي مع المشكلات',10],['الإدراك والحس التربوي',10]]]]},
+ secretary:{title:'استمارة مقابلة فرصة تطوعية إدارية (سكرتير / مشرف إداري)',head:'admin',role:'followup',
+  sec:[['عناصر التقييم (1)',[['المعرفة باللوائح والتنظيمات داخل الإدارة',10],['المعرفة بمهام الفرصة التطوعية',10],['وضوح الرؤية والهدف من الترشح للفرصة التطوعية',5],['الاهتمام بالتطوير الذاتي',10],['إدارة الوقت وتنظيم المهام وترتيب الأولويات',5],['مهارة إعداد التقارير',10],['الثقة بالنفس والاتزان الانفعالي',5],['القدوة الحسنة في المظهر والحديث',5]]],
+   ['عناصر التقييم (2)',[['القدرة على الحوار والنقاش وترتيب ووضوح الأفكار',5],['سلامة النطق ووضوح الصوت',5],['مهارات استخدام برامج الحاسب الآلي والإنترنت',5],['جوانب تميز (خبرة عملية سابقة، دورات في المجال)',5],['مواجهة المشاكل وحلها',5],['مهارات التنسيق والمتابعة',5],['القدرة على تنفيذ المهام',5],['التواصل الفعال مع الزملاء والإدارات',5]]]]},
+ coop:{title:'استمارة مقابلة لطالب متعاون',head:'student',role:'supervision',
+  sec:[['عناصر التقييم',[['القراءة الصحيحة الخالية من اللحون الجلية',25],['سلامة النطق ووضوح الصوت',25],['القدرة على اكتشاف الأخطاء وتصويبها',15],['الثقة بالنفس والاتزان الانفعالي',15],['مهارة استخدام الحاسب الآلي والإنترنت',10],['مهارة استخدام برامج الأوفيس (Word - Excel - PowerPoint)',10]]]]}
+};
+const IVHEAD={
+ basic:[['name','الاسم الرباعي'],['nid','السجل المدني'],['qual','المؤهل العلمي'],['grad','سنة التخرج'],['district','الحي السكني'],['mobile','رقم الجوال'],['exp','الخبرات','w'],['courses','الدورات','w']],
+ teacher:[['name','الاسم الرباعي'],['nid','السجل المدني'],['age','العمر'],['qual','المؤهل العلمي'],['grad','سنة التخرج'],['mobile','رقم الجوال'],['district','الحي السكني'],['job','المهنة'],['exp','الخبرات','w'],['courses','الدورات','w'],['hifz','مقدار الحفظ (كامل القرآن / عدد الأجزاء)'],['seg1','مقطع الحفظ (1) السورة'],['seg2','مقطع الحفظ (2) السورة'],['til1','مقطع التلاوة (1) السورة'],['til2','مقطع التلاوة (2) السورة']],
+ admin:[['name','الاسم الرباعي'],['nid','السجل المدني'],['qual','المؤهل العلمي'],['grad','سنة التخرج'],['district','الحي السكني'],['mobile','رقم الجوال'],['email','البريد الإلكتروني'],['mobile2','رقم جوال آخر'],['exp','الخبرات','w'],['courses','الدورات','w']],
+ student:[['name','الاسم الرباعي'],['nid','السجل المدني'],['mobile','رقم الجوال'],['mobile2','رقم جوال آخر'],['hifz','مقدار الحفظ (عدد الأجزاء)'],['wish','رغبة العمل','w']]};
+function ivSuggest(r){if(r.type==='coop')return 'coop';const o=(r.data.opp||'')+' '+(r.data.stage||'');
+  if(/مراقب/.test(o))return 'monitor';if(/قارئ|تلقين/.test(o)||r.type==='talqeen')return 'qari';if(/مشرف\s*تعليم/.test(o))return 'supervisor';if(/رائد/.test(o))return 'raed';if(/مدير/.test(o))return 'manager';if(/سكرتير|إداري|اداري/.test(o))return 'secretary';return 'teacher'}
+function ivPrefill(r){const d=r.data;return d.type==='coop'||r.type==='coop'?{name:d.s_name,nid:d.s_nid,mobile:d.s_mobile}:{name:d.c_name,nid:d.c_nid,age:d.c_age,qual:d.c_qual,mobile:d.c_mobile,district:d.c_addr,job:d.c_job,hifz:d.c_parts?d.c_parts+' جزءاً':''}}
+function ivModal(r,s){const T=IVT[s.tpl];const pre=Object.assign(ivPrefill(r),s.iv&&s.iv.head||{});
+  const head=IVHEAD[T.head].map(([k,l,w])=>`<div class="field ${w?'rq-wide':''}"><label>${esc(l)}</label>${w?`<textarea data-ivh="${k}" style="min-height:60px">${esc(pre[k]||'')}</textarea>`:`<input data-ivh="${k}" value="${esc(pre[k]||'')}">`}</div>`).join('');
+  let n=0;const secs=T.sec.map(([st,items])=>`<div class="tbl-wrap"><table class="rq-tbl iv-tbl"><thead><tr><th>${esc(st)}</th><th style="width:90px">الدرجة النهائية</th><th style="width:110px">الدرجة المستحقة</th></tr></thead><tbody>${items.map(([l,m])=>`<tr><td>${esc(l)}</td><td>${m}</td><td><input type="number" min="0" max="${m}" step="0.5" data-ivs="${n++}" data-max="${m}" oninput="ivSum()"></td></tr>`).join('')}<tr><th>المجموع</th><th>${items.reduce((a,x)=>a+x[1],0)}</th><th class="ivsec">0</th></tr></tbody></table></div>`).join('');
+  const me0=userName(me())||(isAdmin()?me().name:deptName(me().deptId));
+  return `<p class="small muted" style="margin-top:0">${esc(T.title)}</p><div class="rq-form">${head}</div>${secs}
+   <div class="iv-total">المجموع الكلي: <b id="ivtot">0</b> / 100</div>
+   ${T.note?`<div class="banner pri"><div class="txt small">${esc(T.note)}</div></div>`:''}
+   <div class="field"><label>رأي اللجنة<span style="color:var(--bad)"> *</span></label><div class="rq-opts"><label class="rq-opt"><input type="radio" name="iv_fit" value="مناسب"> مناسب/ـة</label><label class="rq-opt"><input type="radio" name="iv_fit" value="غير مناسب"> غير مناسب/ـة</label></div></div>
+   <div class="field"><label for="iv_notes">ملاحظات / أسباب عدم المناسبة (إن وجدت)</label><textarea id="iv_notes"></textarea></div>
+   <div class="field"><label for="iv_date">تاريخ المقابلة</label><input type="date" id="iv_date" value="${todayISO()}" oninput="this.nextElementSibling.textContent=hijri(this.value)"><span class="hint">${hijri(todayISO())}</span></div>
+   <h4 class="rq-h">لجنة المقابلة</h4><div id="ivc">${ivMember(0,me0,rkName(s.role),me().sig||'')}${ivMember(1,'','','')}</div>
+   <button type="button" class="btn sm" onclick="ivAddMember()">${I.plus}إضافة عضو</button>`}
+function ivMember(i,name,title,sig){return `<div class="iv-mem" data-i="${i}"><div class="rq-form"><div class="field"><label>اسم عضو اللجنة</label><input data-m="name" value="${esc(name)}"></div><div class="field"><label>المسمى</label><input data-m="title" value="${esc(title)}"></div></div>${sigPad('iv_sig_'+i,sig)}</div>`}
+function ivAddMember(){const c=$('#ivc');const i=c.children.length;c.insertAdjacentHTML('beforeend',ivMember(i,'','',''));sigInit('iv_sig_'+i)}
+function ivSum(){let t=0;document.querySelectorAll('.iv-tbl').forEach(tb=>{let s=0;tb.querySelectorAll('[data-ivs]').forEach(i=>{let v=+i.value||0;const m=+i.dataset.max;if(v>m){v=m;i.value=m}s+=v});tb.querySelector('.ivsec').textContent=s;t+=s});$('#ivtot').textContent=t}
+function ivRead(s){const T=IVT[s.tpl];const head={};document.querySelectorAll('[data-ivh]').forEach(e=>head[e.dataset.ivh]=e.value.trim());
+  const scores=[...document.querySelectorAll('[data-ivs]')].map(i=>i.value===''?null:+i.value);const fit=document.querySelector('input[name="iv_fit"]:checked')?.value||'';
+  const members=[...document.querySelectorAll('.iv-mem')].map(m=>({name:m.querySelector('[data-m=name]').value.trim(),title:m.querySelector('[data-m=title]').value.trim(),sig:sigVal('iv_sig_'+m.dataset.i)||document.getElementById('iv_sig_'+m.dataset.i).dataset.val||''})).filter(m=>m.name);
+  return{head,scores,fit,total:scores.reduce((a,b)=>a+(b||0),0),notes:$('#iv_notes').value.trim(),date:$('#iv_date').value,members}}
+function ivView(s){const T=IVT[s.tpl];const v=s.iv;if(!v)return '';let n=0;
+  return `<div class="iv-view"><b>${esc(T.title)}</b><div class="row" style="margin:4px 0"><span class="chip gold">المجموع: ${esc(v.total)} / 100</span><span class="chip ${v.fit==='مناسب'?'ok':'bad'}">${esc(v.fit)}</span><span class="chip">${v.date?hijriS(v.date):''}</span></div>
+   <details><summary class="small">تفاصيل الدرجات وبيانات المرشح</summary><table class="rq-tbl"><tbody>${IVHEAD[T.head].filter(([k])=>v.head[k]).map(([k,l])=>`<tr><th>${esc(l)}</th><td colspan="2">${esc(v.head[k])}</td></tr>`).join('')}
+   ${T.sec.map(([st,items])=>`<tr><th>${esc(st)}</th><th>النهائية</th><th>المستحقة</th></tr>${items.map(([l,m])=>`<tr><td>${esc(l)}</td><td>${m}</td><td>${esc(v.scores[n++]??'—')}</td></tr>`).join('')}`).join('')}</tbody></table></details>
+   ${v.notes?`<p>${esc(v.notes)}</p>`:''}<div class="iv-mems">${v.members.map(m=>`<div><span class="small">${esc(m.name)}${m.title?' – '+esc(m.title):''}</span>${sigImg(m.sig)}</div>`).join('')}</div></div>`}
+
+/* ----- signature pad ----- */
+function sigPad(id,val){return `<div class="sigpad"><canvas id="${id}" width="520" height="150" data-val="${esc(val||'')}"></canvas><div class="row" style="margin-top:4px"><button type="button" class="btn sm" onclick="sigClear('${id}')">مسح</button>${me()&&me().sig?`<button type="button" class="btn sm" onclick="sigLoad('${id}',me().sig)">استخدام توقيعي المحفوظ</button>`:''}<span class="small muted">وقّع بإصبعك أو بالفأرة داخل المربع</span></div></div>`}
+function sigInit(id){const c=document.getElementById(id);if(!c)return;const x=c.getContext('2d');x.lineWidth=2.4;x.lineCap='round';x.strokeStyle='#14141F';c.dataset.dirty='';
+  if(c.dataset.val)sigLoad(id,safeImg(c.dataset.val));
+  let dn=false;const pos=e=>{const r=c.getBoundingClientRect();const p=e.touches?e.touches[0]:e;return[(p.clientX-r.left)*c.width/r.width,(p.clientY-r.top)*c.height/r.height]};
+  const st=e=>{dn=true;const[a,b]=pos(e);x.beginPath();x.moveTo(a,b);e.preventDefault()};const mv=e=>{if(!dn)return;const[a,b]=pos(e);x.lineTo(a,b);x.stroke();c.dataset.dirty='1';e.preventDefault()};const en=()=>dn=false;
+  c.addEventListener('mousedown',st);c.addEventListener('mousemove',mv);window.addEventListener('mouseup',en);c.addEventListener('touchstart',st,{passive:false});c.addEventListener('touchmove',mv,{passive:false});c.addEventListener('touchend',en)}
+function sigClear(id){const c=document.getElementById(id);c.getContext('2d').clearRect(0,0,c.width,c.height);c.dataset.dirty='';c.dataset.val=''}
+function sigLoad(id,src){const c=document.getElementById(id);if(!c||!src)return;const im=new Image();im.onload=()=>{const x=c.getContext('2d');x.clearRect(0,0,c.width,c.height);x.drawImage(im,0,0,c.width,c.height);c.dataset.dirty='1'};im.src=src}
+function sigVal(id){const c=document.getElementById(id);return c&&c.dataset.dirty?c.toDataURL('image/png'):''}
+
+/* ----- field render ----- */
+function rfInput(fd,v,pfx){const id=pfx+fd.k;v=v??'';
+  if(fd.h)return `<h4 class="rq-h">${esc(fd.h)}</h4>`;
+  if(fd.t==='note')return `<div class="banner pri" style="margin:4px 0 10px"><div class="txt small">${esc(fd.l)}</div></div>`;
+  const lab=`<label for="${id}">${esc(fd.l)}${fd.req?'<span style="color:var(--bad)"> *</span>':''}</label>`;
+  if(fd.t==='textarea')return `<div class="field rq-wide">${lab}<textarea id="${id}">${esc(v)}</textarea></div>`;
+  if(fd.t==='date')return `<div class="field">${lab}<input id="${id}" type="date" value="${esc(v)}" oninput="this.nextElementSibling.textContent=hijri(this.value)"><span class="hint">${v?hijri(v):''}</span></div>`;
+  if(fd.t==='num')return `<div class="field">${lab}<input id="${id}" type="number" min="0" value="${esc(v)}"></div>`;
+  if(fd.t==='select')return `<div class="field">${lab}<select id="${id}"><option value="">—</option>${fd.o.map(o=>`<option ${o===v?'selected':''}>${esc(o)}</option>`).join('')}</select></div>`;
+  if(fd.t==='cx')return `<div class="field">${lab}<select id="${id}"><option value="">—</option>${S.complexes.map(c=>`<option value="${c.id}" ${c.id===v?'selected':''}>${esc(c.name)}</option>`).join('')}</select></div>`;
+  if(fd.t==='radio')return `<div class="field rq-wide"><label>${esc(fd.l)}${fd.req?'<span style="color:var(--bad)"> *</span>':''}</label><div class="rq-opts">${fd.o.map(o=>`<label class="rq-opt"><input type="radio" name="${id}" value="${esc(o)}" ${o===v?'checked':''}> ${esc(o)}</label>`).join('')}</div></div>`;
+  if(fd.t==='checks'){const a=Array.isArray(v)?v:[];return `<div class="field rq-wide"><label>${esc(fd.l)}${fd.req?'<span style="color:var(--bad)"> *</span>':''}</label><div class="rq-opts">${fd.o.map(o=>`<label class="rq-opt"><input type="checkbox" name="${id}" value="${esc(o)}" ${a.includes(o)?'checked':''}> ${esc(o)}</label>`).join('')}</div></div>`}
+  if(fd.t==='nums'){const a=v||{};return `<div class="field rq-wide"><label>${esc(fd.l)}</label><div class="rq-nums">${fd.o.map((o,i)=>`<label>${esc(o)}<input type="number" min="0" data-n="${id}" data-i="${i}" value="${esc(a[o]??'')}"></label>`).join('')}</div></div>`}
+  if(fd.t==='table'){const rows=(Array.isArray(v)&&v.length?v:[fd.cols.map(()=> '')]);return `<div class="field rq-wide"><label>${esc(fd.l)}</label><div class="tbl-wrap"><table class="rq-tbl" id="${id}"><thead><tr><th>م</th>${fd.cols.map(c=>`<th>${esc(c)}</th>`).join('')}<th></th></tr></thead><tbody>${rows.map((r,i)=>rqRow(fd,r,i)).join('')}</tbody></table></div><button type="button" class="btn sm" onclick="rqAddRow('${id}',${fd.cols.length})">${I.plus}إضافة صف</button></div>`}
+  if(fd.t==='sig')return `<div class="field rq-wide">${lab}${sigPad(id,v)}</div>`;
+  return `<div class="field">${lab}<input id="${id}" value="${esc(v)}"></div>`}
+function rqRow(fd,r,i){return `<tr><td>${i+1}</td>${fd.cols.map((c,j)=>`<td><input value="${esc(r[j]||'')}"></td>`).join('')}<td><button type="button" class="btn sm danger" onclick="this.closest('tr').remove()">×</button></td></tr>`}
+function rqAddRow(id,n){const tb=document.querySelector('#'+id+' tbody');const i=tb.children.length;tb.insertAdjacentHTML('beforeend',`<tr><td>${i+1}</td>${Array.from({length:n}).map(()=>'<td><input></td>').join('')}<td><button type="button" class="btn sm danger" onclick="this.closest('tr').remove()">×</button></td></tr>`)}
+function rfRead(fd,pfx){const id=pfx+fd.k;
+  if(fd.t==='radio')return document.querySelector(`input[name="${id}"]:checked`)?.value||'';
+  if(fd.t==='checks')return [...document.querySelectorAll(`input[name="${id}"]:checked`)].map(i=>i.value);
+  if(fd.t==='nums'){const o={};document.querySelectorAll(`[data-n="${id}"]`).forEach(i=>{if(i.value!=='')o[fd.o[+i.dataset.i]]=+i.value});return o}
+  if(fd.t==='table')return [...document.querySelectorAll('#'+id+' tbody tr')].map(tr=>[...tr.querySelectorAll('input')].map(i=>i.value.trim())).filter(r=>r.some(Boolean));
+  if(fd.t==='sig')return sigVal(id)||(document.getElementById(id)?.dataset.val||'');
+  const el=document.getElementById(id);return el?el.value.trim():''}
+function rfView(fd,v){if(fd.h)return `<tr><th colspan="2" class="rq-sec">${esc(fd.h)}</th></tr>`;if(fd.t==='note')return `<tr><td colspan="2" class="small muted">${esc(fd.l)}</td></tr>`;
+  let h;if(fd.t==='sig')h=sigImg(v);else if(fd.t==='date')h=v?`${hijri(v)} <span class="small muted">(${greg(v)}م)</span>`:'—';else if(fd.t==='checks')h=(v&&v.length)?v.map(esc).join('، '):'—';
+  else if(fd.t==='nums'){const e=Object.entries(v||{});h=e.length?e.map(([k,n])=>`${esc(k)}: ${esc(n)}`).join('، ')+(fd.total?` — المجموع: ${esc(e.reduce((a,[,n])=>a+(+n||0),0))}`:''):'—'}
+  else if(fd.t==='table')h=(v&&v.length)?`<table class="rq-tbl"><thead><tr><th>م</th>${fd.cols.map(c=>`<th>${esc(c)}</th>`).join('')}</tr></thead><tbody>${v.map((r,i)=>`<tr><td>${i+1}</td>${fd.cols.map((c,j)=>`<td>${esc(r[j]||'')}</td>`).join('')}</tr>`).join('')}</tbody></table>`:'—';
+  else if(fd.t==='cx')h=v?esc(cxName(v)):'—';else h=v!==''&&v!=null?esc(v):'—';
+  return `<tr><th>${esc(fd.l)}</th><td>${h}</td></tr>`}
+
+/* ----- pages ----- */
+function vRequests(a){
+  const tab=a.tab||(isCx()?'mine':(reqInbox().length?'inbox':'all'));const all=(S.requests||[]).slice().sort((x,y)=>y.createdAt.localeCompare(x.createdAt));
+  const mine=isCx()?all.filter(r=>r.complexId===me().complexId||(r.data.target===me().complexId)):all.filter(r=>r.createdBy===me().id);
+  const inbox=reqInbox();const st=a.st||'';
+  const list=(tab==='inbox'?inbox:tab==='mine'?mine:all).filter(r=>!st||r.status===st);
+  const canSeeAll=!isCx()&&(isAdmin()||myRoles().length);
+  const tabs=[['inbox',`بانتظار توقيعي (${inbox.length})`,!isCx()||inbox.length],['mine',isCx()?'طلبات المجمع':'طلباتي',1],['all','كل الطلبات',canSeeAll]].filter(t=>t[2]);
+  return `<div class="page-h"><div><h2>الطلبات الإلكترونية</h2><p>نماذج المجمعات والحلق، تُرفع وتُوقَّع وتُعتمد إلكترونياً حسب القسم المعني</p></div><button class="btn pri" onclick="go('reqnew')">${I.plus}طلب جديد</button></div>
+  <div class="tabs">${tabs.map(([k,l])=>`<button class="${tab===k?'on':''}" onclick="go('requests',{tab:'${k}'})">${l}</button>`).join('')}</div>
+  <div class="row" style="margin-bottom:10px"><select aria-label="الحالة" onchange="go('requests',{tab:'${tab}',st:this.value})" style="border:1px solid var(--line);background:var(--surface2);padding:6px 10px"><option value="">كل الحالات</option>${Object.entries(RST).filter(([k])=>k!=='draft').map(([k,v])=>`<option value="${k}" ${st===k?'selected':''}>${v[0]}</option>`).join('')}</select></div>
+  <section class="panel">${list.length?list.map(reqCard).join(''):`<div class="empty"><b>${tab==='inbox'?'لا طلبات بانتظار توقيعك':'لا طلبات'}</b>${isCx()?'اضغط «طلب جديد» لاختيار النموذج':''}</div>`}</section>`;
+}
+function reqCard(r){const f=rform(r.type);const s=curStep(r);const stt=RST[r.status]||RST.open;
+  const where=r.status==='open'&&s?(s.kind==='newmgr'?'لدى مدير '+cxName(r.data.target):s.kind==='reviews'?'لدى: '+stepRoles(s).map(rkName).join('، '):'لدى: '+rkName(s.role)):'';
+  return `<div class="prog" onclick="go('req',{id:'${r.id}'})" role="button" tabindex="0"><span class="dot ${stt[1]||'pri'}"></span><div class="prog-b"><div class="prog-t">${esc(f.title)}</div>
+   <div class="prog-m"><span>${esc(r.no)}</span><span>${esc(cxName(r.complexId)||r.byName)}</span><span>${hijriS(r.createdAt.slice(0,10))}</span>${r.data.vname?`<span>${esc(r.data.vname)}</span>`:''}${where?`<span>${esc(where)}</span>`:''}</div></div>
+   <div class="row" style="flex-direction:column;align-items:flex-end;gap:4px"><span class="chip ${stt[1]}">${stt[0]}</span>${canAct(r)?'<span class="chip gold">بانتظار توقيعك</span>':''}</div></div>`}
+function vReqNew(a){
+  if(a.k)return reqForm(rform(a.k),null);
+  const avail=RFORMS;
+  return `<div class="page-h"><div><h2>طلب جديد</h2><p>اختر النموذج المطلوب</p></div><button class="btn" onclick="go('requests')">رجوع</button></div>
+  ${RGROUPS.map(g=>{const fs=avail.filter(f=>f.g===g);return fs.length?`<section class="panel"><h3>${g}</h3><div class="rq-grid">${fs.map(f=>`<button class="rq-tile" onclick="go('reqnew',{k:'${f.k}'})"><b>${esc(f.title)}</b><span>${esc(f.desc)}</span><small>${'مدير الإدارة ← المتابعة ← '+(f.flow.some(x=>x.kind==='interview')?'المقابلة':'القسم المختص')+' ← المتابعة ← الاعتماد النهائي'}</small></button>`).join('')}</div></section>`:''}).join('')}`;
+}
+function reqForm(f,r){
+  const d=r?r.data:{};const cxSel=!isCx();
+  setTimeout(()=>document.querySelectorAll('.sigpad canvas').forEach(c=>sigInit(c.id)),0);
+  return `<div class="page-h"><div><h2>${esc(f.title)}</h2><p>${f.no?'نموذج رقم ('+f.no+') · ':''}${esc(f.desc)}</p></div><button class="btn" onclick="go('${r?'req':'reqnew'}',${r?`{id:'${r.id}'}`:'{}'})">رجوع</button></div>
+  ${r&&r.status==='returned'?`<div class="banner bad"><div class="txt"><b>أعيد الطلب للاستكمال</b>${esc(r.returnNote||'')}</div></div>`:''}
+  <section class="panel"><div class="rq-form">
+   ${cxSel?`<div class="field"><label for="rq_cx">الجهة (المجمع / الحلقة)</label><select id="rq_cx"><option value="">— غير مرتبط بمجمع —</option>${S.complexes.map(c=>`<option value="${c.id}" ${c.id===(r?r.complexId:'')?'selected':''}>${esc(c.name)}</option>`).join('')}</select></div>`:`<div class="field"><label>الجهة</label><input value="${esc(cxName(me().complexId))}" disabled></div>`}
+   ${f.fields.map(fd=>rfInput(fd,d[fd.k],'rq_')).join('')}
+  </div>
+  <h4 class="rq-h">مقدم الطلب</h4>
+  <div class="rq-form"><div class="field"><label>الاسم</label><input id="rq_appname" value="${esc(r?r.byName:userName(me())||(isAdmin()?me().name:''))}"></div><div class="field"><label>الوظيفة</label><input id="rq_appjob" value="${esc(r?r.byJob:(isCx()?subLabel(me()):deptName(me().deptId)))}"></div>
+   <div class="field rq-wide"><label>توقيع مقدم الطلب<span style="color:var(--bad)"> *</span></label>${sigPad('rq_appsig',r?r.bySig:'')}<label class="row small" style="margin-top:6px"><input type="checkbox" id="rq_savesig"> حفظه توقيعاً افتراضياً لحسابي</label></div></div>
+  <div class="row"><button class="btn pri" id="rqsub" onclick="reqSubmit('${f.k}',${r?`'${r.id}'`:'null'})">${r?'إعادة رفع الطلب':'رفع الطلب'}</button><span class="small muted">بعد الرفع يصل الطلب إلى: ${esc(f.flow.map(x=>x.label).join(' ← '))}</span></div></section>`;
+}
+async function reqSubmit(k,rid){const f=rform(k);const d={};f.fields.forEach(fd=>{if(fd.k&&fd.t!=='note')d[fd.k]=rfRead(fd,'rq_')});
+  const miss=f.fields.filter(fd=>fd.req&&(d[fd.k]===''||d[fd.k]==null||(Array.isArray(d[fd.k])&&!d[fd.k].length))).map(fd=>fd.l);
+  const sig=sigVal('rq_appsig')||(document.getElementById('rq_appsig')?.dataset.val||'');if(!sig)miss.push('توقيع مقدم الطلب');
+  if(f.k==='transfer'&&/خارجي/.test(d.type)&&!d.target)miss.push('جهة العمل المطلوبة');
+  if(miss.length){toast('أكمل: '+miss.slice(0,4).join('، '));return}
+  const cx=isCx()?me().complexId:($('#rq_cx')?.value||'');
+  S.requests=S.requests||[];let r=rid&&S.requests.find(x=>x.id===rid);const btn=document.querySelector('#rqsub');if(btn){if(btn.disabled)return;btn.disabled=true}busy(true);
+  const base={data:d,byName:$('#rq_appname').value.trim(),byJob:$('#rq_appjob').value.trim(),bySig:sig,submittedAt:new Date().toISOString(),status:'open',returnNote:''};
+  if(r){Object.assign(r,base);r.steps=reqBuildSteps(f,d);r.log.push({at:new Date().toISOString(),by:base.byName,t:'أعاد رفع الطلب بعد الاستكمال'})}
+  else{r=Object.assign({id:uid(),no:nextReqNo(),type:k,complexId:cx,createdBy:me().id,createdAt:new Date().toISOString(),steps:reqBuildSteps(f,d),log:[{at:new Date().toISOString(),by:base.byName,t:'رفع الطلب ووقّعه'}]},base);}
+  reqAdvance(r);
+  try{if($('#rq_savesig').checked)await saveMySig(sig);
+    if(rid){if(!await reqSave(r))return}
+    else{const row=await q(sb.from('requests').insert({id:r.id,no:r.no,type:k,complex_id:r.complexId||null,target_cx:r.data.target||null,status:r.status,doc:reqDoc(r)}).select().single());r=reqFromRow(row);S.requests.push(r)}
+    toast('رُفع الطلب '+r.no);await refresh();go('req',{id:r.id})}
+  catch(e){toast(errMsg(e))}
+  finally{busy(false);if(btn&&document.body.contains(btn))btn.disabled=false}}
+function reqAdvance(r){const s=r.steps.find(x=>x.status!=='done'&&x.status!=='skipped');r.steps.forEach(x=>{if(x.status==='pending')x.status='wait'});
+  if(!s){if(r.status==='open')r.status='approved';return}
+  if(s.kind==='interview'){const rt=r.steps.find(x=>x.kind==='route');if(!rt||!rt.result||!rt.result.tpl){s.status='skipped';return reqAdvance(r)}s.tpl=rt.result.tpl;s.role=rt.result.ivRole}
+  if(s.fromRoute){const rt=r.steps.find(x=>x.kind==='route');s.roles=(rt&&rt.result&&rt.result.roles)||[];if(!s.roles.length||(rt&&rt.result&&rt.result.tpl)){s.status='skipped';return reqAdvance(r)}}
+  s.status='pending'}
+function vReq(a){const r=(S.requests||[]).find(x=>x.id===a.id);if(!r)return '<div class="empty">الطلب غير موجود</div>';const f=rform(r.type);const stt=RST[r.status];const s=curStep(r);
+  const mineEdit=r.status==='returned'&&(isCx()?r.complexId===me().complexId:r.createdBy===me().id);
+  if(a.edit&&mineEdit)return reqForm(f,r);
+  const act=canAct(r);
+  return `<div class="page-h"><div><h2>${esc(f.title)}</h2><p>${esc(r.no)} · ${esc(cxName(r.complexId)||'')} · ${hijri(r.createdAt.slice(0,10))}</p></div>
+   <div class="row"><span class="chip ${stt[1]}">${stt[0]}</span><button class="btn" onclick="go('requests')">كل الطلبات</button><button class="btn" onclick="reqPrint('${r.id}')">${I.print}طباعة النموذج</button>${mineEdit?`<button class="btn pri" onclick="go('req',{id:'${r.id}',edit:1})">استكمال الطلب</button>`:''}</div></div>
+  ${r.status==='returned'?`<div class="banner bad"><div class="txt"><b>أعيد الطلب لمقدمه للاستكمال</b>${esc(r.returnNote||'')}</div></div>`:''}
+  ${act?`<div class="banner warn"><div class="txt"><b>الطلب بانتظار توقيعك</b>${esc(s.label)}</div><button class="btn sm pri" onclick="reqAct('${r.id}')">مراجعة وتوقيع</button></div>`:''}
+  <div class="cols"><div>
+  <section class="panel"><h3>بيانات الطلب</h3><div class="tbl-wrap"><table class="rq-view"><tbody>
+   <tr><th>الجهة</th><td>${esc(cxName(r.complexId)||'—')}</td></tr>${f.fields.map(fd=>rfView(fd,r.data[fd.k])).join('')}
+   <tr><th colspan="2" class="rq-sec">مقدم الطلب</th></tr><tr><th>الاسم / الوظيفة</th><td>${esc(r.byName)} — ${esc(r.byJob)}</td></tr><tr><th>التوقيع</th><td>${sigImg(r.bySig)}</td></tr>
+  </tbody></table></div></section></div>
+  <aside><section class="panel"><h3>مسار الاعتماد</h3>${reqTrack(r)}</section>
+   <section class="panel"><h3>سجل الإجراءات</h3>${r.log.slice().reverse().map(l=>`<div class="alert-item small"><span>${esc(l.t)}<br><span class="muted">${esc(l.by)}</span></span><span class="muted">${hijriS(l.at.slice(0,10))}</span></div>`).join('')}</section></aside></div>`;
+}
+function reqTrack(r){return r.steps.map(s=>{const done=s.status==='done',cur=s.status==='pending',sk=s.status==='skipped';
+  const entries=s.kind==='reviews'?(s.roles||[]).map(rk=>{const e=s.entries[rk];return `<div class="rq-sig ${e?'ok':''}"><b>${esc(rkName(rk))}</b>${e?`${e.decision?`<span class="chip">${esc(e.decision)}</span>`:''}${e.crit?Object.entries(e.crit).map(([k,v])=>`<span class="chip">${esc(k)}: ${esc(v)}</span>`).join(''):''}${e.score!=null?`<span class="chip gold">المقابلة: ${esc(e.score)}/100 – ${esc(e.fit||'')}</span>`:''}<p>${esc(e.notes||'')}</p><div class="small muted">${esc(e.name)} · ${hijriS(e.at.slice(0,10))}</div>${sigImg(e.sig)}`:'<span class="small muted">بانتظار المرئيات</span>'}</div>`}).join('')
+    :s.kind==='interview'&&s.iv?`<div class="rq-sig ok"><span class="small muted">أجرتها: ${esc(rkName(s.role))}</span>${ivView(s)}</div>`
+    :s.kind==='interview'&&s.status==='pending'?`<div class="rq-sig"><span class="small muted">لدى ${esc(rkName(s.role))} – ${esc(IVT[s.tpl]?.title||'')}</span></div>`
+    :s.result?`<div class="rq-sig ok">${s.result.roles?`<span class="small">وُجّه إلى: ${s.result.roles.map(rkName).map(esc).join('، ')}${s.result.tpl?` · المقابلة: ${esc(IVT[s.result.tpl].title)} (لدى ${esc(rkName(s.result.ivRole))})`:''}</span>`:''}${s.result.decision?`<span class="chip ${/^(قبول|يعتمد|اعتماد|الموافقة)/.test(s.result.decision)?'ok':''}">${esc(s.result.decision)}</span>`:''}<p>${esc(s.result.notes||'')}</p><div class="small muted">${esc(s.result.name)} · ${hijriS(s.result.at.slice(0,10))}</div>${sigImg(s.result.sig)}</div>`:'';
+  return `<div class="rq-step ${done?'done':cur?'cur':sk?'skip':''}"><div class="rq-step-h"><span class="rq-dot"></span><b>${esc(s.label)}</b><span class="small muted">${sk?'لا ينطبق':done?'تم':cur?'الحالي':'لاحقاً'}</span></div>${entries}</div>`}).join('')}
+function reqAct(rid){const r=S.requests.find(x=>x.id===rid);const s=curStep(r);const f=rform(r.type);const mr=myRoles();
+  const role=s.kind==='reviews'?stepRoles(s).find(x=>mr.includes(x)):s.role;
+  let body='';
+  if(s.kind==='route')body=`<p class="small muted" style="margin-top:0">${esc(s.note)}</p><div class="field"><label>القسم المختص</label><div class="rq-opts">${s.opts.map(o=>`<label class="rq-opt"><input type="checkbox" name="ra_roles" value="${o}" ${o==='supervision'?'checked':''}> ${esc(rkName(o))}</label>`).join('')}</div></div>${s.iv?`<h4 class="rq-h">المقابلة الشخصية</h4><div class="rq-form"><div class="field"><label for="ra_tpl">استمارة المقابلة</label><select id="ra_tpl" onchange="document.getElementById('ra_ivrole').value=IVT[this.value].role">${Object.entries(IVT).map(([k,t])=>`<option value="${k}" ${k===ivSuggest(r)?'selected':''}>${esc(t.title)}</option>`).join('')}<option value="">بدون مقابلة</option></select></div>
+     <div class="field"><label for="ra_ivrole">القسم الذي يُجري المقابلة</label><select id="ra_ivrole">${Object.keys(RK).filter(k=>!['finance','executive'].includes(k)).map(k=>`<option value="${k}" ${k===IVT[ivSuggest(r)].role?'selected':''}>${esc(rkName(k))}</option>`).join('')}</select></div></div>`:''}
+    <div class="field"><label for="ra_notes">توجيه / ملاحظة</label><textarea id="ra_notes"></textarea></div>`;
+  else if(s.kind==='interview')body=ivModal(r,s);
+  else if(s.kind==='reviews'){body=`${s.decision?`<div class="field"><label>القرار</label><div class="rq-opts">${s.decision.map(o=>`<label class="rq-opt"><input type="radio" name="ra_dec" value="${esc(o)}"> ${esc(o)}</label>`).join('')}</div></div>`:''}
+    ${(s.crit||[]).map(c=>`<div class="field"><label>${esc(c.l)}</label><div class="rq-opts">${c.o.map(o=>`<label class="rq-opt"><input type="radio" name="ra_c_${c.k}" value="${esc(o)}"> ${esc(o)}</label>`).join('')}</div></div>`).join('')}
+    ${s.interview===role?`<h4 class="rq-h">استمارة مقابلة الطالب المتعاون</h4><div class="tbl-wrap"><table class="rq-tbl"><thead><tr><th>عنصر التقييم</th><th>الدرجة النهائية</th><th>الدرجة المستحقة</th></tr></thead><tbody>${IV.map(([l,m],i)=>`<tr><td>${esc(l)}</td><td>${m}</td><td><input type="number" min="0" max="${m}" data-iv="${i}" oninput="document.getElementById('ivt').textContent=[...document.querySelectorAll('[data-iv]')].reduce((a,x)=>a+(+x.value||0),0)"></td></tr>`).join('')}<tr><th>المجموع الكلي</th><th>100</th><th id="ivt">0</th></tr></tbody></table></div><div class="field"><label>رأي لجنة المقابلة</label><div class="rq-opts"><label class="rq-opt"><input type="radio" name="ra_fit" value="مناسب"> مناسب</label><label class="rq-opt"><input type="radio" name="ra_fit" value="غير مناسب"> غير مناسب</label></div></div>`:''}
+    <div class="field"><label for="ra_notes">${esc(s.notes||'المرئيات')}</label><textarea id="ra_notes"></textarea></div>`}
+  else if(s.kind==='decide')body=`<div class="field"><label>القرار</label><div class="rq-opts">${s.opts.map(o=>`<label class="rq-opt"><input type="radio" name="ra_dec" value="${esc(o)}"> ${esc(o)}</label>`).join('')}</div></div><div class="field"><label for="ra_notes">الأسباب / التوجيه</label><textarea id="ra_notes"></textarea></div>`;
+  else if(s.kind==='newmgr')body=`<div class="field"><label for="ra_notes">رأي مدير المجمع الجديد</label><textarea id="ra_notes"></textarea></div><div class="field"><label>الموقف</label><div class="rq-opts"><label class="rq-opt"><input type="radio" name="ra_dec" value="موافق"> موافق</label><label class="rq-opt"><input type="radio" name="ra_dec" value="غير موافق"> غير موافق</label></div></div>`;
+  else if(s.kind==='certify')body=`<p style="margin-top:0">أصادق على صحة بيانات الإقرار.</p><div class="field"><label for="ra_notes">ملاحظة (اختياري)</label><textarea id="ra_notes"></textarea></div>`;
+  if(s.kind!=='interview')body+=`<div class="field"><label>التوقيع<span style="color:var(--bad)"> *</span></label>${sigPad('ra_sig',me().sig||'')}<label class="row small" style="margin-top:6px"><input type="checkbox" id="ra_savesig"> حفظه توقيعاً افتراضياً لحسابي</label></div>`;
+  const btns=[[s.kind==='route'?'توجيه وتوقيع':s.kind==='interview'?'حفظ الاستمارة واعتمادها':'اعتماد وتوقيع','pri',async()=>await reqSign(rid,role)]];
+  if(s.kind!=='newmgr')btns.push(['إعادة لمقدم الطلب للاستكمال','',async()=>{const n=($('#ra_notes')||$('#iv_notes'))?.value.trim();if(!n){toast('اكتب سبب الإعادة في خانة الملاحظات');return false}r.status='returned';r.returnNote=n;r.log.push({at:new Date().toISOString(),by:userName(me())||rkName(role),t:'أعاد الطلب للاستكمال: '+n});if(!await reqSave(r))return true;toast('أُعيد الطلب');await refresh();return true}]);
+  modal(esc(s.label)+' – '+esc(r.no),body,btns,true);setTimeout(()=>{sigInit('ra_sig');document.querySelectorAll('.iv-mem canvas').forEach(c=>sigInit(c.id))},0)}
+async function reqSign(rid,role){const r=S.requests.find(x=>x.id===rid);const s=curStep(r);
+  if(s.kind==='interview'){const v=ivRead(s);if(v.scores.some(x=>x==null)){toast('أكمل الدرجات المستحقة لكل العناصر');return false}if(!v.fit){toast('حدد رأي اللجنة');return false}if(!v.members.length||!v.members[0].sig){toast('يلزم اسم عضو واحد على الأقل وتوقيعه');return false}
+    s.iv=v;s.result={decision:'نتيجة المقابلة: '+v.total+' / 100 – '+v.fit,notes:v.notes,name:v.members.map(m=>m.name).join('، '),sig:'',at:new Date().toISOString()};s.status='done';
+    r.log.push({at:s.result.at,by:s.result.name,t:'استمارة المقابلة – '+v.total+'/100 – '+v.fit});if(r.status==='open')reqAdvance(r);if(!await reqSave(r))return true;toast('حُفظت استمارة المقابلة');await refresh();return true}
+  const sig=sigVal('ra_sig')||(me().sig||'');if(!sig){toast('وقّع داخل المربع');return false}
+  if($('#ra_savesig')?.checked)await saveMySig(sig);
+  const notes=$('#ra_notes')?.value.trim()||'';const dec=document.querySelector('input[name="ra_dec"]:checked')?.value||'';
+  const name=(userName(me())||(isAdmin()?me().name:isCx()?subLabel(me())+' – '+cxName(me().complexId):deptName(me().deptId)));const at=new Date().toISOString();
+  if(s.kind==='route'){const roles=[...document.querySelectorAll('input[name="ra_roles"]:checked')].map(i=>i.value);if(!roles.length&&s.iv&&$('#ra_tpl')&&$('#ra_tpl').value){toast('اختر القسم المختص لإجراء المقابلة');return false}s.result={roles,notes,name,sig,at};if($('#ra_tpl')){s.result.tpl=$('#ra_tpl').value;s.result.ivRole=$('#ra_ivrole').value}s.status='done'}
+  else if(s.kind==='reviews'){if(s.decision&&!dec){toast('اختر القرار');return false}const crit={};for(const c of (s.crit||[])){const v=document.querySelector(`input[name="ra_c_${c.k}"]:checked`)?.value;if(!v){toast('أكمل: '+c.l);return false}crit[c.l]=v}
+    const e={notes,decision:dec,crit:s.crit?crit:null,name:name===rkName(role)?name:name+' – '+rkName(role),sig,at};
+    if(s.interview===role){const sc=[...document.querySelectorAll('[data-iv]')].map(x=>+x.value||0);e.score=sc.reduce((a,b)=>a+b,0);e.fit=document.querySelector('input[name="ra_fit"]:checked')?.value||'';e.iv=sc}
+    s.entries[role]=e;if(!stepRoles(s).length)s.status='done'}
+  else{if((s.kind==='decide'||s.kind==='newmgr')&&!dec){toast('اختر القرار');return false}s.result={decision:dec,notes,name,sig,at};s.status='done';
+    if(s.kind==='decide'&&s.initial){if(/^عدم/.test(dec))r.status='rejected'}
+    else if(s.kind==='decide'){r.status=/تأجيل|يؤجل/.test(dec)?'postponed':/^(قبول|يعتمد|اعتماد|الموافقة)/.test(dec)?'approved':/آخر|إعفاء/.test(dec)?'closed':'rejected'}}
+  r.log.push({at,by:name,t:s.label+(dec?' – '+dec:'')});
+  if(r.status==='open')reqAdvance(r);if(!await reqSave(r))return true;toast('تم التوقيع');await refresh();return true}
+function reqPrintHTML(r){const f=rform(r.type);const rows=[];
+  rows.push(['مقدم الطلب',r.byName+(r.byJob?' – '+r.byJob:''),'رفع الطلب',r.submittedAt||r.createdAt,r.bySig]);
+  r.steps.forEach(s=>{if(s.status==='skipped')return;
+    if(s.kind==='reviews')(s.roles||[]).forEach(rk=>{const e=s.entries[rk];rows.push([rkName(rk),e?e.name:'',e?[e.decision,e.crit?Object.entries(e.crit).map(([k,v])=>k+': '+v).join('، '):'',e.notes].filter(Boolean).join(' – '):'بانتظار',e?e.at:'',e?e.sig:''])});
+    else if(s.kind==='interview'&&s.iv)s.iv.members.forEach((m,i)=>rows.push([i?'':'لجنة المقابلة ('+rkName(s.role)+')',m.name+(m.title?' – '+m.title:''),i?'':'المجموع '+s.iv.total+'/100 – '+s.iv.fit,s.iv.date,m.sig]));
+    else if(s.result)rows.push([s.kind==='newmgr'?'مدير '+cxName(r.data.target):rkName(s.role),s.result.name,[s.result.decision,s.result.roles?'وُجّه إلى: '+s.result.roles.map(rkName).join('، '):'',s.result.notes].filter(Boolean).join(' – '),s.result.at,s.result.sig]);
+    else rows.push([s.kind==='newmgr'?'مدير '+cxName(r.data.target):rkName(s.role),'','بانتظار','',''])});
+  const ivs=r.steps.find(s=>s.kind==='interview'&&s.iv);
+  return `<div class="lh"><div class="lh-top"><div>${logoHTML('',70)}</div><div class="lh-t"><b>${esc(S.settings.org)}</b><span>إدارة المجمعات والحلق</span></div><div class="lh-l">بإشراف المركز الوطني<br>لتنمية القطاع غير الربحي<br>ترخيص رقم 3286</div></div>
+   <h1 class="lh-h">${esc(f.title)}</h1><div class="lh-meta"><span>رقم الطلب: ${esc(r.no)}</span><span>${f.no?'نموذج رقم ('+f.no+')':''}</span><span>تاريخ الطلب: ${hijri(r.createdAt.slice(0,10))}</span><span>الحالة: ${RST[r.status][0]}</span></div>
+   <table class="rq-view"><tbody><tr><th>الجهة</th><td>${esc(cxName(r.complexId)||'—')}</td></tr>${f.fields.filter(fd=>{if(fd.t==='note')return false;if(fd.h)return true;const v=r.data[fd.k];return !(v===''||v==null||(Array.isArray(v)&&!v.length)||(typeof v==='object'&&!Array.isArray(v)&&!Object.keys(v).length))}).map(fd=>rfView(fd,r.data[fd.k])).join('')}</tbody></table>
+   ${ivs?`<h3 class="lh-s">${esc(IVT[ivs.tpl].title)}</h3>${ivPrintTable(ivs)}`:''}
+   <h3 class="lh-s">للاستعمال الرسمي – مسار الاعتماد والتوقيعات</h3>
+   <table class="rq-view lh-sig"><thead><tr><th>الجهة</th><th>الاسم</th><th>القرار / المرئيات</th><th>التاريخ</th><th>التوقيع</th></tr></thead><tbody>${rows.map(x=>`<tr><td>${esc(x[0])}</td><td>${esc(x[1])}</td><td>${esc(x[2])}</td><td>${x[3]?hijriS(String(x[3]).slice(0,10)):''}</td><td>${safeImg(x[4])?`<img class="sigimg" src="${safeImg(x[4])}" alt="">`:''}</td></tr>`).join('')}</tbody></table>
+   <div class="lh-foot">المملكة العربية السعودية – القصيم – عنيزة · جوال: 0500054100 · tehfeeth.org<br><span>نموذج إلكتروني صادر من منصة إدارة المجمعات والحلق</span></div><div class="rep-band"></div></div>`}
+function ivPrintTable(s){const T=IVT[s.tpl];const v=s.iv;let n=0;return `<table class="rq-view"><tbody>${IVHEAD[T.head].filter(([k])=>v.head[k]).map(([k,l])=>`<tr><th>${esc(l)}</th><td>${esc(v.head[k])}</td></tr>`).join('')}</tbody></table>
+  <table class="rq-tbl" style="margin-top:6px"><tbody>${T.sec.map(([st,items])=>`<tr><th>${esc(st)}</th><th>الدرجة النهائية</th><th>الدرجة المستحقة</th></tr>${items.map(([l,m])=>`<tr><td>${esc(l)}</td><td>${m}</td><td>${esc(v.scores[n++]??'')}</td></tr>`).join('')}`).join('')}<tr><th>المجموع الكلي</th><th>100</th><th>${esc(v.total)}</th></tr><tr><th>رأي اللجنة</th><td colspan="2">${esc(v.fit)}${v.notes?' – '+esc(v.notes):''}</td></tr></tbody></table>`}
+function reqPrint(rid){const r=S.requests.find(x=>x.id===rid);const html=reqPrintHTML(r);
+  modal('طباعة '+esc(r.no),html+`<p class="small muted">اضغط «طباعة» ثم اختر «حفظ PDF» إن أردت نسخة إلكترونية.</p>`,[['طباعة','pri',()=>{const st=[...document.querySelectorAll('style')].map(x=>x.textContent).join('');const fr=document.createElement('iframe');fr.style.cssText='position:fixed;width:0;height:0;border:0';document.body.appendChild(fr);fr.contentDocument.write(`<html dir="rtl" lang="ar"><head><meta charset="utf-8"><style>${st} body{background:#fff;padding:0;margin:0} @page{size:A4;margin:12mm}</style></head><body>${html}</body></html>`);fr.contentDocument.close();setTimeout(()=>{try{fr.contentWindow.print()}catch(e){toast('الطباعة غير متاحة هنا')}setTimeout(()=>fr.remove(),1500)},500);return false}]],true)}
+
+/* ---------- evidence export ---------- */
+
+
 /* ---------- evidence export ---------- */
 function evRows(a){
   const cf=isCx()?me().complexId:(a.cx||'');const from=a.from||'',to=a.to||'',ty=a.ty||'';
@@ -1497,7 +2222,7 @@ function reviewImport(items,cid,tid){
      <div><label class="l">نوع البرنامج</label>${sel('category',CATS,x.category)}</div>
      <div><label class="l">المرحلة</label>${sel('stage',STAGES,x.stage)}</div>
      <div><label class="l">فردي أو جماعي</label>${sel('kind',KINDS,x.kind)}</div>
-     <div><label class="l">المستفيدون</label><input type="number" min="1" data-k="benef" value="${x.benef}"></div>
+     <div><label class="l">المستفيدون</label><input type="number" min="1" data-k="benef" value="${esc(x.benef)}"></div>
      <div><label class="l">التاريخ</label><input type="date" data-k="start" min="${term.start}" max="${term.end}" value="${x.start}"></div>
      <div><label class="l">ينتهي في</label><input type="date" data-k="end" min="${term.start}" max="${term.end}" value="${x.end!==x.start?x.end:''}"></div>
     </div>
